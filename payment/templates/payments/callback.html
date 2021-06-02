@@ -1,0 +1,323 @@
+{% load static %}
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{##}
+{##}
+{##}
+{#    <!-- SECTION BANNER -->#}
+{#    <div class="section-banner">#}
+{#      <!-- SECTION BANNER ICON -->#}
+{#      <img class="section-banner-icon" src="{% static 'img/banner/marketplace-icon.png' %}" alt="marketplace-icon">#}
+{#      <!-- /SECTION BANNER ICON -->#}
+{##}
+{#      <!-- SECTION BANNER TITLE -->#}
+{#      <p class="section-banner-title">Marketplace</p>#}
+{#      <!-- /SECTION BANNER TITLE -->#}
+{##}
+{#      <!-- SECTION BANNER TEXT -->#}
+{#      <p class="section-banner-text">The best place for the community to buy and sell!</p>#}
+{#      <!-- /SECTION BANNER TEXT -->#}
+{#    </div>#}
+{#    <!-- /SECTION BANNER -->#}
+{##}
+{#    <!-- SECTION HEADER -->#}
+{#    <div class="section-header">#}
+{#      <!-- SECTION HEADER INFO -->#}
+{#      <div class="section-header-info">#}
+{#        <!-- SECTION PRETITLE -->#}
+{#        <p class="section-pretitle">Your Order</p>#}
+{#        <!-- /SECTION PRETITLE -->#}
+{##}
+{#        <!-- SECTION TITLE -->#}
+{#        <h2 class="section-title">Checkout</h2>#}
+{#        <!-- /SECTION TITLE -->#}
+{#      </div>#}
+{#      <!-- /SECTION HEADER INFO -->#}
+{#    </div>#}
+{#    <!-- /SECTION HEADER -->#}
+{##}
+{#    <!-- GRID -->#}
+{#    <div class="grid grid-8-4 small-space">#}
+{#      <!-- GRID COLUMN -->#}
+{#      <div class="grid-column">#}
+{#        <!-- WIDGET BOX -->#}
+{#        <div class="widget-box">#}
+{#          <!-- WIDGET BOX TITLE -->#}
+{#          <p class="widget-box-title">Billing Details</p>#}
+{#          <!-- /WIDGET BOX TITLE -->#}
+{##}
+{#    <h2>Callback Messsage: </h2>                    <br>#}
+{#    <h3> Checksum Verification: {{ message }} </h3> <br>#}
+{#    MID: {{ MID }}                                  <br>#}
+{#    TXNID: {{ TXNID }}                              <br>#}
+{#    ORDERID: {{ ORDERID }}                          <br>#}
+{#    BANKTXNID: {{ BANKTXNID }}                      <br>#}
+{#    TXNAMOUNT: {{ TXNAMOUNT }}                      <br>#}
+{#    CURRENCY: {{ CURRENCY }}                        <br>#}
+{#    <h3> STATUS: {{ STATUS }} </h3>                 <br>#}
+{#    RESPCODE: {{ RESPCODE }}                        <br>#}
+{#    RESPMSG: {{ RESPMSG }}                          <br>#}
+{#    TXNDATE: {{ TXNDATE }}                          <br>#}
+{#    GATEWAYNAME: {{ GATEWAYNAME }}                  <br>#}
+{#    BANKNAME: {{ BANKNAME }}                        <br>#}
+{#    BIN_NAME: {{ BIN_NAME }}                        <br>#}
+{#    PAYMENTMODE: {{ PAYMENTMODE }}                  <br>#}
+{#    CHECKSUMHASH: {{ CHECKSUMHASH }}#}
+{##}
+{#             <!-- FORM -->#}
+{#              <form class="form" method="POST" action = "{% url 'databasedel' %}">#}
+{#                  {% csrf_token %}#}
+{#                  <input type="hidden" id="ORDERID" name="ORDERID" value="{{ ORDERID }}">#}
+{#                  <input type="hidden" id="STATUS" name="STATUS" value="{{ STATUS }}">#}
+{##}
+{#               <div class="form-row split">#}
+{#            <!-- FORM ITEM -->#}
+{#            <div class="form-item">#}
+{#              <!-- BUTTON -->#}
+{#              <button class="button medium secondary" id="register-btn">Okay</button>#}
+{#              <!-- /BUTTON -->#}
+{#            </div>#}
+{#                </div>#}
+{#                <!-- /FORM ROW -->#}
+{#              </form>#}
+{#              <!-- /FORM -->#}
+{##}
+{#        </div>#}
+{#        <!-- /WIDGET BOX -->#}
+{#      </div>#}
+{#      <!-- /GRID COLUMN -->#}
+{##}
+{#    </div>#}
+{#    <!-- /GRID -->#}
+{##}
+{##}
+{#{% endblock content %}#}
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-flex.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <style>
+    body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #322d28;
+}
+
+header.top-bar h1 {
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  margin-top: 4rem;
+  min-height: calc(100vh - 107px);
+}
+main .inner-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+table.invoice {
+  background: #fff;
+}
+table.invoice .num {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8em;
+}
+table.invoice tr, table.invoice td {
+  background: #fff;
+  text-align: left;
+  font-weight: 400;
+  color: #322d28;
+}
+table.invoice tr.header td img {
+  max-width: 300px;
+}
+table.invoice tr.header td h2 {
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 2rem;
+  color: #1779ba;
+}
+table.invoice tr.intro td:nth-child(2) {
+  text-align: right;
+}
+table.invoice tr.details > td {
+  padding-top: 4rem;
+  padding-bottom: 0;
+}
+table.invoice tr.details td.id, table.invoice tr.details td.qty, table.invoice tr.details th.id, table.invoice tr.details th.qty {
+  text-align: center;
+}
+table.invoice tr.details td:last-child, table.invoice tr.details th:last-child {
+  text-align: right;
+}
+table.invoice tr.details table thead, table.invoice tr.details table tbody {
+  position: relative;
+}
+table.invoice tr.details table thead:after, table.invoice tr.details table tbody:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  margin-top: -1px;
+  background: #c8c3be;
+}
+table.invoice tr.totals td {
+  padding-top: 0;
+}
+table.invoice tr.totals table tr td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+table.invoice tr.totals table tr td:nth-child(1) {
+  font-weight: 500;
+}
+table.invoice tr.totals table tr td:nth-child(2) {
+  text-align: right;
+  font-weight: 200;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td {
+  padding-bottom: 0.5em;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td:last-child {
+  position: relative;
+}
+table.invoice tr.totals table tr:nth-last-child(2) td:last-child:after {
+  content: "";
+  height: 4px;
+  width: 110%;
+  border-top: 1px solid #1779ba;
+  border-bottom: 1px solid #1779ba;
+  position: relative;
+  right: 0;
+  bottom: -0.575rem;
+  display: block;
+}
+table.invoice tr.totals table tr.total td {
+  font-size: 1.2em;
+  padding-top: 0.5em;
+  font-weight: 700;
+}
+table.invoice tr.totals table tr.total td:last-child {
+  font-weight: 700;
+}
+
+.additional-info h5 {
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1779ba;
+}
+</style>
+</head>
+<body>
+<div class="row expanded">
+  <main class="columns">
+    <div class="inner-container">
+    <header class="row align-center">
+        &nbsp;&nbsp;<a class="button" onclick="window.print()"><i class="ion ion-ios-printer-outline"></i> Print Invoice</a>
+      </header>
+    <section class="row">
+      <div class="callout large invoice-container">
+        <table class="invoice">
+          <tr class="header">
+            <td class="">
+              <img src="{% static 'img/landing/vikinger-logo.png' %}" alt="Covisight" width="150" height="150" />
+            </td>
+            <td class="align-right">
+              <h2>Invoice</h2>
+                <h2>{{ STATUS }}</h2>
+            </td>
+          </tr>
+          <tr class="intro">
+            <td class="">
+              Hey,<br>
+              Thank you for your Support.
+            </td>
+            <td class="text-right">
+              RDERID: {{ ORDERID }}                          <br>
+                BANKTXNID: {{ BANKTXNID }}                      <br>
+                CURRENCY: {{ CURRENCY }}
+            </td>
+          </tr>
+          <tr class="details">
+            <td colspan="2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="desc">Item Description</th>
+                    <th class="id">Merchant ID</th>
+                    <th class="qty">Currency</th>
+                    <th class="amt">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="item">
+                    <td class="desc">{{ ORDERID }} </td>
+                    <td class="id num">{{ MID }}</td>
+                    <td class="qty">{{ CURRENCY }}</td>
+                    <td class="amt">{{ TXNAMOUNT }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr class="totals">
+            <td></td>
+            <td>
+              <table>
+                <tr class="total">
+                  <td>Total</td>
+                  <td>{{ TXNAMOUNT }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <section class="additional-info">
+        <div class="row">
+          <div class="columns">
+            <h5>Payment Information</h5>
+              <p>TXNDATE: {{ TXNDATE }}                          <br>
+            GATEWAYNAME: {{ GATEWAYNAME }}                  <br>
+            BANKNAME: {{ BANKNAME }}                        <br>
+            BIN_NAME: {{ BIN_NAME }}                        <br>
+            PAYMENTMODE: {{ PAYMENTMODE }}                  <br>
+              </p>
+          </div>
+        </div>
+        </section>
+      </div>
+    </section>
+                     <!-- FORM -->
+              <form class="form" method="POST" action = "{% url 'databasedel' %}">
+                  {% csrf_token %}
+                  <input type="hidden" id="ORDERID" name="ORDERID" value="{{ ORDERID }}">
+                  <input type="hidden" id="STATUS" name="STATUS" value="{{ STATUS }}">
+
+               <div class="form-row split">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium secondary" id="register-btn">Okay</button>
+              <!-- /BUTTON -->
+            </div>
+                </div>
+                <!-- /FORM ROW -->
+              </form>
+              <!-- /FORM -->
+
+    </div>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,496 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- bootstrap 4.3.1 -->
+  <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+  <!-- styles -->
+  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- favicon -->
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
+  <title>Covisight | Home</title>
+</head>
+<body>
+
+  <!-- LANDING -->
+  <div class="landing">
+    <!-- LANDING DECORATION -->
+    <div class="landing-decoration"></div>
+    <!-- /LANDING DECORATION -->
+
+    <!-- LANDING INFO -->
+    <div class="landing-info">
+      <!-- LOGO -->
+      <div class="logo">
+        <!-- ICON LOGO VIKINGER -->
+        <svg class="icon-logo-vikinger">
+          <use xlink:href="#svg-logo-vikinger"></use>
+        </svg>
+        <!-- /ICON LOGO VIKINGER -->
+      </div>
+      <!-- /LOGO -->
+
+      <!-- LANDING INFO PRETITLE -->
+      <h2 class="landing-info-pretitle">Welcome to</h2>
+      <!-- /LANDING INFO PRETITLE -->
+
+      <!-- LANDING INFO TITLE -->
+      <h1 class="landing-info-title">Covisight</h1>
+      <!-- /LANDING INFO TITLE -->
+
+      <!-- LANDING INFO TEXT -->
+      <p class="landing-info-text">The next generation network &amp; community! </p>
+      <!-- /LANDING INFO TEXT -->
+
+      <!-- TAB SWITCH -->
+      <div class="tab-switch">
+        <!-- TAB SWITCH BUTTON -->
+        <p class="tab-switch-button login-register-form-trigger">Login</p>
+        <!-- /TAB SWITCH BUTTON -->
+
+        <!-- TAB SWITCH BUTTON -->
+        <p class="tab-switch-button login-register-form-trigger">Register</p>
+        <!-- /TAB SWITCH BUTTON -->
+      </div>
+      <!-- /TAB SWITCH -->
+    </div>
+    <!-- /LANDING INFO -->
+
+    <!-- LANDING FORM -->
+    <div class="landing-form">
+      <!-- FORM BOX -->
+      <div class="form-box login-register-form-element">
+        <!-- FORM BOX DECORATION -->
+        <img class="form-box-decoration overflowing" src="{% static 'img/landing/4.png' %}" alt="rocket">
+        <!-- /FORM BOX DECORATION -->
+
+        <!-- FORM BOX TITLE -->
+        <h2 class="form-box-title">Account Login</h2>
+        <!-- /FORM BOX TITLE -->
+    
+        <!-- FORM -->
+        <form class="form" method="POST" id="login-form" action = "{% url 'user_login' %}" >
+          <!-- FORM ROW -->{% csrf_token %}
+            {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" name="login_username">
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="login_password">
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row space-between">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- CHECKBOX WRAP -->
+{#              <div class="checkbox-wrap">#}
+{#                <input type="checkbox" id="login-remember" name="login_remember" checked>#}
+{#                <!-- CHECKBOX BOX -->#}
+{#                <div class="checkbox-box">#}
+{#                  <!-- ICON CROSS -->#}
+{#                  <svg class="icon-cross">#}
+{#                    <use xlink:href="#svg-cross"></use>#}
+{#                  </svg>#}
+{#                  <!-- /ICON CROSS -->#}
+{#                </div>#}
+{#                <!-- /CHECKBOX BOX -->#}
+{#                <label for="login-remember">Remember Me</label>#}
+{#              </div>#}
+              <!-- /CHECKBOX WRAP -->
+            </div>
+            <!-- /FORM ITEM -->
+    
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM LINK -->
+              <a class="form-link" href="{% url 'user_fpassword' %}">Forgot Password?</a>
+              <!-- /FORM LINK -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium secondary">Login to your Account!</button>
+              <!-- /BUTTON -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+        </form>
+        <!-- /FORM -->
+      </div>
+      <!-- /FORM BOX -->
+    
+      <!-- FORM BOX -->
+      <div class="form-box login-register-form-element">
+        <!-- FORM BOX DECORATION -->
+        <img class="form-box-decoration overflowing" src="{% static 'img/landing/4.png' %}" alt="rocket">
+        <!-- /FORM BOX DECORATION -->
+
+        <!-- FORM BOX TITLE -->
+        <h2 class="form-box-title">Create your Account!</h2>
+        <!-- /FORM BOX TITLE -->
+    
+        <!-- FORM -->
+        <form class="form" method = "POST" id="register-form" action = "{% url 'user_register' %}" >
+
+            {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+          <!-- FORM ROW -->{% csrf_token %}
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="register-email">Your Email</label>
+                <input type="text" id="register-email" name="register_email">
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="register-username">Username</label>
+                <input type="text" id="register-username" name="register_username">
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" name="register_password" onkeyup='check();'>
+                  <div id="pswmeter" class="mt-1"></div>
+{#                  <small style="font-size:10px;"><div id="pswmeter-message" class="mt-1"></div></small>#}
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- FORM INPUT -->
+              <div class="form-input">
+                <label for="register-password-repeat">Repeat Password</label>
+                <input type="password" id="register-password-repeat" name="register_password_repeat" onkeyup='check();'>
+                  <span id='message'></span>
+              </div>
+              <!-- /FORM INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+    
+
+          <!-- FORM ROW -->
+          <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium primary" id="register-btn">Register Now!</button>
+              <!-- /BUTTON -->
+            </div>
+            <!-- /FORM ITEM -->
+          </div>
+          <!-- /FORM ROW -->
+        </form>
+        <!-- /FORM -->
+    
+
+      </div>
+      <!-- /FORM BOX -->
+    </div>
+    <!-- /LANDING FORM -->
+  </div>
+  <!-- /LANDING -->
+
+<!-- app -->
+<script src="{% static 'js/utils/app.js' %}"></script>
+<!-- XM_Plugins -->
+<script src="{% static 'js/vendor/xm_plugins.min.js' %}"></script>
+<!-- form.utils -->
+<script src="{% static 'js/form/form.utils.js' %}"></script>
+<!-- landing.tabs -->
+<script src="{% static 'js/landing/landing.tabs.js' %}"></script>
+<!-- SVG icons -->
+<script src="{% static 'js/utils/svg-loader.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="{% static 'js/pswmeter.min.js' %}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+
+    // Run pswmeter with options
+    const myPassMeter = passwordStrengthMeter({
+      containerElement: '#pswmeter',
+      passwordInput: '#register-password',
+      {#showMessage: true,#}
+      {#messageContainer: '#pswmeter-message',#}
+      {#messagesList: [#}
+      {#  'Write your password...',#}
+      {#  'Easy peasy!',#}
+      {#  'That is a simple one',#}
+      {#  'That is better',#}
+      {#  'Yeah! that password rocks ;)'#}
+      {#],#}
+      height: 4,
+      borderRadius: 0,
+      pswMinLength: 8,
+      colorScore1: '#ff7700',
+      colorScore2: '#ffff00',
+      colorScore3: '#aeff00',
+      colorScore4: '#00ff00'
+    });
+
+    </script>
+<script>
+
+    $(document).ready(function () {
+            // catch the form's submit event
+            $('#register-username').keyup(function () {
+                // create an AJAX call
+                $.ajax({
+                    data: $(this).serialize(), // get the form data
+                    url: "{% url 'validate_username' %}",
+                    // on success
+                    success: function (response) {
+                        if (response.is_taken == true) {
+                            $('#usernameError').remove();
+                            $('#register-username').removeClass('is-valid').addClass('is-invalid');
+                            $('#register-username').after('<div class="invalid-feedback d-block" id="usernameError">This username is not available!</div>')
+                        }
+                        else {
+                            $('#usernameError').remove();
+                            $('#register-username').after('<div class="valid-feedback d-block" id="usernameError">This username is available!</div>')
+                            {#$('#register-username').removeClass('is-invalid').addClass('is-valid');#}
+                            {#$('#usernameError').remove();#}
+
+                        }
+
+                    },
+                    // on error
+                    error: function (response) {
+                        // alert the error if any error occured
+                        console.log(response.responseJSON.errors)
+                    }
+                });
+
+                return false;
+            });
+        })
+
+
+
+
+    $(document).ready(function () {
+            // catch the form's submit event
+            $('#register-email').keyup(function () {
+                // create an AJAX call
+                $.ajax({
+                    data: $(this).serialize(), // get the form data
+                    url: "{% url 'validate_email' %}",
+                    // on success
+                    success: function (response) {
+                        if (response.is_taken1 == true) {
+                            $('#usernameError').remove();
+                            $('#register-email').removeClass('is-valid').addClass('is-invalid');
+                            $('#register-email').after('<div class="invalid-feedback d-block" id="usernameError">This Email is already registerd!</div>')
+                        }
+                        else {
+                            $('#usernameError').remove();
+                            $('#register-email').removeClass('is-invalid').addClass('is-valid');
+
+
+                        }
+
+                    },
+                    // on error
+                    error: function (response) {
+                        // alert the error if any error occured
+                        console.log(response.responseJSON.errors)
+                    }
+                });
+
+                return false;
+            });
+        })
+
+    $(document).ready(function () {
+            // catch the form's submit event
+            $('#login-username').keyup(function () {
+                // create an AJAX call
+                $.ajax({
+                    data: $(this).serialize(), // get the form data
+                    url: "{% url 'validate_loginemail' %}",
+                    // on success
+                    success: function (response) {
+                        if (response.is_taken2 == true) {
+                            $('#usernameError').remove();
+                            $('#login-username').removeClass('is-valid').addClass('is-invalid');
+                            $('#login-username').after('<div class="valid-feedback d-block" id="usernameError">This Username exists! &#128525;</div>')
+                        }
+                        else {
+                            $('#usernameError').remove();
+                            $('#login-username').after('<div class="invalid-feedback d-block" id="usernameError">This Username doesnt exists! &#128517;</div>')
+                            {#$('#login-username').removeClass('is-invalid').addClass('is-valid');#}
+                            {#$('#usernameError').remove();#}
+
+                        }
+
+                    },
+                    // on error
+                    error: function (response) {
+                        // alert the error if any error occured
+                        console.log(response.responseJSON.errors)
+                    }
+                });
+
+                return false;
+            });
+        })
+
+
+    var check = function() {
+  if (document.getElementById('register-password').value ==
+    document.getElementById('register-password-repeat').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'Matching &#128519;';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'Not Matching &#128517;';
+  }
+}
+
+  {#$(document).on('submit', '#login-form',function(e){#}
+  {#          e.preventDefault();#}
+  {#          $.ajax({#}
+  {#              type:'POST',#}
+  {#              url:"{% url 'user_login' %}",#}
+  {#              data:{#}
+  {#                  username:$('#login-username').val(),#}
+  {#                  password:$('#login-password').val(),#}
+  {#                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),#}
+  {#                  action: 'post'#}
+  {#              },#}
+                {#success:function(response){#}
+                {#    if (response.a == true) {#}
+                {#        swal({#}
+                {#            title: "Sorry!",#}
+                {#            text: "Try to enter valid Email and Password!",#}
+                {#            icon: "warning",#}
+                {#            button: "Try Again!",#}
+                {#        });#}
+                {#    }#}
+                {##}
+                {#}#}
+  {#          });#}
+  {#      });#}
+
+  {#$(document).on('submit', '#register-form',function(e){#}
+  {#          e.preventDefault();#}
+  {#          alert("hell0");#}
+  {#          $.ajax({#}
+  {#              type:'POST',#}
+  {#              url:'/dlikepost/',#}
+  {#              data:{#}
+  {#                  username:$('#register-username').val(),#}
+  {#                  description:$('#register-password').val(),#}
+  {#                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),#}
+  {#                  action: 'post'#}
+  {#              },#}
+  {#              success:function(json){#}
+  {##}
+  {#              }#}
+  {#          });#}
+  {#      });#}
+
+  {#$(document).on('submit', '#register-form',function(e){#}
+  {#    e.preventDefault();#}
+	{#		$.ajax({#}
+  {#              type:'POST',#}
+  {#              url:"{% url 'user_register' %}",#}
+  {#              data:{#}
+  {#                  username:$('#register-username').val(),#}
+  {#                  email:$('#register-email').val(),#}
+  {#                  password:$('#register-password').val(),#}
+  {#                  rpassword:$('#register-password-repeat').val(),#}
+  {#                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),#}
+  {#                  action: 'post'#}
+  {#              },#}
+  {#              success:function(response){#}
+  {#                  if (response.a == true) {#}
+  {#                      swal({#}
+  {#                          title: "Sorry!",#}
+  {#                          text: "Your Account is not created, please enter correct details!",#}
+  {#                          icon: "warning",#}
+  {#                          button: "Try Again!",#}
+  {#                      });#}
+  {#                  }#}
+  {##}
+  {##}
+  {#              }#}
+  {#          });#}
+	{#});#}
+</script>
+</body>
+</html>

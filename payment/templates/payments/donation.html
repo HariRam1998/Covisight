@@ -1,0 +1,464 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <style>
+    .card {
+  flex-direction: row;
+  align-items: center;
+}
+.card-title {
+  font-weight: bold;
+}
+.card img {
+  width: 398px;
+    height: 280px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+@media only screen and (max-width: 768px) {
+  a {
+    display: none;
+  }
+  .card-body {
+    padding: 0.5em 1.2em;
+  }
+  .card-body .card-text {
+    margin: 0;
+  }
+  .card img {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .card img {
+    width: 40%;
+  }
+}
+        .btn_choose_sent input {
+  -webkit-appearance: none;
+  display: block;
+  margin: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  vertical-align: middle;
+  box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
+  background-color: hsla(0,0%,0%,.2);
+      background-image: -webkit-radial-gradient( #fff 0%, #fff 15%, #fff 28%, #fff 70% );
+  background-repeat: no-repeat;
+  -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+    -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+  outline: none;
+}
+.btn_choose_sent input:checked {
+  -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+}
+.btn_choose_sent input:active {
+  -webkit-transform: scale(1.5);
+  -webkit-transition: -webkit-transform .1s cubic-bezier(0, 0, .2, 1);
+}
+
+
+
+/* The up/down direction logic */
+
+.btn_choose_sent input,
+.btn_choose_sent input:active {
+  background-position: 0 24px;
+}
+.btn_choose_sent input:checked {
+  background-position: 0 0;
+}
+.btn_choose_sent input:checked ~ input,
+ .btn_choose_sent input:checked ~ input:active {
+  background-position: 0 -24px;
+}
+
+.btn_choose_sent{
+	    background: #EF2D56;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(125, 147, 178, .3);
+    border: none;
+     border-radius: 3px;
+    font-size: 16px;
+    line-height: 10px;
+    padding:  16px 20px 16px 38px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 30px;
+    transition: all .3s;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.btn_choose_sent input{
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    top: 2px;
+}
+
+.btn_choose_sent input:after{
+	 position: absolute;
+    content: '';
+    width: 15rem;
+    left: 0;
+    right: 0;
+    /* background: red; */
+    /* z-index: -1; */
+    height: 40px;
+    top: -10px;
+}
+
+.bg_btn_chose_1{
+	background-color: #f78968 !important;
+}
+
+
+.bg_btn_chose_2{
+	background-color: #4e336fdb !important;
+}
+
+
+.bg_btn_chose_3{
+	background-color: #359dcc !important;
+}
+
+
+/*-=p=--=*/
+
+
+
+
+.btn_choose_sent_check_b{
+	  background: #EF2D56;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(125, 147, 178, .3);
+    border: none;
+     border-radius: 3px;
+    font-size: 16px;
+    line-height: 10px;
+    padding:  16px 20px 16px 46px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 30px;
+    transition: all .3s;
+    height: auto;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.shadow1 {
+  box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+}
+
+    </style>
+
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/accounthub-icon.png' %}" alt="accounthub-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Account Hub</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Profile info, messages, settings and much more!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+    <br><br>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+     <div class="card shadow1">
+  <img src="https://specials-images.forbesimg.com/imageserve/6086b4c99f40c69d4b123a08/1960x0.jpg?fit=scale" class="card-img-top" style="background-size:cover"/>
+  <div class="card-body">
+
+    <form name="donate" method="post" action = "{% url 'pay' %}">
+                                {% csrf_token %}
+        <div class="description">
+      <h1>Help patients breathe as they battle COVID</h1><br>
+      </div>
+
+    <div class="progress progress-striped active" style="height: 10px;">
+
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ ra }}%;background-color: #ff5050">
+      </div>
+    </div>
+
+        <div class="blue-msg" style="display: flex;justify-content: space-between;">
+<span id="time-HASH" class="smalltext" style="color: #ff5050;"><b>Reached ₹ {{ a }}</b></span>
+            <span class="ios-circle" style="color: #ff5050;" ><b>Goal ₹ 1,00,000</b></span>
+</div>
+        <br>
+        <div class="form-row split">
+            <div class="form-item">
+
+
+								<button type="button" class="btn_choose_sent bg_btn_chose_1" style="width:85px">
+                                    <input type="radio" name="name" value="500"/>500
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_2" style="width:90px">
+                                    <input type="radio" name="name" value="1000" />1000
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_3" style="width:90px">
+                                    <input type="radio" name="name" value="1500" />1500
+                                </button>
+                </div>
+
+                            <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small">
+                      <label for="account-new-password">Other Amount</label>
+                      <input type="text" id="account-new-password" name="otherAmount">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+
+        </div>
+
+
+                                <input type="hidden" id="cust" name="cust" value="1">
+        <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- BUTTON -->
+              <button class="button medium" id="register-btn" style="background-color: #ff5050">Give Oxygen To Critical Patients</button>
+              <!-- /BUTTON -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+    </form>
+  </div>
+</div>
+    <br><br>
+     <div class="card shadow1">
+  <img src="https://s1.reutersmedia.net/resources/r/?m=02&d=20210427&t=2&i=1560080882&w=780&fh=&fw=&ll=&pl=&sq=&r=2021-04-27T131321Z_39893_MRPRC2P3N9SSDIW_RTRMADP_0_HEALTH-CORONAVIRUS-INDIA" class="card-img-top" style="background-size:cover"/>
+  <div class="card-body">
+
+    <form name="donate" method="post" action = "{% url 'pay' %}">
+                                {% csrf_token %}
+        <div class="description">
+      <h1>Give cash support to families of COVID deceased</h1><br>
+      </div>
+
+    <div class="progress progress-striped active" style="height: 10px;">
+
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ rb }}%;background-color: #ff5050">
+      </div>
+    </div>
+
+        <div class="blue-msg" style="display: flex;justify-content: space-between;">
+            <span id="time-HASH" class="smalltext" style="color: #ff5050;"><b>Reached ₹ {{ b }}</b></span>
+<span class="ios-circle" style="color: #ff5050;" ><b>Goal ₹ 1,00,000</b></span>
+</div>
+        <br>
+        <div class="form-row split">
+            <div class="form-item">
+
+
+								<button type="button" class="btn_choose_sent bg_btn_chose_1" style="width:85px">
+                                    <input type="radio" name="name" value="500"/>500
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_2" style="width:90px">
+                                    <input type="radio" name="name" value="1000" />1000
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_3" style="width:90px">
+                                    <input type="radio" name="name" value="1500" />1500
+                                </button>
+                </div>
+
+                            <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small">
+                      <label for="account-new-password">Other Amount</label>
+                      <input type="text" id="account-new-password" name="otherAmount">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+
+        </div>
+
+
+                                <input type="hidden" id="cust" name="cust" value="2">
+        <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- BUTTON -->
+              <button class="button medium" id="register-btn" style="background-color: #ff5050">Provide Cash Relief</button>
+              <!-- /BUTTON -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+    </form>
+  </div>
+</div>
+    <br><br>
+
+     <div class="card shadow1">
+  <img src="https://i.guim.co.uk/img/media/9e17824c956dfd161337f4ba32fb537502ecc961/914_762_3586_2151/master/3586.jpg?width=1200&quality=85&auto=format&fit=max&s=1cf5af17c9f76a3df407b31bb6b6a437" class="card-img-top" style="background-size:cover"/>
+  <div class="card-body">
+
+    <form name="donate" method="post" action = "{% url 'pay' %}">
+                                {% csrf_token %}
+        <div class="description">
+      <h1>Help set up COVID care centres for patients fighting Coronavirus</h1><br>
+      </div>
+
+    <div class="progress progress-striped active" style="height: 10px;">
+
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ rc }}%;background-color: #ff5050">
+      </div>
+    </div>
+
+        <div class="blue-msg" style="display: flex;justify-content: space-between;">
+            <span id="time-HASH" class="smalltext" style="color: #ff5050;"><b>₹ Reached ₹ {{ c }}</b></span>
+<span class="ios-circle" style="color: #ff5050;" ><b>Goal ₹ 1,00,000</b></span>
+</div>
+        <br>
+        <div class="form-row split">
+            <div class="form-item">
+
+
+								<button type="button" class="btn_choose_sent bg_btn_chose_1" style="width:85px">
+                                    <input type="radio" name="name" value="500"/>500
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_2" style="width:90px">
+                                    <input type="radio" name="name" value="1000" />1000
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_3" style="width:90px">
+                                    <input type="radio" name="name" value="1500" />1500
+                                </button>
+                </div>
+
+                            <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small">
+                      <label for="account-new-password">Other Amount</label>
+                      <input type="text" id="account-new-password" name="otherAmount">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+
+        </div>
+
+
+                                <input type="hidden" id="cust" name="cust" value="3">
+        <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- BUTTON -->
+              <button class="button medium" id="register-btn" style="background-color: #ff5050">Help COVID patients get care</button>
+              <!-- /BUTTON -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+    </form>
+  </div>
+</div>
+    <br><br>
+
+    <div class="card shadow1">
+  <img src="https://covid.giveindia.org/images/distribute-meals/distribute-meals-banner.jpg" class="card-img-top" style="background-size:cover"/>
+  <div class="card-body">
+
+    <form name="donate" method="post" action = "{% url 'pay' %}">
+                                {% csrf_token %}
+        <div class="description">
+      <h1>Donate food to families struggling with hunger in COVID&#x27;s second wave</h1><br>
+      </div>
+
+    <div class="progress progress-striped active" style="height: 10px;">
+
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ rd }}%;background-color: #ff5050">
+      </div>
+    </div>
+
+        <div class="blue-msg" style="display: flex;justify-content: space-between;">
+            <span id="time-HASH" class="smalltext"style="color: #ff5050;"><b>Reached ₹ {{ d }}</b></span>
+<span class="ios-circle" style="color: #ff5050;" ><b>Goal ₹ 1,00,000</b></span>
+</div>
+        <br>
+        <div class="form-row split">
+            <div class="form-item">
+
+
+								<button type="button" class="btn_choose_sent bg_btn_chose_1" style="width:85px">
+                                    <input type="radio" name="name" value="500"/>500
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_2" style="width:90px">
+                                    <input type="radio" name="name" value="1000" />1000
+                                </button>
+                                <button type="button" class="btn_choose_sent bg_btn_chose_3" style="width:90px">
+                                    <input type="radio" name="name" value="1500" />1500
+                                </button>
+                </div>
+
+                            <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small">
+                      <label for="account-new-password">Other Amount</label>
+                      <input type="text" id="account-new-password" name="otherAmount">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+
+        </div>
+
+
+                                <input type="hidden" id="cust" name="cust" value="4">
+        <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- BUTTON -->
+              <button class="button medium" id="register-btn" style="background-color: #ff5050">Feed COVID hit families</button>
+              <!-- /BUTTON -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

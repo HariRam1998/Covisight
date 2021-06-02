@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <!-- POST OPEN -->
+    <article class="post-open">
+      <!-- POST OPEN COVER -->
+      <figure class="post-open-cover liquid">
+        <img src="{{ img }}" alt="cover-19">
+      </figure>
+      <!-- /POST OPEN COVER -->
+
+      <!-- POST OPEN BODY -->
+      <div class="post-open-body">
+        <!-- POST OPEN HEADING -->
+        <div class="post-open-heading">
+          <!-- POST OPEN TIMESTAMP -->
+          <p class="post-open-timestamp"><span class="highlighted">{{ pub }}</span></p>
+          <!-- /POST OPEN TIMESTAMP -->
+
+          <!-- POST OPEN TITLE -->
+          <h2 class="post-open-title">{{ desc }}</h2>
+          <!-- /POST OPEN TITLE -->
+        </div>
+        <!-- /POST OPEN HEADING -->
+
+        <!-- POST OPEN CONTENT -->
+        <div class="post-open-content">
+
+
+          <!-- POST OPEN CONTENT BODY -->
+          <div class="post-open-content-body">
+            <!-- POST OPEN PARAGRAPH -->
+            <p class="post-open-paragraph">{{ cont }}</p>
+            <!-- /POST OPEN PARAGRAPH -->
+
+
+          </div>
+          <!-- /POST OPEN CONTENT BODY -->
+        </div>
+        <!-- /POST OPEN CONTENT -->
+
+
+      </div>
+      <!-- /POST OPEN BODY -->
+    </article>
+
+    <!-- /POST OPEN -->
+
+
+{% endblock content %}
