@@ -58,12 +58,10 @@ def cowin(request):
         pincode = list(final_df.loc[:, "pincode"].unique())
         min_age_limit = list(final_df.loc[:, "min_age_limit"].unique())
         min_age_limit.sort()
-        print(min_age_limit)
         unique_districts = list(df1["district name"].unique())
         unique_districts.sort()
         valid_payments = list(final_df.loc[:, "fee_type"].unique())
         valid_capacity = ["Available"]
-        print(final_df)
         global val
         def val():
             return final_df
@@ -92,8 +90,8 @@ def cowin(request):
 def cowintable(request):
     rename_mapping = {
         'date': 'Date',
-        'min_age_limit': 'Minimum Age Limit',
-        'available_capacity': 'Available Capacity',
+        'min_age_limit': 'Age Limit',
+        'available_capacity': 'Doses Left',
         'vaccine': 'Vaccine',
         'pincode': 'Pincode',
         'name': 'Hospital Name',
@@ -120,7 +118,7 @@ def cowintable(request):
                 abc = abc
             else:
                 minage = int(minage)
-                abc = deepcopy(abc.loc[abc['Minimum Age Limit'] == minage])
+                abc = deepcopy(abc.loc[abc['Age Limit'] == minage])
             if pay == 'Show All' or pay == 'empty':
                 abc = abc
             else:
@@ -128,8 +126,7 @@ def cowintable(request):
             if available == 'Show All' or available == 'empty':
                 abc = abc
             else:
-                abc = deepcopy(abc.loc[abc['Available Capacity'] > 0])
-            print("reached")
+                abc = deepcopy(abc.loc[abc['Doses Left'] > 0])
             df = re.sub(' mystyle', '" id="example', abc.to_html(classes='mystyle'))
             response = {
                 'table1': df
@@ -137,8 +134,8 @@ def cowintable(request):
             return JsonResponse(response)
 
         except:
-            print('hi')
-    context = {
-        'select_district': 'hi',
-    }
-    return render(request, 'cowinmo.html', context)
+            messages.warning(request, "Sorry we are having some problem to fetch data try after some time!!")
+
+
+def covidanalysis(request):
+    return render(request,'covidquestionare.html')

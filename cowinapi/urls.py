@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path('cowinapi/', views.cowin, name= 'cowin'),
     path('cowintable/', views.cowintable, name= 'cowintable'),
+    path('covidanalysis/', views.covidanalysis, name= 'covidanalysis'),
 ]
