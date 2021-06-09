@@ -13,6 +13,7 @@ def initiate_payment(request):
     abc = Transaction.objects.values('donation_id').order_by('donation_id').annotate(amount=Sum('amount'))
     # print(abc)
     ja, jb, jc, jd = 0, 0, 0, 0
+    a, b, c, d = 0, 0, 0, 0
     for i in abc:
         for donation, amount in i.items():
             if amount == 1 or ja == 1:
@@ -51,7 +52,7 @@ def initiate_payment(request):
 
         except:
             messages.warning(request, "Enter Valid Data!!")
-            return render(request, 'payments/donation.html',response)
+            return render(request, 'payments/donation.html', response)
 
         try:
             user = request.user.username
@@ -60,7 +61,7 @@ def initiate_payment(request):
             messages.warning(request, "Please Login so we can keep track of all donations!!")
             return render(request, 'payments/donation.html', response)
 
-        transaction = Transaction.objects.create(made_by=user, amount=amount, donation_id = uploadto)
+        transaction = Transaction.objects.create(made_by=user, amount=amount, donation_id=uploadto)
         transaction.save()
         merchant_key = settings.PAYTM_SECRET_KEY
 
@@ -89,7 +90,6 @@ def initiate_payment(request):
         return render(request, 'payments/redirect.html', context=paytm_params)
 
     return render(request, 'payments/donation.html', response)
-
 
 
 @csrf_exempt
@@ -136,9 +136,3 @@ def databasedel(request):
             return redirect('pay')
         return redirect('pay')
     return render(request, 'payments/callback.html')
-
-
-
-
-
-

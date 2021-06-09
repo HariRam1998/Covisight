@@ -1,0 +1,1172 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/accounthub-icon.png' %}" alt="accounthub-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Account Hub</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Profile info, messages, settings and much more!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- GRID -->
+
+
+
+    <div class="grid grid-3-9 medium-space">
+      <!-- GRID COLUMN -->
+      <div class="account-hub-sidebar">
+        <!-- SIDEBAR BOX -->
+        <div class="sidebar-box no-padding">
+          <!-- SIDEBAR MENU -->
+          <div class="sidebar-menu">
+            <!-- SIDEBAR MENU ITEM -->
+            <div class="sidebar-menu-item">
+              <!-- SIDEBAR MENU HEADER -->
+              <div class="sidebar-menu-header accordion-trigger-linked">
+                <!-- SIDEBAR MENU HEADER ICON -->
+                <svg class="sidebar-menu-header-icon icon-profile">
+                  <use xlink:href="#svg-profile"></use>
+                </svg>
+                <!-- /SIDEBAR MENU HEADER ICON -->
+
+                <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                <div class="sidebar-menu-header-control-icon">
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                  <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                    <use xlink:href="#svg-minus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                  <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                    <use xlink:href="#svg-plus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                </div>
+                <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                <!-- SIDEBAR MENU HEADER TITLE -->
+                <p class="sidebar-menu-header-title">Post</p>
+                <!-- /SIDEBAR MENU HEADER TITLE -->
+
+                <!-- SIDEBAR MENU HEADER TEXT -->
+                <p class="sidebar-menu-header-text">Create,View and Update Post!</p>
+                <!-- /SIDEBAR MENU HEADER TEXT -->
+              </div>
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked accordion-open">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'create_post' %}">Create Post</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link active" href="{% url 'view_post' %}">View Your Post</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+            <!-- SIDEBAR MENU ITEM -->
+            <div class="sidebar-menu-item">
+              <!-- SIDEBAR MENU HEADER -->
+              <div class="sidebar-menu-header accordion-trigger-linked">
+                <!-- SIDEBAR MENU HEADER ICON -->
+                <svg class="sidebar-menu-header-icon icon-settings">
+                  <use xlink:href="#svg-settings"></use>
+                </svg>
+                <!-- /SIDEBAR MENU HEADER ICON -->
+
+                <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                <div class="sidebar-menu-header-control-icon">
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                  <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                    <use xlink:href="#svg-minus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                  <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                    <use xlink:href="#svg-plus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                </div>
+                <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                <!-- SIDEBAR MENU HEADER TITLE -->
+                <p class="sidebar-menu-header-title">Account</p>
+                <!-- /SIDEBAR MENU HEADER TITLE -->
+
+                <!-- SIDEBAR MENU HEADER TEXT -->
+                <p class="sidebar-menu-header-text">Change settings, configure notifications, and review your privacy</p>
+                <!-- /SIDEBAR MENU HEADER TEXT -->
+              </div>
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked ">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'user_account' %}">Account Info</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'user_accountcp' %}">Change Password</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+          </div>
+          <!-- /SIDEBAR MENU -->
+
+        </div>
+        <!-- /SIDEBAR BOX -->
+      </div>
+      <!-- /GRID COLUMN -->
+
+<!-- GRID -->
+      <div class="grid grid-3-3-3 centered">
+        <!-- POST PREVIEW -->
+         {% for post in posts %}
+        <div class="post-preview">
+          <!-- POST PREVIEW IMAGE -->
+          <figure class="post-preview-image liquid">
+            <img src="{{ post.photo }}" alt="cover-19">
+          </figure>
+          <!-- /POST PREVIEW IMAGE -->
+
+          <!-- POST PREVIEW INFO -->
+          <div class="post-preview-info fixed-height">
+            <!-- POST PREVIEW INFO TOP -->
+            <div class="post-preview-info-top">
+              <!-- POST PREVIEW TIMESTAMP -->
+              <p class="post-preview-timestamp">{{ post.time_upload|timesince }} ago</p>
+              <!-- /POST PREVIEW TIMESTAMP -->
+
+              <!-- POST PREVIEW TITLE -->
+              <a class="post-preview-title" href="{% url 'fullviewpost' post.id post.slug %}">{{ post.title }}</a>
+              <!-- /POST PREVIEW TITLE -->
+            </div>
+            <!-- /POST PREVIEW INFO TOP -->
+
+            <!-- POST PREVIEW INFO BOTTOM -->
+            <div class="post-preview-info-bottom">
+              <!-- POST PREVIEW TEXT -->
+              <p class="post-preview-text">{{ post.body_text|truncatewords:20}}</p>
+              <!-- /POST PREVIEW TEXT -->
+
+              <!-- POST PREVIEW LINK -->
+              <a class="post-preview-link" href="{% url 'fullviewpost' post.id post.slug %}">Read more...</a>
+              <!-- /POST PREVIEW LINK -->
+            </div>
+            <!-- /POST PREVIEW INFO BOTTOM -->
+          </div>
+          <!-- /POST PREVIEW INFO -->
+
+          <!-- CONTENT ACTIONS -->
+          <div class="content-actions">
+            <!-- CONTENT ACTION -->
+            <div class="content-action">
+              <!-- META LINE -->
+              <div class="meta-line">
+                <!-- META LINE LINK -->
+                <a class="meta-line-link" href="">{{ post.read }} reads ⭐</a>
+                <!-- /META LINE LINK -->
+              </div>
+              <!-- /META LINE -->
+
+            </div>
+            <!-- /CONTENT ACTION -->
+          </div>
+          <!-- /CONTENT ACTIONS -->
+        </div>
+          {% endfor %}
+      <!-- /POST PREVIEW -->
+      </div>
+      <!-- /GRID -->
+      <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+
+{#<!-- CONTENT GRID -->#}
+{#  <div class="content-grid full">#}
+{#    <!-- POST OPEN -->#}
+{#    <article class="post-open">#}
+{#      <!-- POST OPEN COVER -->#}
+{##}
+{#      <!-- POST OPEN BODY -->#}
+{#      <div class="post-open-body">#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#        <!-- POST COMMENT LIST -->#}
+{#        <div id="comments" class="post-comment-list">#}
+{#          <!-- POST COMMENT -->#}
+{#          <div class="post-comment">#}
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="profile-timeline.html">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="img/avatar/04.jpg"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-22-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-16-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{#                <!-- USER AVATAR BADGE TEXT -->#}
+{#                <p class="user-avatar-badge-text">6</p>#}
+{#                <!-- /USER AVATAR BADGE TEXT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+{##}
+{#            <!-- POST COMMENT TEXT -->#}
+{#            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">Bearded Wonder</a>It's really inspiring to read about this and how you managed to get all up and running! Super awesome! Congratz <a href="profile-timeline.html">@MarinaValentine</a>!</p>#}
+{#            <!-- /POST COMMENT TEXT -->#}
+{##}
+{#            <!-- CONTENT ACTIONS -->#}
+{#            <div class="content-actions">#}
+{#              <!-- CONTENT ACTION -->#}
+{#              <div class="content-action">#}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LIST -->#}
+{#                  <div class="meta-line-list reaction-item-list small">#}
+{#                    <!-- REACTION ITEM -->#}
+{#                    <div class="reaction-item">#}
+{#                      <!-- REACTION IMAGE -->#}
+{#                      <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/happy.png" alt="reaction-happy">#}
+{#                      <!-- /REACTION IMAGE -->#}
+{##}
+{#                      <!-- SIMPLE DROPDOWN -->#}
+{#                      <div class="simple-dropdown padded reaction-item-dropdown">#}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/happy.png" alt="reaction-happy"> <span class="bold">Happy</span></p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{##}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text">Marcus Jhonson</p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{#                      </div>#}
+{#                      <!-- /SIMPLE DROPDOWN -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION ITEM -->#}
+{##}
+{#                    <!-- REACTION ITEM -->#}
+{#                    <div class="reaction-item">#}
+{#                      <!-- REACTION IMAGE -->#}
+{#                      <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION IMAGE -->#}
+{##}
+{#                      <!-- SIMPLE DROPDOWN -->#}
+{#                      <div class="simple-dropdown padded reaction-item-dropdown">#}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/like.png" alt="reaction-like"> <span class="bold">Like</span></p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{##}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text">Neko Bebop</p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{##}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text">Nick Grissom</p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{##}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text">Sarah Diamond</p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{#                      </div>#}
+{#                      <!-- /SIMPLE DROPDOWN -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION ITEM -->#}
+{#                  </div>#}
+{#                  <!-- /META LINE LIST -->#}
+{##}
+{#                  <!-- META LINE TEXT -->#}
+{#                  <p class="meta-line-text">4</p>#}
+{#                  <!-- /META LINE TEXT -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light reaction-options-small-dropdown-trigger">React!</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{##}
+{#                  <!-- REACTION OPTIONS -->#}
+{#                  <div class="reaction-options small reaction-options-small-dropdown">#}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Like">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Love">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/love.png" alt="reaction-love">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Dislike">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/dislike.png" alt="reaction-dislike">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Happy">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/happy.png" alt="reaction-happy">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Funny">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/funny.png" alt="reaction-funny">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Wow">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/wow.png" alt="reaction-wow">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Angry">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/angry.png" alt="reaction-angry">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Sad">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/sad.png" alt="reaction-sad">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{#                  </div>#}
+{#                  <!-- /REACTION OPTIONS -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light">Reply</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE TIMESTAMP -->#}
+{#                  <p class="meta-line-timestamp">15 minutes ago</p>#}
+{#                  <!-- /META LINE TIMESTAMP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line settings">#}
+{#                  <!-- POST SETTINGS WRAP -->#}
+{#                  <div class="post-settings-wrap">#}
+{#                    <!-- POST SETTINGS -->#}
+{#                    <div class="post-settings post-settings-dropdown-trigger">#}
+{#                      <!-- POST SETTINGS ICON -->#}
+{#                      <svg class="post-settings-icon icon-more-dots">#}
+{#                        <use xlink:href="#svg-more-dots"></use>#}
+{#                      </svg>#}
+{#                      <!-- /POST SETTINGS ICON -->#}
+{#                    </div>#}
+{#                    <!-- /POST SETTINGS -->#}
+{##}
+{#                    <!-- SIMPLE DROPDOWN -->#}
+{#                    <div class="simple-dropdown post-settings-dropdown">#}
+{#                      <!-- SIMPLE DROPDOWN LINK -->#}
+{#                      <p class="simple-dropdown-link">Report Post</p>#}
+{#                      <!-- /SIMPLE DROPDOWN LINK -->#}
+{#                    </div>#}
+{#                    <!-- /SIMPLE DROPDOWN -->#}
+{#                  </div>#}
+{#                  <!-- /POST SETTINGS WRAP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{#              </div>#}
+{#              <!-- /CONTENT ACTION -->#}
+{#            </div>#}
+{#            <!-- /CONTENT ACTIONS -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT -->#}
+{##}
+{#          <!-- POST COMMENT -->#}
+{#          <div class="post-comment unread reply-2">#}
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="profile-timeline.html">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="img/avatar/10.jpg"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-22-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-16-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{#                <!-- USER AVATAR BADGE TEXT -->#}
+{#                <p class="user-avatar-badge-text">5</p>#}
+{#                <!-- /USER AVATAR BADGE TEXT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+{##}
+{#            <!-- POST COMMENT TEXT -->#}
+{#            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">The Green Goo</a>Yeah!! Totally agree!</p>#}
+{#            <!-- /POST COMMENT TEXT -->#}
+{##}
+{#            <!-- CONTENT ACTIONS -->#}
+{#            <div class="content-actions">#}
+{#              <!-- CONTENT ACTION -->#}
+{#              <div class="content-action">#}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LIST -->#}
+{#                  <div class="meta-line-list reaction-item-list small">#}
+{#                    <!-- REACTION ITEM -->#}
+{#                    <div class="reaction-item">#}
+{#                      <!-- REACTION IMAGE -->#}
+{#                      <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION IMAGE -->#}
+{##}
+{#                      <!-- SIMPLE DROPDOWN -->#}
+{#                      <div class="simple-dropdown padded reaction-item-dropdown">#}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/like.png" alt="reaction-like"> <span class="bold">Like</span></p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{##}
+{#                        <!-- SIMPLE DROPDOWN TEXT -->#}
+{#                        <p class="simple-dropdown-text">Neko Bebop</p>#}
+{#                        <!-- /SIMPLE DROPDOWN TEXT -->#}
+{#                      </div>#}
+{#                      <!-- /SIMPLE DROPDOWN -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION ITEM -->#}
+{#                  </div>#}
+{#                  <!-- /META LINE LIST -->#}
+{##}
+{#                  <!-- META LINE TEXT -->#}
+{#                  <p class="meta-line-text">1</p>#}
+{#                  <!-- /META LINE TEXT -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light reaction-options-small-dropdown-trigger">React!</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{##}
+{#                  <!-- REACTION OPTIONS -->#}
+{#                  <div class="reaction-options small reaction-options-small-dropdown">#}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Like">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Love">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/love.png" alt="reaction-love">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Dislike">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/dislike.png" alt="reaction-dislike">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Happy">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/happy.png" alt="reaction-happy">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Funny">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/funny.png" alt="reaction-funny">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Wow">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/wow.png" alt="reaction-wow">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Angry">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/angry.png" alt="reaction-angry">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Sad">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/sad.png" alt="reaction-sad">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{#                  </div>#}
+{#                  <!-- /REACTION OPTIONS -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light">Reply</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE TIMESTAMP -->#}
+{#                  <p class="meta-line-timestamp">2 minutes ago</p>#}
+{#                  <!-- /META LINE TIMESTAMP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line settings">#}
+{#                  <!-- POST SETTINGS WRAP -->#}
+{#                  <div class="post-settings-wrap">#}
+{#                    <!-- POST SETTINGS -->#}
+{#                    <div class="post-settings post-settings-dropdown-trigger">#}
+{#                      <!-- POST SETTINGS ICON -->#}
+{#                      <svg class="post-settings-icon icon-more-dots">#}
+{#                        <use xlink:href="#svg-more-dots"></use>#}
+{#                      </svg>#}
+{#                      <!-- /POST SETTINGS ICON -->#}
+{#                    </div>#}
+{#                    <!-- /POST SETTINGS -->#}
+{##}
+{#                    <!-- SIMPLE DROPDOWN -->#}
+{#                    <div class="simple-dropdown post-settings-dropdown">#}
+{#                      <!-- SIMPLE DROPDOWN LINK -->#}
+{#                      <p class="simple-dropdown-link">Report Post</p>#}
+{#                      <!-- /SIMPLE DROPDOWN LINK -->#}
+{#                    </div>#}
+{#                    <!-- /SIMPLE DROPDOWN -->#}
+{#                  </div>#}
+{#                  <!-- /POST SETTINGS WRAP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{#              </div>#}
+{#              <!-- /CONTENT ACTION -->#}
+{#            </div>#}
+{#            <!-- /CONTENT ACTIONS -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT -->#}
+{##}
+{#          <!-- POST COMMENT -->#}
+{#          <div class="post-comment">#}
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="profile-timeline.html">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-22-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-16-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{#                <!-- USER AVATAR BADGE TEXT -->#}
+{#                <p class="user-avatar-badge-text">16</p>#}
+{#                <!-- /USER AVATAR BADGE TEXT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+{##}
+{#            <!-- POST COMMENT TEXT -->#}
+{#            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">Nick Grissom</a>I also started streaming with a simmilar game! I'm very excited to see what's next on your streams and for your next projects</p>#}
+{#            <!-- /POST COMMENT TEXT -->#}
+{##}
+{#            <!-- CONTENT ACTIONS -->#}
+{#            <div class="content-actions">#}
+{#              <!-- CONTENT ACTION -->#}
+{#              <div class="content-action">#}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light reaction-options-small-dropdown-trigger">React!</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{##}
+{#                  <!-- REACTION OPTIONS -->#}
+{#                  <div class="reaction-options small reaction-options-small-dropdown">#}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Like">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Love">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/love.png" alt="reaction-love">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Dislike">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/dislike.png" alt="reaction-dislike">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Happy">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/happy.png" alt="reaction-happy">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Funny">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/funny.png" alt="reaction-funny">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Wow">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/wow.png" alt="reaction-wow">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Angry">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/angry.png" alt="reaction-angry">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Sad">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/sad.png" alt="reaction-sad">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{#                  </div>#}
+{#                  <!-- /REACTION OPTIONS -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light">Reply</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE TIMESTAMP -->#}
+{#                  <p class="meta-line-timestamp">27 minutes ago</p>#}
+{#                  <!-- /META LINE TIMESTAMP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line settings">#}
+{#                  <!-- POST SETTINGS WRAP -->#}
+{#                  <div class="post-settings-wrap">#}
+{#                    <!-- POST SETTINGS -->#}
+{#                    <div class="post-settings post-settings-dropdown-trigger">#}
+{#                      <!-- POST SETTINGS ICON -->#}
+{#                      <svg class="post-settings-icon icon-more-dots">#}
+{#                        <use xlink:href="#svg-more-dots"></use>#}
+{#                      </svg>#}
+{#                      <!-- /POST SETTINGS ICON -->#}
+{#                    </div>#}
+{#                    <!-- /POST SETTINGS -->#}
+{##}
+{#                    <!-- SIMPLE DROPDOWN -->#}
+{#                    <div class="simple-dropdown post-settings-dropdown">#}
+{#                      <!-- SIMPLE DROPDOWN LINK -->#}
+{#                      <p class="simple-dropdown-link">Report Post</p>#}
+{#                      <!-- /SIMPLE DROPDOWN LINK -->#}
+{#                    </div>#}
+{#                    <!-- /SIMPLE DROPDOWN -->#}
+{#                  </div>#}
+{#                  <!-- /POST SETTINGS WRAP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{#              </div>#}
+{#              <!-- /CONTENT ACTION -->#}
+{#            </div>#}
+{#            <!-- /CONTENT ACTIONS -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT -->#}
+{##}
+{#          <!-- POST COMMENT -->#}
+{#          <div class="post-comment">#}
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="profile-timeline.html">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="img/avatar/05.jpg"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-22-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-16-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{#                <!-- USER AVATAR BADGE TEXT -->#}
+{#                <p class="user-avatar-badge-text">12</p>#}
+{#                <!-- /USER AVATAR BADGE TEXT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+{##}
+{#            <!-- POST COMMENT TEXT -->#}
+{#            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">Neko Bebop</a>It was great to start this with you and keep streming together! I'm hoping that we can do this for many years to come...and for everyone else, keep posted because we have lots of surprises, including a sneak peek of upcoming games and new DLCs</p>#}
+{#            <!-- /POST COMMENT TEXT -->#}
+{##}
+{#            <!-- CONTENT ACTIONS -->#}
+{#            <div class="content-actions">#}
+{#              <!-- CONTENT ACTION -->#}
+{#              <div class="content-action">#}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light reaction-options-small-dropdown-trigger">React!</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{##}
+{#                  <!-- REACTION OPTIONS -->#}
+{#                  <div class="reaction-options small reaction-options-small-dropdown">#}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Like">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/like.png" alt="reaction-like">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Love">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/love.png" alt="reaction-love">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Dislike">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/dislike.png" alt="reaction-dislike">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Happy">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/happy.png" alt="reaction-happy">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Funny">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/funny.png" alt="reaction-funny">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Wow">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/wow.png" alt="reaction-wow">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Angry">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/angry.png" alt="reaction-angry">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{##}
+{#                    <!-- REACTION OPTION -->#}
+{#                    <div class="reaction-option text-tooltip-tft" data-title="Sad">#}
+{#                      <!-- REACTION OPTION IMAGE -->#}
+{#                      <img class="reaction-option-image" src="img/reaction/sad.png" alt="reaction-sad">#}
+{#                      <!-- /REACTION OPTION IMAGE -->#}
+{#                    </div>#}
+{#                    <!-- /REACTION OPTION -->#}
+{#                  </div>#}
+{#                  <!-- /REACTION OPTIONS -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE LINK -->#}
+{#                  <p class="meta-line-link light">Reply</p>#}
+{#                  <!-- /META LINE LINK -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line">#}
+{#                  <!-- META LINE TIMESTAMP -->#}
+{#                  <p class="meta-line-timestamp">39 minutes ago</p>#}
+{#                  <!-- /META LINE TIMESTAMP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{##}
+{#                <!-- META LINE -->#}
+{#                <div class="meta-line settings">#}
+{#                  <!-- POST SETTINGS WRAP -->#}
+{#                  <div class="post-settings-wrap">#}
+{#                    <!-- POST SETTINGS -->#}
+{#                    <div class="post-settings post-settings-dropdown-trigger">#}
+{#                      <!-- POST SETTINGS ICON -->#}
+{#                      <svg class="post-settings-icon icon-more-dots">#}
+{#                        <use xlink:href="#svg-more-dots"></use>#}
+{#                      </svg>#}
+{#                      <!-- /POST SETTINGS ICON -->#}
+{#                    </div>#}
+{#                    <!-- /POST SETTINGS -->#}
+{##}
+{#                    <!-- SIMPLE DROPDOWN -->#}
+{#                    <div class="simple-dropdown post-settings-dropdown">#}
+{#                      <!-- SIMPLE DROPDOWN LINK -->#}
+{#                      <p class="simple-dropdown-link">Report Post</p>#}
+{#                      <!-- /SIMPLE DROPDOWN LINK -->#}
+{#                    </div>#}
+{#                    <!-- /SIMPLE DROPDOWN -->#}
+{#                  </div>#}
+{#                  <!-- /POST SETTINGS WRAP -->#}
+{#                </div>#}
+{#                <!-- /META LINE -->#}
+{#              </div>#}
+{#              <!-- /CONTENT ACTION -->#}
+{#            </div>#}
+{#            <!-- /CONTENT ACTIONS -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT -->#}
+{##}
+{#          <!-- POST COMMENT HEADING -->#}
+{#          <p class="post-comment-heading">Load More Comments <span class="highlighted">1+</span></p>#}
+{#          <!-- /POST COMMENT HEADING -->#}
+{##}
+{#          <!-- POST COMMENT FORM -->#}
+{#          <div class="post-comment-form">#}
+{#            <!-- USER AVATAR -->#}
+{#            <div class="user-avatar small no-outline">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="img/avatar/01.jpg"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-22-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-16-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{#                <!-- USER AVATAR BADGE TEXT -->#}
+{#                <p class="user-avatar-badge-text">24</p>#}
+{#                <!-- /USER AVATAR BADGE TEXT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </div>#}
+{#            <!-- /USER AVATAR -->#}
+{##}
+{#            <!-- FORM -->#}
+{#            <form class="form">#}
+{#              <!-- FORM ROW -->#}
+{#              <div class="form-row">#}
+{#                <!-- FORM ITEM -->#}
+{#                <div class="form-item">#}
+{#                  <!-- FORM INPUT -->#}
+{#                  <div class="form-input small">#}
+{#                    <label for="post-reply">Your Reply</label>#}
+{#                    <input type="text" id="post-reply" name="post_reply">#}
+{#                  </div>#}
+{#                  <!-- /FORM INPUT -->#}
+{#                </div>#}
+{#                <!-- /FORM ITEM -->#}
+{#              </div>#}
+{#              <!-- /FORM ROW -->#}
+{#            </form>#}
+{#            <!-- /FORM -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT FORM -->#}
+{#        </div>#}
+{#        <!-- /POST COMMENT LIST -->#}
+{#      </div>#}
+{#      <!-- /POST OPEN BODY -->#}
+{#    </article>#}
+{#    <!-- /POST OPEN -->#}
+{#  </div>#}
+{#  <!-- /CONTENT GRID -->#}
+
+
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

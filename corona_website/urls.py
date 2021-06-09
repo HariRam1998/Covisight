@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('payment.urls')),
     path('', include('home.urls')),
     path('',include('cowinapi.urls')),
+    path('',include('blog.urls')),
+
 ]

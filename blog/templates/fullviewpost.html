@@ -1,0 +1,503 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- CONTENT GRID -->
+
+    <!-- POST OPEN -->
+    <article class="post-open">
+      <!-- POST OPEN COVER -->
+      <figure class="post-open-cover liquid">
+        <img src="{{ post.photo }}" alt="cover-19">
+      </figure>
+      <!-- /POST OPEN COVER -->
+
+      <!-- POST OPEN BODY -->
+      <div class="post-open-body">
+        <!-- POST OPEN HEADING -->
+        <div class="post-open-heading">
+          <!-- POST OPEN TIMESTAMP -->
+            <p class="post-open-timestamp"><span class="highlighted">{{ post.time_upload|timesince }} ago</span></p>
+          <!-- /POST OPEN TIMESTAMP -->
+
+          <!-- POST OPEN TITLE -->
+          <h2 class="post-open-title">{{ post.title }}</h2>
+          <!-- /POST OPEN TITLE -->
+        </div>
+        <!-- /POST OPEN HEADING -->
+
+        <!-- POST OPEN CONTENT -->
+        <div class="post-open-content">
+          <!-- POST OPEN CONTENT SIDEBAR -->
+          <div class="post-open-content-sidebar">
+            <!-- USER AVATAR -->
+            <div class="user-avatar small no-outline">
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="{{ post.uprofile }}"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+
+              <!-- USER AVATAR PROGRESS -->
+              <div class="user-avatar-progress">
+                <!-- HEXAGON -->
+                <div class="hexagon-progress-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS -->
+
+              <!-- USER AVATAR PROGRESS BORDER -->
+              <div class="user-avatar-progress-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-border-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS BORDER -->
+
+              <!-- USER AVATAR BADGE -->
+              <div class="user-avatar-badge">
+                <!-- USER AVATAR BADGE BORDER -->
+                <div class="user-avatar-badge-border">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-24-24"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE BORDER -->
+                <!-- /USER AVATAR BADGE CONTENT -->
+              </div>
+              <!-- /USER AVATAR BADGE -->
+            </div>
+            <!-- /USER AVATAR -->
+
+          </div>
+          <!-- /POST OPEN CONTENT SIDEBAR -->
+
+          <!-- POST OPEN CONTENT BODY -->
+          <div class="post-open-content-body">
+            <!-- POST OPEN PARAGRAPH -->
+            <p class="post-open-paragraph">{{ post.body_text}}</p>
+            <!-- /POST OPEN PARAGRAPH -->
+
+          </div>
+          <!-- /POST OPEN CONTENT BODY -->
+        </div>
+        <!-- /POST OPEN CONTENT -->
+
+
+        <!-- POST OPTIONS -->
+        <div class="post-options">
+          <!-- POST OPTION WRAP -->
+          <div class="post-option-wrap">
+            <!-- POST OPTION -->
+            <div class="post-option reaction-options-dropdown-trigger">
+              <!-- POST OPTION ICON -->
+              <svg class="post-option-icon icon-thumbs-up">
+                <use xlink:href="#svg-thumbs-up"></use>
+              </svg>
+              <!-- /POST OPTION ICON -->
+
+              <!-- POST OPTION TEXT -->
+              <p class="post-option-text">React!</p>
+              <!-- /POST OPTION TEXT -->
+            </div>
+            <!-- /POST OPTION -->
+
+            <!-- REACTION OPTIONS -->
+            <div class="reaction-options reaction-options-dropdown">
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Like">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/like.png" alt="reaction-like">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Love">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/love.png" alt="reaction-love">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Dislike">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/dislike.png" alt="reaction-dislike">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Happy">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/happy.png" alt="reaction-happy">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Funny">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/funny.png" alt="reaction-funny">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Wow">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/wow.png" alt="reaction-wow">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Angry">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/angry.png" alt="reaction-angry">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+
+              <!-- REACTION OPTION -->
+              <div class="reaction-option text-tooltip-tft" data-title="Sad">
+                <!-- REACTION OPTION IMAGE -->
+                <img class="reaction-option-image" src="img/reaction/sad.png" alt="reaction-sad">
+                <!-- /REACTION OPTION IMAGE -->
+              </div>
+              <!-- /REACTION OPTION -->
+            </div>
+            <!-- /REACTION OPTIONS -->
+          </div>
+          <!-- /POST OPTION WRAP -->
+
+          <!-- POST OPTION -->
+          <div class="post-option active">
+            <!-- POST OPTION ICON -->
+            <svg class="post-option-icon icon-comment">
+              <use xlink:href="#svg-comment"></use>
+            </svg>
+            <!-- /POST OPTION ICON -->
+
+            <!-- POST OPTION TEXT -->
+            <p class="post-option-text">Comment</p>
+            <!-- /POST OPTION TEXT -->
+          </div>
+          <!-- /POST OPTION -->
+
+          <!-- POST OPTION -->
+          <div class="post-option">
+            <!-- POST OPTION ICON -->
+            <svg class="post-option-icon icon-share">
+              <use xlink:href="#svg-share"></use>
+            </svg>
+            <!-- /POST OPTION ICON -->
+
+            <!-- POST OPTION TEXT -->
+            <p class="post-option-text">Share</p>
+            <!-- /POST OPTION TEXT -->
+          </div>
+          <!-- /POST OPTION -->
+        </div>
+        <!-- /POST OPTIONS -->
+
+        <!-- POST COMMENT LIST -->
+        <div id="comments" class="post-comment-list">
+          <!-- POST COMMENT -->
+{% for cm in comments %}
+          <div class="post-comment">
+            <!-- USER AVATAR -->
+            <a class="user-avatar small no-outline" href="profile-timeline.html">
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="{{cm.0.cimage}}"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+
+              <!-- USER AVATAR PROGRESS -->
+              <div class="user-avatar-progress">
+                <!-- HEXAGON -->
+                <div class="hexagon-progress-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS -->
+
+              <!-- USER AVATAR PROGRESS BORDER -->
+              <div class="user-avatar-progress-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-border-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS BORDER -->
+
+              <!-- USER AVATAR BADGE -->
+              <div class="user-avatar-badge">
+                <!-- USER AVATAR BADGE BORDER -->
+                <div class="user-avatar-badge-border">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-24-24"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE BORDER -->
+
+                <!-- USER AVATAR BADGE CONTENT -->
+                <div class="user-avatar-badge-content">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-dark-18-18"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE CONTENT -->
+              </div>
+              <!-- /USER AVATAR BADGE -->
+            </a>
+            <!-- /USER AVATAR -->
+
+            <!-- POST COMMENT TEXT -->
+            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{cm.0.user.username}}</a>{{cm.0.comm}}</p>
+            <!-- /POST COMMENT TEXT -->
+
+            <!-- CONTENT ACTIONS -->
+            <div class="content-actions">
+              <!-- CONTENT ACTION -->
+              <div class="content-action">
+
+
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE LINK -->
+{#                  /<p class="meta-line-link light">Reply</p>#}
+                     <p id=""><button onclick="ReplyForm('{{cm.0.id}}')" class="reply">Reply</button></p>
+                  <!-- /META LINE LINK -->
+                </div>
+                <!-- /META LINE -->
+
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE TIMESTAMP -->
+                  <p class="meta-line-timestamp">{{cm.0.time}}</p>
+                  <!-- /META LINE TIMESTAMP -->
+                </div>
+                <!-- /META LINE -->
+
+
+              </div>
+
+              <!-- /CONTENT ACTION -->
+            </div>
+            <!-- /CONTENT ACTIONS -->
+<p id="{{cm.0.id}}"></p>
+          </div>
+
+          <!-- /POST COMMENT -->
+            {% for subc in cm.1 %}
+          <!-- POST COMMENT -->
+          <div class="post-comment unread reply-2">
+            <!-- USER AVATAR -->
+            <a class="user-avatar small no-outline" href="profile-timeline.html">
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="{{subc.scimage}}"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+
+              <!-- USER AVATAR PROGRESS -->
+              <div class="user-avatar-progress">
+                <!-- HEXAGON -->
+                <div class="hexagon-progress-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS -->
+
+              <!-- USER AVATAR PROGRESS BORDER -->
+              <div class="user-avatar-progress-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-border-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS BORDER -->
+
+              <!-- USER AVATAR BADGE -->
+              <div class="user-avatar-badge">
+                <!-- USER AVATAR BADGE BORDER -->
+                <div class="user-avatar-badge-border">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-24-24"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE BORDER -->
+
+                <!-- USER AVATAR BADGE CONTENT -->
+                <div class="user-avatar-badge-content">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-dark-18-18"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE CONTENT -->
+
+
+              </div>
+              <!-- /USER AVATAR BADGE -->
+            </a>
+            <!-- /USER AVATAR -->
+
+            <!-- POST COMMENT TEXT -->
+            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{subc.user.username}}</a>{{subc.comm}}</p>
+            <!-- /POST COMMENT TEXT -->
+
+            <!-- CONTENT ACTIONS -->
+            <div class="content-actions">
+              <!-- CONTENT ACTION -->
+              <div class="content-action">
+
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE TIMESTAMP -->
+                  <p class="meta-line-timestamp">{{subc.time}}</p>
+                  <!-- /META LINE TIMESTAMP -->
+                </div>
+                <!-- /META LINE -->
+
+
+              </div>
+              <!-- /CONTENT ACTION -->
+            </div>
+            <!-- /CONTENT ACTIONS -->
+          </div>
+          <!-- /POST COMMENT -->
+                {% endfor %}
+
+{% endfor %}
+
+
+
+
+
+          <!-- POST COMMENT FORM -->
+          <div class="post-comment-form">
+            <!-- USER AVATAR -->
+            <div class="user-avatar small no-outline">
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="img/avatar/01.jpg"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+
+              <!-- USER AVATAR PROGRESS -->
+              <div class="user-avatar-progress">
+                <!-- HEXAGON -->
+                <div class="hexagon-progress-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS -->
+
+              <!-- USER AVATAR PROGRESS BORDER -->
+              <div class="user-avatar-progress-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-border-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS BORDER -->
+
+              <!-- USER AVATAR BADGE -->
+              <div class="user-avatar-badge">
+                <!-- USER AVATAR BADGE BORDER -->
+                <div class="user-avatar-badge-border">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-24-24"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE BORDER -->
+
+                <!-- USER AVATAR BADGE CONTENT -->
+                <div class="user-avatar-badge-content">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-dark-18-18"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE CONTENT -->
+
+              </div>
+              <!-- /USER AVATAR BADGE -->
+            </div>
+            <!-- /USER AVATAR -->
+
+            <!-- FORM -->
+            <form class="form" method="POST">
+              <!-- FORM ROW -->{% csrf_token %}
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small">
+                    <label for="post-reply">Your Reply</label>
+                    <input type="text" id="comm" name="comm">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- /POST COMMENT FORM -->
+        </div>
+        <!-- /POST COMMENT LIST -->
+      </div>
+      <!-- /POST OPEN BODY -->
+    </article>
+    <!-- /POST OPEN -->
+
+
+
+  <!-- /CONTENT GRID -->
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+
+                      function ReplyForm(id) {
+                          {#alert("hello")#}
+                          let elm  = `
+                          <div id="comments" class="post-comment-list">
+                          <div class="post-comment-form">
+            <!-- FORM -->
+            <form class="form" method="POST">
+              <!-- FORM ROW -->{% csrf_token %}
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                <input type='text' value='${id}' name = 'comm_id' style="display:none;" readonly/>
+                </div>
+                <div class="form-row split">
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small">
+                    <input type="text" id="comm" name="comm">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <div class="form-item">
+                <button class="button secondary" style="width: 315px;" type="submit" >Post Comment</button>
+                {#<input type="submit" value="Post Comment" class="btn btn-primary py-3">#}
+                </div>
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+            </div>
+          </div>`;
+              document.getElementById(id).innerHTML = elm;
+                      }
+                    </script>
+{% endblock scripts %}

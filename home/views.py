@@ -11,11 +11,11 @@ def home(request):
     if request.user.is_authenticated:
         p = profiledetails.objects.filter(usermail=request.user.email).first()
         japan = {
-            'proimage': p.proimage,
+            'proimage': 'hey',
         }
-        return render(request,'base.html', japan)
+        return render(request,'home.html', japan)
     else:
-        return render(request, 'base.html', {})
+        return render(request, 'home.html', {})
 
 
 def news(request):
@@ -62,11 +62,11 @@ def contactform(request):
             useremail = request.user.email
             contact = Contact(name=username, email=useremail, content=body)
             contact.save()
-            # subject = 'We have received your Contact Us request'
-            # message = f'We will come in contact with you as soon as possible'
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [useremail, ]
-            # send_mail(subject, message, email_from, recipient_list)
+            subject = 'We have received your Contact Us request'
+            message = f'We will come in contact with you as soon as possible'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [useremail, ]
+            send_mail(subject, message, email_from, recipient_list)
             response = {
                 'a': True
             }

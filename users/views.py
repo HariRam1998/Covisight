@@ -86,24 +86,28 @@ def register(request):
 
 @login_required
 def useraccount(request):
-    p = profiledetails.objects.filter(usermail=request.user.email).first()
-    username = request.user.username
-    email = request.user.email
-    response={
-        'user1' : User.objects.filter(email = email),
-        'proimage': p.proimage,
-        'phoneno': p.phoneno,
-        'covidsatus': p.covid,
+    if (profiledetails.objects.filter(usermail__iexact=request.user.email).exists() == True):
+        p = profiledetails.objects.filter(usermail=request.user.email).first()
+        username = request.user.username
+        email = request.user.email
+        response={
+            'user1' : User.objects.filter(email = email),
+            'proimage': p.proimage,
+            'phoneno': p.phoneno,
+            'covidsatus': p.covid,
 
-    }
-    return render(request, 'account.html',response)
+        }
+        return render(request, 'account.html', response)
+    return render(request, 'account.html')
 
 @login_required
 def useraccountcp(request):
-    p = profiledetails.objects.filter(usermail=request.user.email).first()
-    response = {
-        'proimage': p.proimage,
-    }
+    if (profiledetails.objects.filter(usermail__iexact=request.user.email).exists() == True):
+        p = profiledetails.objects.filter(usermail=request.user.email).first()
+        response = {
+            'proimage': p.proimage,
+        }
+        return render(request, 'account-password.html', response)
     if request.POST.get('action') == 'post':
         password = request.POST.get('password')
         cpassword = request.POST.get('cpassword')
@@ -123,7 +127,7 @@ def useraccountcp(request):
             }
             return JsonResponse(response)
 
-    return render(request, 'account-password.html',response)
+    return render(request, 'account-password.html')
 
 @login_required
 def userprofile(request):
@@ -135,13 +139,15 @@ def userprofile(request):
         region = request.POST.get('profile_city')
         occupation = request.POST.get('profile_occupation')
         covid = request.POST.get('profile_covid')
+        photoornot = request.POST.get('custId')
         auth = firebase.auth()
         email = "haritheharry94@gmail.com"
         password = "hariram@007"
         username12 = request.user.username
         user = auth.sign_in_with_email_and_password(email, password)
-        url = storage.child("users/" + username12).get_url(user['idToken'])
-        if url == "":
+        if photoornot == 'succeess':
+            url = storage.child("users/" + username12).get_url(user['idToken'])
+        else:
             url = storage.child("files/" + "safety-suit.png").get_url(user['idToken'])
 
         if(profiledetails.objects.filter(usermail__iexact=request.user.email).exists()):
@@ -153,7 +159,10 @@ def userprofile(request):
             old_user.region=region
             old_user.occupation = occupation
             old_user.covid = covid
-            old_user.proimage = url
+            url1 = 0
+            if photoornot == 'succeess':
+                url1 = storage.child("users/" + username12).get_url(user['idToken'])
+            old_user.proimage = url1
             old_user.save()
         else:
             abc = profiledetails(usermail= request.user.email , tagline =  tagline, description=description,phoneno=phoneno, country = country,  region = region,proimage=url,occupation = occupation,covid = covid)
@@ -161,8 +170,8 @@ def userprofile(request):
     if(profiledetails.objects.filter(usermail__iexact=request.user.email).exists() == True):
         p = profiledetails.objects.filter(usermail = request.user.email).first()
         url = p.proimage
-        if p.proimage == "":
-            url = storage.child("files/" + "safety-suit.png").get_url(user['idToken'])
+        # if p.proimage == "":
+        #     url = storage.child("files/" + "safety-suit.png").get_url(user['idToken'])
         japan = {
         'tagline' : p.tagline,
         'description' : p.description,

@@ -214,22 +214,12 @@
                       <!-- USER AVATAR BADGE BORDER -->
                       <div class="user-avatar-badge-border">
                         <!-- HEXAGON -->
-                        <div class="hexagon-28-32"></div>
+                        <div class="hexagon-32-32"></div>
                         <!-- /HEXAGON -->
                       </div>
                       <!-- /USER AVATAR BADGE BORDER -->
-                
-                      <!-- USER AVATAR BADGE CONTENT -->
-                      <div class="user-avatar-badge-content">
-                        <!-- HEXAGON -->
-                        <div class="hexagon-dark-22-24"></div>
-                        <!-- /HEXAGON -->
-                      </div>
+
                       <!-- /USER AVATAR BADGE CONTENT -->
-                
-                      <!-- USER AVATAR BADGE TEXT -->
-                      <p class="user-avatar-badge-text">24</p>
-                      <!-- /USER AVATAR BADGE TEXT -->
                     </div>
                     <!-- /USER AVATAR BADGE -->
                   </div>
@@ -437,7 +427,7 @@
                        <!-- FORM INPUT -->
 
                       <button type="button" onclick="uploadimage()">Upload</button>
-                </div>
+                </div><input type="hidden" id="custId" name="custId" value="failure">
                   </div>
 
                   <div class="form-row">
@@ -445,6 +435,7 @@
             <div class="form-item">
               <!-- BUTTON -->
               <button class="button medium secondary">Click to Submit</button>
+
               <!-- /BUTTON -->
             </div>
                   </div>
@@ -532,6 +523,7 @@ Swal.fire({
   thisref.on('state_changed',function(snapshot){
 
   console.log("file uplaoded succesfully");
+  document.getElementById("custId").value = "succeess";
 
   },
   function(error) {
