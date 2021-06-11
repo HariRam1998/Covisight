@@ -265,16 +265,30 @@
               <!-- CONTENT ACTION -->
               <div class="content-action">
 
-
+{% if user.is_authenticated %}
                 <!-- META LINE -->
                 <div class="meta-line">
                   <!-- META LINE LINK -->
 {#                  /<p class="meta-line-link light">Reply</p>#}
-                     <p id=""><button onclick="ReplyForm('{{cm.0.id}}')" class="reply">Reply</button></p>
+                    <style>
+                        .reply{
+                            border: none;
+                              background-color: inherit;
+                              font-size: 16px;
+                              color: #4e4ac8;
+                              cursor: pointer;
+                              display: inline-block;
+
+                        }
+                        .success:hover {
+                              color: #062c33;
+                            }
+                    </style>
+                     <button id="meta-line-link"  onclick="ReplyForm('{{cm.0.id}}')" class="reply success">Reply</button>
                   <!-- /META LINE LINK -->
                 </div>
                 <!-- /META LINE -->
-
+{% endif %}
                 <!-- META LINE -->
                 <div class="meta-line">
                   <!-- META LINE TIMESTAMP -->
@@ -297,7 +311,7 @@
           <!-- POST COMMENT -->
           <div class="post-comment unread reply-2">
             <!-- USER AVATAR -->
-            <a class="user-avatar small no-outline" href="profile-timeline.html">
+            <a class="user-avatar small no-outline" href="">
               <!-- USER AVATAR CONTENT -->
               <div class="user-avatar-content">
                 <!-- HEXAGON -->
@@ -347,7 +361,7 @@
             <!-- /USER AVATAR -->
 
             <!-- POST COMMENT TEXT -->
-            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{subc.user.username}}</a>{{subc.comm}}</p>
+            <p class="post-comment-text"><a class="post-comment-text-author" href="">{{subc.user.username}}</a>{{subc.comm}}</p>
             <!-- /POST COMMENT TEXT -->
 
             <!-- CONTENT ACTIONS -->
@@ -377,7 +391,7 @@
 
 
 
-
+{% if user.is_authenticated %}
           <!-- POST COMMENT FORM -->
           <div class="post-comment-form">
             <!-- USER AVATAR -->
@@ -449,6 +463,7 @@
             <!-- /FORM -->
           </div>
           <!-- /POST COMMENT FORM -->
+        {% endif %}
         </div>
         <!-- /POST COMMENT LIST -->
       </div>
@@ -472,27 +487,22 @@
             <!-- FORM -->
             <form class="form" method="POST">
               <!-- FORM ROW -->{% csrf_token %}
-              <div class="form-row">
+
                 <!-- FORM ITEM -->
-                <div class="form-item">
+
                 <input type='text' value='${id}' name = 'comm_id' style="display:none;" readonly/>
-                </div>
-                <div class="form-row split">
-                <div class="form-item">
+
                   <!-- FORM INPUT -->
-                  <div class="form-input small">
-                    <input type="text" id="comm" name="comm">
-                  </div>
+
+                    <textarea type="text" id="comm" name="comm"></textarea>
+
                   <!-- /FORM INPUT -->
-                </div>
-                <div class="form-item">
-                <button class="button secondary" style="width: 315px;" type="submit" >Post Comment</button>
+
+
+                <button class="button secondary" style="width: 100px;" type="submit" >Post Comment</button>
                 {#<input type="submit" value="Post Comment" class="btn btn-primary py-3">#}
-                </div>
-                </div>
-                <!-- /FORM ITEM -->
-              </div>
-              <!-- /FORM ROW -->
+
+
             </form>
             <!-- /FORM -->
             </div>

@@ -13,9 +13,9 @@ def home(request):
         japan = {
             'proimage': 'hey',
         }
-        return render(request,'home.html', japan)
+        return render(request, 'covidhome.html', japan)
     else:
-        return render(request, 'home.html', {})
+        return render(request, 'covidhome.html', {})
 
 
 def news(request):
