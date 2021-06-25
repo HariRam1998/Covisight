@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+     <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/members-icon.png' %}" alt="accounthub-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Welcome to the Community Forum</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">See All The Latest,Trending and Popular Post here!..</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- GRID -->
+    <div class="grid grid-9-3 mobile-prefer-content">
+
+
+      <!-- GRID COLUMN -->
+      <div class="grid-column">
+
+        <div class="grid grid-9 centered">
+        <!-- POST PREVIEW -->
+         {% for post in posts %}
+        {% include 'post.html' %}
+          {% endfor %}
+      <!-- /POST PREVIEW -->
+
+
+        
+
+      </div>
+
+        <!-- /LOADER BARS -->
+      </div>
+      <!-- /GRID COLUMN -->
+
+      <!-- GRID COLUMN -->
+      <div class="grid-column">
+{% if user.is_authenticated %}
+      <a class="button medium secondary" href="{% url 'create_post' %}">Create Your Post</a>
+{% endif %}
+        <!-- WIDGET BOX -->
+        <div class="widget-box">
+
+
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Trending</p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+
+          <div class="widget-box-content">
+            <!-- USER STATUS LIST -->
+
+            <div class="user-status-list">
+{% for trend in trends %}
+              <!-- USER STATUS -->
+              <div class="user-status">
+                <!-- USER STATUS AVATAR -->
+                <a class="user-status-avatar" >
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-image-30-32" data-src="{{trend.uprofile}}"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-progress-40-44"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-border-40-44"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                      <!-- USER AVATAR BADGE BORDER -->
+                      <div class="user-avatar-badge-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-24-24"></div>
+                        <!-- /HEXAGON -->
+                      </div>
+                      <!-- /USER AVATAR BADGE BORDER -->
+
+                      <!-- USER AVATAR BADGE CONTENT -->
+                      <div class="user-avatar-badge-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-dark-18-18"></div>
+                        <!-- /HEXAGON -->
+                      </div>
+                      <!-- /USER AVATAR BADGE CONTENT -->
+
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                  </div>
+                  <!-- /USER AVATAR -->
+                </a>
+                <!-- /USER STATUS AVATAR -->
+
+                <!-- USER STATUS TITLE -->
+                <p class="user-status-title"><a class="bold">{{ trend.author.username }}</a> Posted <a class="highlighted" href="{% url 'fullviewpost' trend.id trend.slug %}">{{ trend.title }}</a></p>
+                <!-- /USER STATUS TITLE -->
+
+                <!-- USER STATUS TIMESTAMP -->
+                  <p class="user-status-timestamp">{{trend.time_upload|timesince}} ago</p>
+                  <p class="user-status-timestamp">{{trend.read}} reads ⭐</p>
+                <!-- /USER STATUS TIMESTAMP -->
+              </div>
+              <!-- /USER STATUS -->
+{% endfor %}
+            </div>
+
+            <!-- /USER STATUS LIST -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+        </div>
+        <!-- /WIDGET BOX -->
+
+      <!-- WIDGET BOX -->
+        <div class="widget-box">
+
+
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Popular Post</p>
+          <!-- /WIDGET BOX TITLE -->
+
+          <!-- WIDGET BOX CONTENT -->
+
+          <div class="widget-box-content">
+            <!-- USER STATUS LIST -->
+
+            <div class="user-status-list">
+{% for post in pop_post %}
+              <!-- USER STATUS -->
+              <div class="user-status">
+                <!-- USER STATUS AVATAR -->
+                <a class="user-status-avatar" >
+                  <!-- USER AVATAR -->
+                  <div class="user-avatar small no-outline">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-image-30-32" data-src="{{post.uprofile}}"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-progress-40-44"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-border-40-44"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                      <!-- USER AVATAR BADGE BORDER -->
+                      <div class="user-avatar-badge-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-24-24"></div>
+                        <!-- /HEXAGON -->
+                      </div>
+                      <!-- /USER AVATAR BADGE BORDER -->
+
+                      <!-- USER AVATAR BADGE CONTENT -->
+                      <div class="user-avatar-badge-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-dark-18-18"></div>
+                        <!-- /HEXAGON -->
+                      </div>
+                      <!-- /USER AVATAR BADGE CONTENT -->
+
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                  </div>
+                  <!-- /USER AVATAR -->
+                </a>
+                <!-- /USER STATUS AVATAR -->
+
+                <!-- USER STATUS TITLE -->
+                <p class="user-status-title"><a class="bold">{{ post.author.username }}</a> Posted <a class="highlighted" href="{% url 'fullviewpost' post.id post.slug %}">{{ post.title }}</a></p>
+                <!-- /USER STATUS TITLE -->
+
+                <!-- USER STATUS TIMESTAMP -->
+                  <p class="user-status-timestamp">{{post.time_upload|timesince}} ago</p>
+                  <p class="user-status-timestamp">{{post.read}} reads ⭐</p>
+                <!-- /USER STATUS TIMESTAMP -->
+              </div>
+              <!-- /USER STATUS -->
+{% endfor %}
+            </div>
+
+            <!-- /USER STATUS LIST -->
+          </div>
+          <!-- WIDGET BOX CONTENT -->
+        </div>
+        <!-- /WIDGET BOX -->
+
+      </div>
+      <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+    <br>
+    <br>
+
+    
+
+<div class="pagination">
+    <div class="container" style="width: 110px;margin: auto;height: 60px;background-color: white;align-content: center;display: flex;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);">
+      <!-- SECTION PAGER -->
+    <div class="form-row split">
+                    <!-- FORM ITEM -->
+        <!-- SECTION PAGER ITEM -->
+           {% if posts.has_previous %}
+        <div class="form-item">
+          <!-- SECTION PAGER ITEM TEXT -->
+          <a class="" style="line-height: 40px;text-align: center;color: #383838;font-weight: 1000;" href="?page={{posts.previous_page_number}}"aria-label="Previous">
+              <span aria-hidden="true" style="font-size:15px"><b>⪻</b></span>
+          </a>
+          <!-- /SECTION PAGER ITEM TEXT -->
+        </div>
+        <!-- /SECTION PAGER ITEM -->
+{% endif %}
+        <!-- SECTION PAGER ITEM -->
+        <div class="form-item">
+          <!-- SECTION PAGER ITEM TEXT -->
+          <p class="" style="line-height: 40px;text-align: center;color: #383838;font-weight: 1000;">{{posts.number}}</p>
+          <!-- /SECTION PAGER ITEM TEXT -->
+        </div>
+        <!-- /SECTION PAGER ITEM -->
+{% if posts.has_next %}
+        <!-- SECTION PAGER ITEM -->
+        <div class="form-item">
+          <!-- SECTION PAGER ITEM TEXT -->
+          <a class="" style="line-height: 40px;text-align: center;color: #383838;font-weight: 1000;" href="?page={{posts.next_page_number}}" aria-label="Next">
+              <span aria-hidden="true" style="font-size:15px"><b>⪼</b></span>
+          </a>
+          <!-- /SECTION PAGER ITEM TEXT -->
+        </div>
+        <!-- /SECTION PAGER ITEM -->
+          {% endif %}
+      </div>
+      <!-- /SECTION PAGER -->
+
+    </div>
+</div>
+
+{% endblock content %}
+{% block scripts %}
+{% endblock %}

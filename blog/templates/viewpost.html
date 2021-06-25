@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+  #post .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #7572fc;
+    color: #7572fc;
+  }
+
+  .post-wrap img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  #post .btn:hover {
+    background: #7572fc;
+    color: #fff;
+  }
+
+  .post-wrap {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    max-width: 900px;
+    margin-bottom: 50px !important;
+  }
+
+  /*__________________________________
+        Responsive
+____________________________________*/
+  @media screen and (max-width: 768px) {
+    #post .btn {
+      position: relative;
+      margin-bottom: 10px;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+    }
+
+    .post-wrap p {
+      padding: 10px;
+    }
+  }
+
+  .space {
+    height: 100px;
+  }
+
+  .buttons {
+    width: 960px;
+    margin: 0 auto;
+  }
+
+  .action_btn {
+    display: inline-block;
+    border: 1px solid #7572fc;
+    color: #7572fc;
+    width: 75px;
+    margin: 0 auto;
+  }
+
+  .action_btn:hover {
+    background: #7572fc;
+    color: #fff;
+  }
+</style>
+
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/accounthub-icon.png' %}" alt="accounthub-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Account Hub</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Profile info, messages, settings and much more!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- GRID -->
+
+
+
+    <div class="grid grid-3-9 medium-space">
+      <!-- GRID COLUMN -->
+      <div class="account-hub-sidebar">
+        <!-- SIDEBAR BOX -->
+        <div class="sidebar-box no-padding">
+          <!-- SIDEBAR MENU -->
+          <div class="sidebar-menu">
+            <!-- SIDEBAR MENU ITEM -->
+            <div class="sidebar-menu-item">
+              <!-- SIDEBAR MENU HEADER -->
+              <div class="sidebar-menu-header accordion-trigger-linked">
+                <!-- SIDEBAR MENU HEADER ICON -->
+                <svg class="sidebar-menu-header-icon icon-profile">
+                  <use xlink:href="#svg-profile"></use>
+                </svg>
+                <!-- /SIDEBAR MENU HEADER ICON -->
+
+                <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                <div class="sidebar-menu-header-control-icon">
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                  <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                    <use xlink:href="#svg-minus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                  <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                    <use xlink:href="#svg-plus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                </div>
+                <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                <!-- SIDEBAR MENU HEADER TITLE -->
+                <p class="sidebar-menu-header-title">Post</p>
+                <!-- /SIDEBAR MENU HEADER TITLE -->
+
+                <!-- SIDEBAR MENU HEADER TEXT -->
+                <p class="sidebar-menu-header-text">Create,View and Update Post!</p>
+                <!-- /SIDEBAR MENU HEADER TEXT -->
+              </div>
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked accordion-open">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'create_post' %}">Create Post</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link active" href="{% url 'view_post' %}">View Your Post</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+          </div>
+          <!-- /SIDEBAR MENU -->
+
+        </div>
+        <!-- /SIDEBAR BOX -->
+      </div>
+      <!-- /GRID COLUMN -->
+
+<!-- GRID -->
+    <div class="account-hub-content">
+        <!-- POST PREVIEW -->
+         {% for post in posts %}
+        <div class="container" id="post">
+        
+          <div class="post-wrap m-auto shadow">
+            <div class="row">
+              <div class="col-md-4">
+                <div style="height: 250px;">
+                  <img src="{{ post.photo }}" alt="">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <br>
+        
+                <h3><a class="post-preview-title" href="{% url 'fullviewpost' post.id post.slug %}">{{ post.title }}</a></h3>
+                <img src="{{ post.uprofile }}" class="float-left rounded-circle" style="width: 40px; height: 40px;">
+                <h6 class="text-muted p-2" style="height: 40px;">{{post.author.username}}</h6>
+                <p class="post-preview-timestamp">{{ post.time_upload|timesince }} ago - {{ post.read }} reads ⭐</p>
+                <!-- <h7>by - {{ post.author.username }}</h7> -->
+                <br><br>
+                <p class="post-preview-text" style="font-size: 18px;">{{ post.body_text|truncatewords:20}}</p><br>
+        
+                <div class="buttons">
+                  {% csrf_token %}
+                  <button name="submit" class="action_btn submit" type="submit" value="Save"><a href="{% url 'editpost' post.id post.slug %}">Edit</a></button>
+                  <button name="submit" class="action_btn cancel" type="submit" value="Cancel"
+                    onclick="confirmDelete('{{post.id}}')">Delete</button>
+                  <p id="saved"></p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="text-center">
+                  <a class="btn" href="{% url 'fullviewpost' post.id post.slug %}">Read more...</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      <!-- /POST PREVIEW -->
+      </div>
+     
+      <!-- /GRID -->
+      <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  function confirmDelete(id) {
+
+    swal({
+      title: "Are you sure?",
+      text: "If you delete this post all associated comments also deleted permanently.",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+           $.ajax({
+            type: 'POST',
+            url: "{% url 'deletepost' %}",
+            data: {
+              id: id,
+              csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+              action: 'post'
+            },
+            success: function (response) {
+              console.log(response);
+              swal("Poof! Your Post has been deleted!", {
+                icon: "success",
+              });
+              location.reload();
+            
+            }
+          });
+          
+        } else {
+          swal("Your Post is safe!");
+        }
+      });
+    }
+
+  //   swal({
+  //     title: "Are you sure?",
+  //     text: "You will not be able to recover this imaginary file!",
+  //     type: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#DD6B55",
+  //     confirmButtonText: "Yes, delete it!",
+  //     closeOnConfirm: false
+  //   },
+  //     function (isConfirm) {
+  //       if (isConfirm) {
+  //         $.ajax({
+  //           url: "scriptDelete.php",
+  //           type: "POST",
+  //           data: { id: 5 },
+  //           dataType: "html",
+  //           success: function () {
+  //             swal("Done!", "It was succesfully deleted!", "success");
+  //           }
+  //         });
+  //       } else {
+  //         swal("Cancelled", "Your imaginary file is safe :)", "error");
+  //       }
+  //     })
+  // }
+</script>
+{% endblock content %}
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

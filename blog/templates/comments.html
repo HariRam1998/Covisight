@@ -1,0 +1,210 @@
+{% for cm in comments %}
+
+          <div class="post-comment">
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="profile-timeline.html">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="{{cm.0.cimage}}"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-24-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-18-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+
+            <!-- POST COMMENT TEXT -->
+            <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{cm.0.user.username}}</a>{{cm.0.comm}}</p>
+            <!-- /POST COMMENT TEXT -->
+
+            <!-- CONTENT ACTIONS -->
+            <div class="content-actions">
+              <!-- CONTENT ACTION -->
+              <div class="content-action">
+
+{% if user.is_authenticated %}
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE LINK -->
+{#                  /<p class="meta-line-link light">Reply</p>#}
+                    <style>
+                        .reply{
+                            border: none;
+                              background-color: inherit;
+                              font-size: 16px;
+                              color: #4e4ac8;
+                              cursor: pointer;
+                              display: inline-block;
+
+                        }
+                        .success:hover {
+                              color: #062c33;
+                            }
+                    </style>
+                     <button id="meta-line-link"  onclick="ReplyForm('{{cm.0.id}}')" class="reply success">Reply</button>
+                  <!-- /META LINE LINK -->
+                </div>
+                <!-- /META LINE -->
+{% endif %}
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE TIMESTAMP -->
+                  <p class="meta-line-timestamp">{{cm.0.time}}</p>
+                  <!-- /META LINE TIMESTAMP -->
+                </div>
+                <!-- /META LINE -->
+
+
+              </div>
+
+              <!-- /CONTENT ACTION -->
+            </div>
+            <!-- /CONTENT ACTIONS -->
+<p id="{{cm.0.id}}"></p>
+          </div>
+
+          <!-- /POST COMMENT -->
+            {% for subc in cm.1 %}
+          <!-- POST COMMENT -->
+          <div class="post-comment unread reply-2">
+{#            <!-- USER AVATAR -->#}
+{#            <a class="user-avatar small no-outline" href="">#}
+{#              <!-- USER AVATAR CONTENT -->#}
+{#              <div class="user-avatar-content">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-image-30-32" data-src="{{subc.scimage}}"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR CONTENT -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS -->#}
+{#              <div class="user-avatar-progress">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-progress-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS -->#}
+{##}
+{#              <!-- USER AVATAR PROGRESS BORDER -->#}
+{#              <div class="user-avatar-progress-border">#}
+{#                <!-- HEXAGON -->#}
+{#                <div class="hexagon-border-40-44"></div>#}
+{#                <!-- /HEXAGON -->#}
+{#              </div>#}
+{#              <!-- /USER AVATAR PROGRESS BORDER -->#}
+{##}
+{#              <!-- USER AVATAR BADGE -->#}
+{#              <div class="user-avatar-badge">#}
+{#                <!-- USER AVATAR BADGE BORDER -->#}
+{#                <div class="user-avatar-badge-border">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-24-24"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE BORDER -->#}
+{##}
+{#                <!-- USER AVATAR BADGE CONTENT -->#}
+{#                <div class="user-avatar-badge-content">#}
+{#                  <!-- HEXAGON -->#}
+{#                  <div class="hexagon-dark-18-18"></div>#}
+{#                  <!-- /HEXAGON -->#}
+{#                </div>#}
+{#                <!-- /USER AVATAR BADGE CONTENT -->#}
+{##}
+{##}
+{#              </div>#}
+{#              <!-- /USER AVATAR BADGE -->#}
+{#            </a>#}
+{#            <!-- /USER AVATAR -->#}
+
+            <!-- POST COMMENT TEXT -->
+            <p class="post-comment-text"><a class="post-comment-text-author" href="">{{subc.user.username}}</a>{{subc.comm}}</p>
+            <!-- /POST COMMENT TEXT -->
+
+            <!-- CONTENT ACTIONS -->
+            <div class="content-actions">
+              <!-- CONTENT ACTION -->
+              <div class="content-action">
+
+                <!-- META LINE -->
+                <div class="meta-line">
+                  <!-- META LINE TIMESTAMP -->
+                  <p class="meta-line-timestamp">{{subc.time}}</p>
+                  <!-- /META LINE TIMESTAMP -->
+                </div>
+                <!-- /META LINE -->
+
+
+              </div>
+              <!-- /CONTENT ACTION -->
+            </div>
+            <!-- /CONTENT ACTIONS -->
+          </div>
+          <!-- /POST COMMENT -->
+                {% endfor %}
+
+{% endfor %}
+
+
+
+
+{% if user.is_authenticated %}
+          <!-- POST COMMENT FORM -->
+          <div class="post-comment-form">
+            <!-- FORM -->
+            <form class="form" method="POST" id="comment-form">
+              <!-- FORM ROW -->{% csrf_token %}
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <div class="form-input small">
+                    <label for="post-reply">Your Reply</label>
+                    <input type="text" id="comm" name="comm">
+                  </div>
+                  <!-- /FORM INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
+              </div>
+              <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+          </div>
+          <!-- /POST COMMENT FORM -->
+        {% endif %}

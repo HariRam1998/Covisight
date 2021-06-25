@@ -1,0 +1,510 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/accounthub-icon.png' %}" alt="accounthub-icon">
+      <!-- /SECTION BANNER ICON -->
+  
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Account Hub</p>
+      <!-- /SECTION BANNER TITLE -->
+  
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Profile info, messages, settings and much more!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- GRID -->
+
+    <div class="grid grid-3-9 medium-space">
+      <!-- GRID COLUMN -->
+      <div class="account-hub-sidebar">
+        <!-- SIDEBAR BOX -->
+        <div class="sidebar-box no-padding">
+          <!-- SIDEBAR MENU -->
+          <div class="sidebar-menu">
+            <!-- SIDEBAR MENU ITEM -->
+            <div class="sidebar-menu-item">
+              <!-- SIDEBAR MENU HEADER -->
+              <div class="sidebar-menu-header accordion-trigger-linked">
+                <!-- SIDEBAR MENU HEADER ICON -->
+                <svg class="sidebar-menu-header-icon icon-profile">
+                  <use xlink:href="#svg-profile"></use>
+                </svg>
+                <!-- /SIDEBAR MENU HEADER ICON -->
+
+                <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                <div class="sidebar-menu-header-control-icon">
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                  <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                    <use xlink:href="#svg-minus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                  <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                    <use xlink:href="#svg-plus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                </div>
+                <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                <!-- SIDEBAR MENU HEADER TITLE -->
+                <p class="sidebar-menu-header-title">My Profile</p>
+                <!-- /SIDEBAR MENU HEADER TITLE -->
+
+                <!-- SIDEBAR MENU HEADER TEXT -->
+                <p class="sidebar-menu-header-text">Change your avatar &amp; see notifications</p>
+                <!-- /SIDEBAR MENU HEADER TEXT -->
+              </div>
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked accordion-open">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link active" href="{% url 'user_profile' %}">Profile Info</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'notification' %}">Notifications</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+
+
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+            <!-- SIDEBAR MENU ITEM -->
+            <div class="sidebar-menu-item">
+              <!-- SIDEBAR MENU HEADER -->
+              <div class="sidebar-menu-header accordion-trigger-linked">
+                <!-- SIDEBAR MENU HEADER ICON -->
+                <svg class="sidebar-menu-header-icon icon-settings">
+                  <use xlink:href="#svg-settings"></use>
+                </svg>
+                <!-- /SIDEBAR MENU HEADER ICON -->
+
+                <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                <div class="sidebar-menu-header-control-icon">
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                  <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                    <use xlink:href="#svg-minus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                  <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                  <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                    <use xlink:href="#svg-plus-small"></use>
+                  </svg>
+                  <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                </div>
+                <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                <!-- SIDEBAR MENU HEADER TITLE -->
+                <p class="sidebar-menu-header-title">Account</p>
+                <!-- /SIDEBAR MENU HEADER TITLE -->
+
+                <!-- SIDEBAR MENU HEADER TEXT -->
+                <p class="sidebar-menu-header-text">Change password &amp; see your info!!</p>
+                <!-- /SIDEBAR MENU HEADER TEXT -->
+              </div>
+              <!-- /SIDEBAR MENU HEADER -->
+
+              <!-- SIDEBAR MENU BODY -->
+              <div class="sidebar-menu-body accordion-content-linked">
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'user_account' %}">Account Info</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+                <!-- SIDEBAR MENU LINK -->
+                <a class="sidebar-menu-link" href="{% url 'user_accountcp' %}">Change Password</a>
+                <!-- /SIDEBAR MENU LINK -->
+
+              </div>
+              <!-- /SIDEBAR MENU BODY -->
+            </div>
+            <!-- /SIDEBAR MENU ITEM -->
+
+          </div>
+          <!-- /SIDEBAR MENU -->
+
+        </div>
+        <!-- /SIDEBAR BOX -->
+      </div>
+      <!-- /GRID COLUMN -->
+
+      <!-- GRID COLUMN -->
+      <div class="account-hub-content">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+          <!-- SECTION HEADER INFO -->
+          <div class="section-header-info">
+            <!-- SECTION PRETITLE -->
+            <p class="section-pretitle">My Profile</p>
+            <!-- /SECTION PRETITLE -->
+
+            <!-- SECTION TITLE -->
+            <h2 class="section-title">Profile Info</h2>
+            <!-- /SECTION TITLE -->
+          </div>
+          <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+        <!-- GRID COLUMN -->
+        <div class="grid-column">
+          <!-- GRID -->
+          <div class="grid grid-3-3-3 centered">
+            <!-- USER PREVIEW -->
+            <div class="user-preview small fixed-height">
+              <!-- USER PREVIEW COVER -->
+              <figure class="user-preview-cover liquid">
+                <img src="{% static 'img/cover/01.jpg' %}" alt="cover-01">
+              </figure>
+              <!-- /USER PREVIEW COVER -->
+          
+              <!-- USER PREVIEW INFO -->
+              <div class="user-preview-info">
+                <!-- USER SHORT DESCRIPTION -->
+                <div class="user-short-description small">
+                  <!-- USER SHORT DESCRIPTION AVATAR -->
+                  <div class="user-short-description-avatar user-avatar">
+                    <!-- USER AVATAR BORDER -->
+                    <div class="user-avatar-border">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-100-110"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BORDER -->
+                
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-image-68-74" data-src="{{ proimage }}"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+                
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-progress-84-92"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+                
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                      <!-- HEXAGON -->
+                      <div class="hexagon-border-84-92"></div>
+                      <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+                
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                      <!-- USER AVATAR BADGE BORDER -->
+                      <div class="user-avatar-badge-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-32-32"></div>
+                        <!-- /HEXAGON -->
+                      </div>
+                      <!-- /USER AVATAR BADGE BORDER -->
+
+                      <!-- /USER AVATAR BADGE CONTENT -->
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                  </div>
+                  <!-- /USER SHORT DESCRIPTION AVATAR -->
+                </div>
+                <!-- /USER SHORT DESCRIPTION -->
+              </div>
+              <!-- /USER PREVIEW INFO -->
+            </div>
+            <!-- /USER PREVIEW -->
+          </div>
+          <!-- /GRID -->
+
+          <!-- WIDGET BOX -->
+          <div class="widget-box">
+            <!-- WIDGET BOX TITLE -->
+            <p class="widget-box-title">About Your Profile</p>
+            <!-- /WIDGET BOX TITLE -->
+        
+            <!-- WIDGET BOX CONTENT -->
+            <div class="widget-box-content">
+              <!-- FORM -->
+              <form class="form" method="POST" id="profile-form" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-name">Profile Name</label>
+                      <input type="text" id="profile-name" name="profile_name" value="{{ user.username }}" readonly>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-tagline">Tagline</label>
+                      <input type="text" id="profile-tagline" name="profile_tagline" value="{{ tagline }}">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small full">
+                      <textarea id="profile-description" name="profile_description" placeholder="Write a little description about you..." >{{ description }}</textarea>
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-public-email">Public Email</label>
+                      <input type="text" id="profile-public-email" name="profile_public_email" value="{{ user.email }}" readonly>
+                    </div>
+                    <!-- /FORM INPUT -->
+
+                    <!-- FORM INPUT -->
+                    <div class="form-input small">
+                      <label for="profile-public-website">Phone Number</label>
+                      <input type="text" id="profile-public-website" name="profile_public_website" value="{{ phoneno }}">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+
+
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                      <label for="profile-country">Country</label>
+                      <select id="profile-country" name="profile_country" class="crs-country" data-region-id="two" data-default-option="{{ country }}"></select>
+                      <!-- FORM SELECT ICON -->
+                      <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                      </svg>
+                      <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                      <label for="profile-city">Region</label>
+                      <select name="profile_city" id="two" data-blank-option="No country selected" data-default-option="{{ region }}" value=""></select>
+                      <!-- FORM SELECT ICON -->
+                      <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                      </svg>
+                      <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                 <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                      <label for="account-country" name="profile_covid">Covid Status</label>
+                      <select id="account-country" name="profile_covid" data-default-option="{{ covidsatus }}">
+                        <option value="{{ covidsatus }}" selected>Status right now {{ covidsatus }} </option>
+                        <option value="Positive">Positive</option>
+                        <option value="Negative">Negative</option>
+                          <option value="Recovery from Covid">Recovery from Covid</option>
+                      </select>
+                      <!-- FORM SELECT ICON -->
+                      <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                      </svg>
+                      <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                    <!-- FORM INPUT -->
+                    <div class="form-input small active">
+                      <label for="profile-occupation">Occupation</label>
+                      <input type="text" id="profile-occupation" name="profile_occupation" value="{{ occupation }}">
+                    </div>
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                  <div class="form-row split">
+                  <!-- FORM ITEM -->
+                  <div class="form-item">
+                       <!-- FORM INPUT -->
+                      <input type="file" name="files[]" id="files" hidden>
+                      <label for="files" style="display: inline-block;background-color: indigo;color: white;padding: 0.5rem;font-family: sans-serif;border-radius: 0.3rem;cursor: pointer;margin-top: 1rem;">Choose file</label>
+
+
+
+                    <!-- /FORM INPUT -->
+                  </div>
+                  <!-- /FORM ITEM -->
+                      <!-- FORM ITEM -->
+                  <div class="form-item">
+                       <!-- FORM INPUT -->
+
+                      <button type="button" onclick="uploadimage()">Upload</button>
+                </div><input type="hidden" id="custId" name="custId" value="failure">
+                  </div>
+
+                  <div class="form-row">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+              <!-- BUTTON -->
+              <button class="button medium secondary">Click to Submit</button>
+
+              <!-- /BUTTON -->
+            </div>
+                  </div>
+              </form>
+              <!-- /FORM -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+          <!-- /WIDGET BOX -->
+
+        </div>
+        <!-- /GRID COLUMN -->
+      </div>
+
+      <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'js/countryregion/crs.min.js' %}"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script>
+    var config = {
+        apiKey: "AIzaSyAMWjY5lH-ZpxTW9TXAw22eKFPsiuKHHrQ",
+    authDomain: "diary-2e61a.firebaseapp.com",
+    databaseURL: "https://diary-2e61a-default-rtdb.firebaseio.com",
+    projectId: "diary-2e61a",
+    storageBucket: "diary-2e61a.appspot.com",
+    messagingSenderId: "863445861576",
+    appId: "1:863445861576:web:557866a3d6e6f1b4bf11fd",
+    measurementId: "G-Q97XVVVFR2"
+  };
+  firebase.initializeApp(config);
+
+  // Get a reference to the storage service, which is used to create references in your storage bucket
+
+  function uploadimage(){
+
+
+      let timerInterval
+Swal.fire({
+  title: 'File Uploading!!',
+  html: 'Time Remaining <b></b> milliseconds.',
+  timer: 2500,
+    position: 'center',
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getHtmlContainer()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+
+
+
+  var storage = firebase.storage();
+
+  var file = document.getElementById("files").files[0];
+
+  var storageRef = storage.ref("users");
+
+  var name = document.getElementById("profile-name").value;
+
+  var thisref = storageRef.child(name).put(file);
+
+  thisref.on('state_changed',function(snapshot){
+
+  console.log("file uplaoded succesfully");
+  document.getElementById("custId").value = "succeess";
+
+  },
+  function(error) {
+
+  },
+
+  function() {
+  // Upload completed successfully, now we can get the download URL
+  {#var downloadURL = thisref.snapshot.downloadURL;#}
+  {#console.log("got url");#}
+  {#document.getElementById("url").value = downloadURL;#}
+   swal("Here's a message!");
+});
+
+    }
+
+
+</script>
+{% endblock scripts %}
+

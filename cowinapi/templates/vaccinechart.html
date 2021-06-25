@@ -1,0 +1,457 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+  /* Set height of body and the document to 100% */
+
+
+  /* Style tab links */
+  .tablink {
+    background-color: #7572fc;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 33.33%;
+  }
+
+  .tablink:hover {
+    background-color: #4e4ac8;
+  }
+
+  .tabcontent {
+  padding: 100px 0px;
+}
+
+  /* Style the tab content (and add height:100% for full page content) */
+ 
+
+</style>
+    <link rel="stylesheet" href="{% static 'loadbar/dist/loading-bar.css' %}">
+<script type="text/javascript" src="{% static 'loadbar/dist/loading-bar.js' %}"></script>
+<button class="tablink" onclick="openPage('Home', this, 'red')">World Chart</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">Indian Chart</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">Vaccination Chart</button>
+
+<div id="Home" class="tabcontent">
+          <iframe width="1200" height="950"
+            src="https://datastudio.google.com/embed/reporting/157332ab-6977-4894-a0b1-b7c25a874098/page/BU8NC" frameborder="0" style="border:0" allowfullscreen>
+          </iframe>
+</div>
+  
+<div id="News" class="tabcontent">
+  <iframe width="1200" height="950" src="https://datastudio.google.com/embed/reporting/a391f36b-7b70-41e7-a0c4-086c8c05c1e8/page/b5eQC" frameborder="0"
+    style="border:0" allowfullscreen></iframe>
+
+<iframe width="1200" height="950"
+  src="https://datastudio.google.com/embed/reporting/2359a45e-a357-45c6-95e7-b6000ecbe41b/page/b5eQC" frameborder="0"
+  style="border:0" allowfullscreen></iframe>
+</div>
+<div id="About" class="tabcontent">
+  <div class="grid-column">
+    <!-- WIDGET BOX -->
+    <div class="widget-box">
+      <!-- WIDGET BOX ACTIONS -->
+      <div class="widget-box-actions">
+        <!-- WIDGET BOX ACTION -->
+        <div class="widget-box-action">
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Total Vaccination Bubble Plot</p>
+          <!-- /WIDGET BOX TITLE -->
+        </div>
+        <!-- /WIDGET BOX ACTION -->
+      </div>
+      <!-- /WIDGET BOX ACTIONS -->
+  
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+        <!-- FULL WIDTH IMAGE -->
+        {{ m1|safe }}
+        <!-- /FULL WIDTH IMAGE -->
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+  </div>
+  <!-- /GRID COLUMN -->
+  
+  <div class="grid grid-8-4">
+  
+  
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+  
+  
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+        <!-- FULL WIDTH IMAGE -->
+        {{ m2|safe }}
+        <!-- /FULL WIDTH IMAGE -->
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+  
+  
+      <!-- /LOADER BARS -->
+    </div>
+    <!-- /GRID COLUMN -->
+  
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+  
+        <!-- FULL WIDTH IMAGE -->
+        {{ m3|safe }}
+        <!-- /FULL WIDTH IMAGE -->
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /GRID COLUMN -->
+  </div>
+  <!-- /GRID -->
+  
+  <div class="grid grid-3-9 stretched">
+  
+  
+  
+    <div class="grid-column">
+      <!-- WIDGET BOX -->
+      <div class="widget-box">
+  
+        <!-- PROGRESS ARC SUMMARY -->
+        <div class="progress-arc-summary">
+  
+          <div data-preset="fan" class="ldBar label-center" data-value="{{ per }}"
+            style="width: 100%;height: 100%;font-size: 2.5em;font-weight: 500;stroke-width: 10"></div>
+  
+          <!-- PROGRESS ARC SUMMARY INFO -->
+          <div class="progress-arc-summary-info">
+            <!-- PROGRESS ARC SUMMARY TITLE -->
+            <p class="progress-arc-summary-title">First Doses Adminstered</p>
+            <!-- /PROGRESS ARC SUMMARY TITLE -->
+  
+          </div>
+          <!-- /PROGRESS ARC SUMMARY INFO -->
+        </div>
+        <!-- /PROGRESS ARC SUMMARY -->
+  
+        <!-- ACHIEVEMENT STATUS LIST -->
+        <div class="achievement-status-list">
+          <!-- ACHIEVEMENT STATUS -->
+          <div class="achievement-status">
+            <!-- ACHIEVEMENT STATUS PROGRESS -->
+            <p class="achievement-status-progress">{{ first }}%</p>
+            <!-- /ACHIEVEMENT STATUS PROGRESS -->
+  
+            <!-- ACHIEVEMENT STATUS INFO -->
+            <div class="achievement-status-info">
+              <!-- ACHIEVEMENT STATUS TITLE -->
+              <p class="achievement-status-title">First Dose</p>
+              <!-- /ACHIEVEMENT STATUS TITLE -->
+  
+              <!-- ACHIEVEMENT STATUS TEXT -->
+              <p class="achievement-status-text">Adminstered</p>
+              <!-- /ACHIEVEMENT STATUS TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT STATUS INFO -->
+  
+            <!-- ACHIEVEMENT STATUS IMAGE -->
+            <div data-preset="fan" class="ldBar label-center" data-value="{{ per }}"
+              style="width: 100%;height: 100%;font-weight: 500;stroke-width: 10"></div>
+  
+            <!-- /ACHIEVEMENT STATUS IMAGE -->
+          </div>
+          <!-- /ACHIEVEMENT STATUS -->
+  
+          <!-- ACHIEVEMENT STATUS -->
+          <div class="achievement-status">
+            <!-- ACHIEVEMENT STATUS PROGRESS -->
+            <p class="achievement-status-progress">{{ second }}%</p>
+            <!-- /ACHIEVEMENT STATUS PROGRESS -->
+  
+            <!-- ACHIEVEMENT STATUS INFO -->
+            <div class="achievement-status-info">
+              <!-- ACHIEVEMENT STATUS TITLE -->
+              <p class="achievement-status-title">Second Dose</p>
+              <!-- /ACHIEVEMENT STATUS TITLE -->
+  
+              <!-- ACHIEVEMENT STATUS TEXT -->
+              <p class="achievement-status-text">Adminstered</p>
+              <!-- /ACHIEVEMENT STATUS TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT STATUS INFO -->
+  
+            <!-- ACHIEVEMENT STATUS IMAGE -->
+            <div data-preset="fan" class="ldBar label-center" data-value="{{ second }}" style="width: 100%;height: 100%;font-weight: 500;stroke: red
+  ;stroke-width: 10"></div>
+  
+            <!-- /ACHIEVEMENT STATUS IMAGE -->
+          </div>
+          <!-- /ACHIEVEMENT STATUS -->
+        </div>
+        <!-- /ACHIEVEMENT STATUS LIST -->
+      </div>
+      <!-- /WIDGET BOX -->
+    </div>
+  
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+  
+        <!-- FULL WIDTH IMAGE -->
+        {{ m4|safe }}
+        <!-- /FULL WIDTH IMAGE -->
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /GRID COLUMN -->
+  </div>
+  
+  <br>
+  
+  <div class="grid-column">
+    <!-- WIDGET BOX -->
+    <div class="widget-box">
+      <!-- WIDGET BOX ACTIONS -->
+      <div class="widget-box-actions">
+        <!-- WIDGET BOX ACTION -->
+        <div class="widget-box-action">
+          <!-- WIDGET BOX TITLE -->
+          <p class="widget-box-title">Vaccination Status of States</p>
+          <!-- /WIDGET BOX TITLE -->
+        </div>
+        <!-- /WIDGET BOX ACTION -->
+      </div>
+      <!-- /WIDGET BOX ACTIONS -->
+  
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+        <!-- FULL WIDTH IMAGE -->
+        {{ m5|safe }}
+        <!-- /FULL WIDTH IMAGE -->
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+  </div>
+  
+  
+  <!-- GRID -->
+  <div class="grid grid-8-4 stretched">
+  
+  
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+      <!-- WIDGET BOX -->
+      <div class="widget-box">
+        <!-- WIDGET BOX ACTIONS -->
+        <div class="widget-box-actions">
+          <!-- WIDGET BOX ACTION -->
+          <div class="widget-box-action">
+            <!-- WIDGET BOX TITLE -->
+            <p class="widget-box-title">State Map</p>
+            <!-- /WIDGET BOX TITLE -->
+          </div>
+          <!-- /WIDGET BOX ACTION -->
+  
+  
+  
+          <!-- WIDGET BOX ACTION -->
+          <div class="widget-box-action">
+            <!-- FORM SELECT -->
+            <form class="form" method="post">
+              <!-- FORM ROW -->
+              {% csrf_token %}
+              <div class="form-select v2">
+                <select id="mySelect" name="mySelect" onchange="myFunction1()">
+                  <option value="">Select State</option>
+                  {% for s in select_state %}
+                  <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                  {% endfor %}
+                </select>
+  
+                <!-- FORM SELECT ICON -->
+                <svg class="form-select-icon icon-small-arrow">
+                  <use xlink:href="#svg-small-arrow"></use>
+                </svg>
+                <!-- /FORM SELECT ICON -->
+              </div>
+              <!-- /FORM SELECT -->
+            </form>
+          </div>
+  
+          <!-- /WIDGET BOX ACTION -->
+        </div>
+        <!-- /WIDGET BOX ACTIONS -->
+  
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content">
+          <!-- FULL WIDTH IMAGE -->
+          <div id="refresh" class="x">
+          </div>
+  
+          <!-- /FULL WIDTH IMAGE -->
+        </div>
+        <!-- WIDGET BOX CONTENT -->
+      </div>
+      <!-- /WIDGET BOX -->
+    </div>
+    <!-- /GRID COLUMN -->
+  
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+      <div class="widget-box">
+        <!-- PROGRESS ARC SUMMARY -->
+        <div class="progress-arc-summary">
+  
+          <div style="text-align: center;font-size: 150%;font-weight: 900;">
+            <p class="progress-arc-title" id="disfirst">{{ disfirst }}%</p>
+          </div>
+  
+  
+          <!-- PROGRESS ARC SUMMARY INFO -->
+          <div class="progress-arc-summary-info">
+            <!-- PROGRESS ARC SUMMARY TITLE -->
+            <p class="progress-arc-summary-title">First Doses Adminstered</p>
+            <!-- /PROGRESS ARC SUMMARY TITLE -->
+  
+          </div>
+          <!-- /PROGRESS ARC SUMMARY INFO -->
+        </div>
+        <!-- /PROGRESS ARC SUMMARY -->
+  
+        <!-- ACHIEVEMENT STATUS LIST -->
+        <div class="achievement-status-list">
+          <!-- ACHIEVEMENT STATUS -->
+          <div class="achievement-status">
+            <!-- ACHIEVEMENT STATUS PROGRESS -->
+            <p class="achievement-status-progress" id="disfirst1">{{ disfirst }}%</p>
+            <!-- /ACHIEVEMENT STATUS PROGRESS -->
+  
+            <!-- ACHIEVEMENT STATUS INFO -->
+            <div class="achievement-status-info">
+              <!-- ACHIEVEMENT STATUS TITLE -->
+              <p class="achievement-status-title">First Dose</p>
+              <!-- /ACHIEVEMENT STATUS TITLE -->
+  
+              <!-- ACHIEVEMENT STATUS TEXT -->
+              <p class="achievement-status-text">Adminstered</p>
+              <!-- /ACHIEVEMENT STATUS TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT STATUS INFO -->
+  
+  
+          </div>
+          <!-- /ACHIEVEMENT STATUS -->
+  
+          <!-- ACHIEVEMENT STATUS -->
+          <div class="achievement-status">
+            <!-- ACHIEVEMENT STATUS PROGRESS -->
+            <p class="achievement-status-progress" id="dissecond">{{ dissecond }}%</p>
+            <!-- /ACHIEVEMENT STATUS PROGRESS -->
+  
+            <!-- ACHIEVEMENT STATUS INFO -->
+            <div class="achievement-status-info">
+              <!-- ACHIEVEMENT STATUS TITLE -->
+              <p class="achievement-status-title">Second Dose</p>
+              <!-- /ACHIEVEMENT STATUS TITLE -->
+  
+              <!-- ACHIEVEMENT STATUS TEXT -->
+              <p class="achievement-status-text">Adminstered</p>
+              <!-- /ACHIEVEMENT STATUS TEXT -->
+            </div>
+            <!-- /ACHIEVEMENT STATUS INFO -->
+  
+            <!-- ACHIEVEMENT STATUS IMAGE -->
+  
+  
+            <!-- /ACHIEVEMENT STATUS IMAGE -->
+          </div>
+          <!-- /ACHIEVEMENT STATUS -->
+  
+  
+        </div>
+        <!-- /ACHIEVEMENT STATUS LIST -->
+  
+      </div>
+      <!-- WIDGET BOX -->
+      <div class="widget-box-content">
+  
+        <div id="refresh1" class="x">
+        </div>
+  
+      </div>
+      <!-- /WIDGET BOX -->
+    </div>
+    <!-- /GRID COLUMN -->
+  
+  </div>
+  <!-- /GRID -->
+  
+  <br>
+  
+  <div class="grid-column">
+    <!-- WIDGET BOX -->
+    <div class="widget-box">
+  
+  
+      <!-- WIDGET BOX CONTENT -->
+      <div class="widget-box-content">
+        <div id="refresh2" class="x">
+        </div>
+      </div>
+      <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+  </div>
+</div>
+
+<script>
+  function openPage(pageName, elmnt, color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+<script>
+function myFunction1() {
+  $.ajax({
+                type:'POST',
+                url:"{% url 'mapupdate' %}",
+                data:{
+                    mySelect:$('#mySelect').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'post'
+                },
+                success:function(res){
+                  var a = res.disfirst + '%';
+                  var b = res.dissecond + '%';
+                    $("#refresh").html(res.h1);
+                    $("#refresh1").html(res.h2);
+                    $("#refresh2").html(res.h3);
+                    $("#disfirst").text(a);
+                    $("#disfirst1").text(a);
+                    $("#dissecond").text(b);
+
+                }
+            });
+}
+</script>
+
+{% endblock content %}
+<!-- CONTENT GRID -->

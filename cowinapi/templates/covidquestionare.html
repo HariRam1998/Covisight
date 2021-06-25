@@ -1,0 +1,1722 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/events-icon.png' %}" alt="events-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Events</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Easily manage and create events or reminders!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+      <!-- SECTION HEADER INFO -->
+      <div class="section-header-info">
+        <!-- SECTION PRETITLE -->
+        <p class="section-pretitle" style="margin-left:100px;">Note : These tests are not accurate and you can locate and consult a doctor for through and accurate diagnosis.!</p>
+        <!-- /SECTION PRETITLE -->
+
+        <!-- SECTION TITLE -->
+        <h2 class="section-title" style="margin-left:100px;">Corona Screening Test</h2>
+        <!-- /SECTION TITLE -->
+      </div>
+      <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+
+<br>
+    <form class="screen-form">
+
+                <!-- POLL BOX -->
+              <div class="poll-box" style="width: 1000px;margin-left:100px;">
+                <!-- POLL TITLE -->
+                <p class="poll-title">What is your Age?</p>
+                <!-- /POLL TITLE -->
+<br>
+                <!-- FORM -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="poll-option-1" name="1" value="1" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="poll-option-1">Below 18</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="poll-option-2" name="1" value="2" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="poll-option-2">18 - 45 </label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="poll-option-3" name="1" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="poll-option-3">Above 45</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                <!-- /FORM -->
+
+            <br>
+                  <hr>
+                  <br>
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Where Do you Live??</p>
+                <!-- /POLL TITLE -->
+                              <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Where Do you Live-1" name="2" value="3" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Where Do you Live-1">City</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Where Do you Live-2" name="2" value="2" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Where Do you Live-2">Suburban / Town</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Where Do you Live-3" name="2" value="1" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Where Do you Live-3">Village</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                              <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Gender</p>
+                <!-- /POLL TITLE -->
+            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Gender-1" name="3" value="2" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Gender-1">Male</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Gender-2" name="3" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Gender-2">Female</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+                <!-- /FORM -->
+                         <br>
+                  <hr>
+            <br>
+
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you experience any of the below symptoms?</p>
+                <!-- /POLL TITLE --><br>
+                  <p class="poll-title">Fewer</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="fewer-1" name="4" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="fewer-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="fewer-2" name="4" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="fewer-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="fewer-3" name="4" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="fewer-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="fewer-4" name="4" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="fewer-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+              <!-- /POLL BOX -->
+
+                  <br>
+
+              <p class="poll-title">Cough:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Cough-1" name="5" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Cough-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Cough-2" name="5" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Cough-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Cough-3" name="5" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Cough-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Cough-4" name="5" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Cough-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Shortness of breath:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Shortness of breath-1" name="6" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Shortness of breath-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Shortness of breath-2" name="6" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Shortness of breath-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Shortness of breath-3" name="6" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Shortness of breath-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Shortness of breath-4" name="6" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Shortness of breath-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Headache:</p>            <br>
+
+                <!-- FORM -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Headache-1" name="7" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Headache-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Headache-2" name="7" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Headache-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Headache-3" name="7" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Headache-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Headache-4" name="7" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Headache-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Muscle pain:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Muscle pain-1" name="8" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Muscle pain-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Muscle pain-2" name="8" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Muscle pain-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Muscle pain-3" name="8" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Muscle pain-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Muscle pain-4" name="8" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Muscle pain-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Sore throat:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Sore throat-1" name="9" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Sore throat-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Sore throat-2" name="9" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Sore throat-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Sore throat-3" name="9" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Sore throat-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Sore throat-4" name="9" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Sore throat-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Diarrhea:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Diarrhea-1" name="10" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Diarrhea-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Diarrhea-2" name="10" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Diarrhea-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Diarrhea-3" name="10" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Diarrhea-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Diarrhea-4" name="10" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Diarrhea-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Olfactory disorders:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Olfactory disorders-1" name="11" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Olfactory disorders-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Olfactory disorders-2" name="11" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Olfactory disorders-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Olfactory disorders-3" name="11" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Olfactory disorders-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Olfactory disorders-4" name="11" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Olfactory disorders-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Taste disorders:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Taste disorders-1" name="12" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Taste disorders-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Taste disorders-2" name="12" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Taste disorders-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Taste disorders-3" name="12" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Taste disorders-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Taste disorders-4" name="12" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Taste disorders-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+<br>
+              <p class="poll-title">Exhaustion:</p>            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Exhaustion-1" name="13" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                            <label for="Exhaustion-1">No</label>
+
+                        <!-- /CHECKBOX BOX -->
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Exhaustion-2" name="13" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Exhaustion-2">Slight</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Exhaustion-3" name="13" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Exhaustion-3">Medium</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                      <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Exhaustion-4" name="13" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Exhaustion-4">Heavy</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                <!-- /FORM -->
+              </div>
+
+                          <br>
+                  <hr>
+            <br>
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you experience any other difficulties?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you experience any other difficulties?-1" name="14" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you experience any other difficulties?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you experience any other difficulties?-2" name="14" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you experience any other difficulties?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+                       <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you suffer from any of the diseases such as Cardiovascular, Diabetes, Asthma, Bronchitis, Cancer or Other?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you suffer from any of the diseases such as Cardiovascular, Diabetes, Asthma, Bronchitis, Cancer or Other?-1" name="15" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you suffer from any of the diseases such as Cardiovascular, Diabetes, Asthma, Bronchitis, Cancer or Other?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you suffer from any of the diseases such as Cardiovascular, Diabetes, Asthma, Bronchitis, Cancer or Other?-2" name="15" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you suffer from any of the diseases such as Cardiovascular, Diabetes, Asthma, Bronchitis, Cancer or Other?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+                              <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Approximately, how many people have you come in contact with in past 15 days?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Approximately, how many people have you come in contact with in past 15 days-1" name="16" value="1" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Approximately, how many people have you come in contact with in past 15 days-1">1-5</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Approximately, how many people have you come in contact with in past 15 days-2" name="16" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="pproximately, how many people have you come in contact with in past 15 days-2">5-10</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Approximately, how many people have you come in contact with in past 15 days-3" name="16" value="3">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Approximately, how many people have you come in contact with in past 15 days-3">10-20</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Approximately, how many people have you come in contact with in past 15 days-4" name="16" value="4">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Approximately, how many people have you come in contact with in past 15 days-4">20-50</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Approximately, how many people have you come in contact with in past 15 days-5" name="16" value="5">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Approximately, how many people have you come in contact with in past 15 days-5">More than 50</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                          <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you have a travel history?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you have a travel history?-1" name="17" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you have a travel history?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you have a travel history?-2" name="17" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you have a travel history?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+            <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Have you already shared your medical history with government authorities?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Have you already shared your medical history with government authorities?-1" name="18" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Have you already shared your medical history with government authorities?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Have you already shared your medical history with government authorities?-2" name="18" value="0" checked >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Have you already shared your medical history with government authorities?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                              <br>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">How many senior citizens do you have at home?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="How many senior citizens do you have at home?-1" name="19" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="How many senior citizens do you have at home?-1">0</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="How many senior citizens do you have at home?-2" name="19" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="How many senior citizens do you have at home?-2">1</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="How many senior citizens do you have at home?-3" name="19" value="2">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="How many senior citizens do you have at home?-3">2</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="How many senior citizens do you have at home?-4" name="19" value="3" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="How many senior citizens do you have at home?-4">3 or more</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+              <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Have you been tested at airport or hospital?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Have you been tested at airport or hospital?-1" name="20" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Have you been tested at airport or hospital?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Have you been tested at airport or hospital?-2" name="20" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Have you been tested at airport or hospital?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+            <br>
+                  <hr>
+            <br>
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you smoke?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you smoke?-1" name="21" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you smoke?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you smoke?-2" name="21" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you smoke?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+                          <br>
+                  <hr>
+            <br>
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you drink alcohol?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you drink alcohol?-1" name="22" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you drink alcohol?-1">Yes</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you drink alcohol?-2" name="22" value="0" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you drink alcohol?-2">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+               <br>
+                  <hr>
+            <br>
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Do you work in any of these high risk occupations?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-1" name="23" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-1">Healthcare</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-2" name="23" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-2">Assisted-living</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-3" name="23" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-3">Military institution</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-4" name="23" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-4">Aged-care facility</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-5" name="23" value="1" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-5">Student</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                    <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Do you work in any of these high risk occupations?-6" name="23" value="1">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Do you work in any of these high risk occupations?-6">Other</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+
+                          <br>
+                  <hr>
+            <br>
+
+
+                <!-- POLL TITLE -->
+                <p class="poll-title">Are You Vaccinated?</p>
+                <!-- /POLL TITLE -->            <br>
+
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Are You Vaccinated?-1" name="24" value="1" >
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Are You Vaccinated?-1">Yes With Only One Dose</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Are You Vaccinated?-2" name="24" value="0">
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Are You Vaccinated?-2">Yes With Two Dose</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <!-- FORM ROW -->
+                  <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                      <!-- CHECKBOX WRAP -->
+                      <div class="checkbox-wrap">
+                        <input type="radio" id="Are You Vaccinated?-3" name="24" value="2" checked>
+                        <!-- CHECKBOX BOX -->
+                        <div class="checkbox-box round"></div>
+                        <!-- /CHECKBOX BOX -->
+                        <label for="Are You Vaccinated?-3">No</label>
+                      </div>
+                      <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                  </div>
+                  <!-- /FORM ROW -->
+
+                  <br>
+
+                  <br>
+
+                  <!-- BUTTON -->
+                <a class="button twitch"  id="srceenTest" href="#" style="width: 300px">
+                  Get Your Results!!!
+                </a>
+                <!-- /BUTTON -->
+
+
+              </div>
+              <!-- /POLL BOX -->
+
+{#    <button type="submit" class="btn btn-primary srceenTest" id="srceenTest">Submit</button>#}
+
+</form>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <script>
+document.getElementById('srceenTest').addEventListener('click',function(e){
+    e.preventDefault();
+  var score = [];
+  for(i=1;i<=24;i++){
+    let t = document.getElementsByName(String(i));
+    t.forEach(radio=>{if(radio.checked) score.push(parseInt(radio.value))});
+  }
+  console.log(score);
+  const sumScore = (accumulator, currentValue) => accumulator + currentValue;
+  const min  = 0;
+  const max = 55;
+  const total =score.reduce(sumScore);
+  console.log(total);
+  const finalScore= ((total-min)/(max-min))*100;
+  console.log(parseInt(finalScore));
+
+  if(finalScore < 33){
+      {#document.getElementById('Score').innerHTML ='The Percentage shows level of Depression : '+String(parseInt(finalScore))+'%';#}
+swal.fire({
+    title: String(parseInt(finalScore))+'%',
+    text: "Wear Double Mask, maintain Social Distance Sanitize hands stay at home as much aas possible",
+    icon: "success",
+    button: "Okay!",
+
+                        });
+{#document.getElementById('Score').innerHTML ='The Percentage shows level of Depression : '+String(parseInt(finalScore))+'%';#}
+  }else if(finalScore < 66){
+swal.fire({
+    title: String(parseInt(finalScore))+'%',
+    text: "Check Temperature check Oxygen saturation quarantine yourself at home consult a doctor online ",
+    icon: "warning",
+    button: "Okay!",
+                        });
+  }else{
+swal.fire({
+    title: String(parseInt(finalScore))+'%',
+    text: "check temperature check Oxygen saturation and Go to the hospital  follows doctors advice hrcp scan, rptcr, chest Xray and hospital admission if necessary ",
+    icon: "warning",
+    button: "Okay!",
+                        });
+  }
+})
+</script>
+
+
+
+
+{#    <!-- POLL BOX -->#}
+{#              <div class="poll-box">#}
+{#                <!-- POLL TITLE -->#}
+{#                <p class="poll-title">Do you experience any of the below symptoms?</p>#}
+{#                <!-- /POLL TITLE -->#}
+{##}
+{#                <!-- FORM -->#}
+{##}
+{#                  <!-- FORM ROW -->#}
+{#                  <div class="form-row split">#}
+{#                    <!-- FORM ITEM -->#}
+{#                    <div class="form-item">#}
+{#                      <!-- CHECKBOX WRAP -->#}
+{#                      <div class="checkbox-wrap">#}
+{#                        <input type="radio" id="poll-option-1" name="poll_option" value="2">#}
+{#                        <!-- CHECKBOX BOX -->#}
+{#                        <div class="checkbox-box round"></div>#}
+{#                        <!-- /CHECKBOX BOX -->#}
+{#                        <label for="poll-option-1">Male</label>#}
+{#                      </div>#}
+{#                      <!-- /CHECKBOX WRAP -->#}
+{#                    </div>#}
+{#                    <!-- /FORM ITEM -->#}
+{#                      <div class="form-item">#}
+{#                      <!-- CHECKBOX WRAP -->#}
+{#                      <div class="checkbox-wrap">#}
+{#                        <input type="radio" id="poll-option-1" name="poll_option" value="2" >#}
+{#                        <!-- CHECKBOX BOX -->#}
+{#                        <div class="checkbox-box round"></div>#}
+{#                        <!-- /CHECKBOX BOX -->#}
+{#                        <label for="poll-option-1">Male</label>#}
+{#                      </div>#}
+{#                      <!-- /CHECKBOX WRAP -->#}
+{#                    </div>#}
+{#                    <!-- /FORM ITEM -->#}
+{#                  </div>#}
+{#                  <!-- /FORM ROW -->#}
+{##}
+{#                  <!-- FORM ROW -->#}
+{#                  <div class="form-row">#}
+{#                    <!-- FORM ITEM -->#}
+{#                    <div class="form-item">#}
+{#                      <!-- CHECKBOX WRAP -->#}
+{#                      <div class="checkbox-wrap">#}
+{#                        <input type="radio" id="poll-option-2" name="poll_option" value="1" >#}
+{#                        <!-- CHECKBOX BOX -->#}
+{#                        <div class="checkbox-box round"></div>#}
+{#                        <!-- /CHECKBOX BOX -->#}
+{#                        <label for="poll-option-2">Female</label>#}
+{#                      </div>#}
+{#                      <!-- /CHECKBOX WRAP -->#}
+{#                    </div>#}
+{#                    <!-- /FORM ITEM -->#}
+{#                  </div>#}
+{#                  <!-- /FORM ROW -->#}
+{##}
+{#              </div>#}
+{#              <!-- /POLL BOX -->#}
+
+
+
+
+
+
+{% endblock content %}
+

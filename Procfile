@@ -1,0 +1,1 @@
+web: gunicorn corona_website.wsgi

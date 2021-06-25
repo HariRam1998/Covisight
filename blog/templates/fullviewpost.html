@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <!-- CONTENT GRID -->
+
+    <!-- POST OPEN -->
+    <article class="post-open">
+      <!-- POST OPEN COVER -->
+      <figure class="post-open-cover liquid">
+        <img src="{{ post.photo }}" alt="cover-19">
+      </figure>
+      <!-- /POST OPEN COVER -->
+
+      <!-- POST OPEN BODY -->
+      <div class="post-open-body">
+        <!-- POST OPEN HEADING -->
+        <div class="post-open-heading">
+          <!-- POST OPEN TIMESTAMP -->
+            <p class="post-open-timestamp"><span class="highlighted">{{ post.time_upload|timesince }} ago</span></p>
+          <!-- /POST OPEN TIMESTAMP -->
+
+          <!-- POST OPEN TITLE -->
+          <h2 class="post-open-title">{{ post.title }}</h2>
+          <!-- /POST OPEN TITLE -->
+        </div>
+        <!-- /POST OPEN HEADING -->
+
+        <!-- POST OPEN CONTENT -->
+        <div class="post-open-content">
+          <!-- POST OPEN CONTENT SIDEBAR -->
+          <div class="post-open-content-sidebar">
+            <!-- USER AVATAR -->
+            <div class="user-avatar small no-outline">
+              <!-- USER AVATAR CONTENT -->
+              <div class="user-avatar-content">
+                <!-- HEXAGON -->
+                <div class="hexagon-image-30-32" data-src="{{ post.uprofile }}"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR CONTENT -->
+
+              <!-- USER AVATAR PROGRESS -->
+              <div class="user-avatar-progress">
+                <!-- HEXAGON -->
+                <div class="hexagon-progress-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS -->
+
+              <!-- USER AVATAR PROGRESS BORDER -->
+              <div class="user-avatar-progress-border">
+                <!-- HEXAGON -->
+                <div class="hexagon-border-40-44"></div>
+                <!-- /HEXAGON -->
+              </div>
+              <!-- /USER AVATAR PROGRESS BORDER -->
+
+              <!-- USER AVATAR BADGE -->
+              <div class="user-avatar-badge">
+                <!-- USER AVATAR BADGE BORDER -->
+                <div class="user-avatar-badge-border">
+                  <!-- HEXAGON -->
+                  <div class="hexagon-24-24"></div>
+                  <!-- /HEXAGON -->
+                </div>
+                <!-- /USER AVATAR BADGE BORDER -->
+                <!-- /USER AVATAR BADGE CONTENT -->
+              </div>
+              <!-- /USER AVATAR BADGE -->
+            </div>
+            <!-- /USER AVATAR -->
+
+              <p class="post-open-sidebar-title">{{ post.author.username }}</p>
+
+          </div>
+          <!-- /POST OPEN CONTENT SIDEBAR -->
+
+
+
+          <!-- POST OPEN CONTENT BODY -->
+          <div class="post-open-content-body">
+               <div class="addthis_inline_share_toolbox"></div>
+            <!-- POST OPEN PARAGRAPH -->
+            <p class="post-open-paragraph">{{ post.body_text}}</p>
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+
+            <!-- /POST OPEN PARAGRAPH -->
+
+          </div>
+          <!-- /POST OPEN CONTENT BODY -->
+        </div>
+
+        <!-- /POST OPEN CONTENT -->
+<div class="content-actions">
+          <!-- CONTENT ACTION -->
+          <div class="content-action">
+            <!-- META LINE -->
+            <div class="meta-line">
+              <!-- META LINE LIST -->
+              <div class="meta-line-list user-avatar-list">
+                <!-- USER AVATAR -->
+                  {% for c in comments|slice:":5" %}
+                <div class="user-avatar micro no-stats">
+                  <!-- USER AVATAR BORDER -->
+                  <div class="user-avatar-border">
+                    <!-- HEXAGON -->
+                    <div class="hexagon-22-24"></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR BORDER -->
+
+                  <!-- USER AVATAR CONTENT -->
+                  <div class="user-avatar-content">
+                    <!-- HEXAGON -->
+                    <div class="hexagon-image-18-20" data-src={{c.0.cimage}}></div>
+                    <!-- /HEXAGON -->
+                  </div>
+                  <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+                  {% endfor %}
+              </div>
+              <!-- /META LINE LIST -->
+              {% if comments %}
+              <!-- META LINE TEXT -->
+              <p class="meta-line-text">Participants</p>
+              <!-- /META LINE TEXT -->
+              {% else %}
+              <p class="meta-line-text">0 Participants</p>
+              {% endif %}
+
+            </div>
+            <!-- /META LINE -->
+          </div>
+          <!-- /CONTENT ACTION -->
+
+          <!-- CONTENT ACTION -->
+          <div class="content-action">
+            <!-- META LINE -->
+            <div class="meta-line">
+              <!-- META LINE LINK -->
+              <p class="meta-line-text">{{ post.comment_set.count }} Comments</p>
+              <!-- /META LINE LINK -->
+            </div>
+            <!-- /META LINE -->
+          </div>
+          <!-- /CONTENT ACTION -->
+        </div>
+        <!-- /CONTENT ACTIONS -->
+<div id="like23">
+{% include 'like.html' %}
+</div>
+        
+
+        <!-- POST COMMENT LIST -->
+        <div id="comments23" class="post-comment-list">
+          <!-- POST COMMENT -->
+{% include 'comments.html' %}
+        </div>
+        <!-- /POST COMMENT LIST -->
+      </div>
+      <!-- /POST OPEN BODY -->
+    </article>
+    <!-- /POST OPEN -->
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60c8c6c982a3c3a1"></script>
+
+  <!-- /CONTENT GRID -->
+{% endblock content %}
+
+{% block scripts %}
+{#    <!-- POST COMMENT FORM -->#}
+{#          <div class="post-comment-form">#}
+{#            <!-- FORM -->#}
+{#            <form class="form" method="POST" id="comment-form">#}
+{#              <!-- FORM ROW -->{% csrf_token %}#}
+{#              <div class="form-row">#}
+{#                <!-- FORM ITEM -->#}
+{#                <div class="form-item">#}
+{#                  <!-- FORM INPUT -->#}
+{#                  <div class="form-input small">#}
+{#                    <label for="post-reply">Your Reply</label>#}
+{#                    <input type="text" id="comm" name="comm">#}
+{#                  </div>#}
+{#                  <!-- /FORM INPUT -->#}
+{#                </div>#}
+{#                <!-- /FORM ITEM -->#}
+{#              </div>#}
+{#              <!-- /FORM ROW -->#}
+{#            </form>#}
+{#            <!-- /FORM -->#}
+{#          </div>#}
+{#          <!-- /POST COMMENT FORM -->#}
+    <script>
+
+                      function ReplyForm(id) {
+                          {#alert("hello")#}
+                          let elm  = `
+                          <div class="post-comment-form">
+            <!-- FORM -->
+            <form class="form" method="POST" id="reply-form">
+              <!-- FORM ROW -->{% csrf_token %}
+
+              <div class="form-row">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                  <!-- FORM INPUT -->
+                  <input type='text' value='${id}' name = 'comm_id' style="display:none;" readonly/>
+                  <div class="form-input small with-button">
+                  <input type="text" id="comm" name="comm"></input>
+
+                  <!-- /FORM INPUT -->
+                  <button class="button secondary" style="width: 100px;" type="submit" >Post Comment</button>
+                  </div>
+                </div>
+                <!-- /FORM ITEM -->
+
+              </div>
+
+                {#<!-- FORM ITEM -->#}
+                {##}
+                {#<input type='text' value='${id}' name = 'comm_id' style="display:none;" readonly/>#}
+                {##}
+                {#  <!-- FORM INPUT -->#}
+                {##}
+                {#    <textarea type="text" id="comm" name="comm"></textarea>#}
+                {##}
+                {#  <!-- /FORM INPUT -->#}
+                {##}
+                {##}
+                {#<button class="button secondary" style="width: 100px;" type="submit" >Post Comment</button>#}
+                {#<input type="submit" value="Post Comment" class="btn btn-primary py-3">#}
+
+
+            </form>
+            <!-- /FORM -->
+            </div>
+          </div>`;
+              document.getElementById(id).innerHTML = elm;
+                      }
+                    </script>
+
+    <script>
+$(document).on('submit', '#comment-form', function(event){
+          event.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: "{% url 'fullviewpost' post.id post.slug %}",
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+              $('#comments23').html(response.form);
+            },
+            error: function(rs, e) {
+              console.log(rs.responseText);
+            },
+          });
+        });
+
+$(document).on('submit', '#reply-form', function(event){
+          event.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: "{% url 'fullviewpost' post.id post.slug %}",
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response) {
+              $('#comments23').html(response.form);
+            },
+            error: function(rs, e) {
+              console.log(rs.responseText);
+            },
+          });
+        });
+
+  $('#likes').click(function (event){
+    event.preventDefault();
+    var catid;
+    catid = $(this).attr("data-catid");
+    $.get('/likepost/', { likes: catid }, function (data){
+      if(data.is_liked === 'True'){
+      $('#likes').removeClass("post-option").addClass("post-option active");
+      $('#dislikes').removeClass("post-option active").addClass("post-option");
+      }else{
+        $('#likes').removeClass("post-option active").addClass("post-option");
+        $('#dislikes').removeClass("post-option active").addClass("post-option");
+      }
+      // $('#like23').html(data.form);
+      // $('#likes').hide();
+    });
+  });
+
+  $('#dislikes').click(function (event) {
+      event.preventDefault();
+      var catid;
+      catid = $(this).attr("data-catid");
+      $.get('/dislikepost/', { dislike: catid }, function (data) {
+         if (data.is_disliked === 'True') {
+        $('#dislikes').removeClass("post-option").addClass("post-option active");
+        $('#likes').removeClass("post-option active").addClass("post-option");
+         } else {
+           $('#dislikes').removeClass("post-option active").addClass("post-option");
+           $('#likes').removeClass("post-option active").addClass("post-option");
+         }
+        // $('#like23').html(data.form);
+        // $('#likes').hide();
+      });
+    });
+
+        
+    </script>
+
+<script type="text/javascript">
+  function codeAddress() {
+    var catid;
+    catid = $(this).attr("data-catid");
+    $.get('/checklike/', { check: catid }, function (data) {
+      if (data.is_disliked === 'True') {
+        $('#dislikes').removeClass("post-option").addClass("post-option active");
+        $('#likes').removeClass("post-option active").addClass("post-option");
+      } else if(data.is_liked === 'True') {
+        $('#dislikes').removeClass("post-option active").addClass("post-option");
+        $('#likes').removeClass("post-option").addClass("post-option active");
+      }
+    });
+    
+  }
+  window.onload = codeAddress;
+</script>
+
+
+{% endblock scripts %}

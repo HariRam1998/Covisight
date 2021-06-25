@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+     <!-- SECTION BANNER -->
+    <div class="section-banner">
+      <!-- SECTION BANNER ICON -->
+      <img class="section-banner-icon" src="{% static 'img/banner/newsfeed-icon.png' %}" alt="newsfeed-icon">
+      <!-- /SECTION BANNER ICON -->
+
+      <!-- SECTION BANNER TITLE -->
+      <p class="section-banner-title">Newsfeed</p>
+      <!-- /SECTION BANNER TITLE -->
+
+      <!-- SECTION BANNER TEXT -->
+      <p class="section-banner-text">Check out the recent latest news related to corona!!</p>
+      <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+
+    <!-- SECTION -->
+    <section class="section">
+
+      <!-- GRID -->
+      <div class="grid grid-4-4-4 centered">
+          {% for desc, news, img, pub, fulldetail, cont in mylist %}
+        <!-- POST PREVIEW -->
+        <div class="post-preview">
+          <!-- POST PREVIEW IMAGE -->
+          <figure class="post-preview-image liquid">
+            <img src="{{ img }}" alt="cover-19">
+          </figure>
+          <!-- /POST PREVIEW IMAGE -->
+      
+          <!-- POST PREVIEW INFO -->
+          <div class="post-preview-info fixed-height">
+            <!-- POST PREVIEW INFO TOP -->
+            <div class="post-preview-info-top">
+              <!-- POST PREVIEW TIMESTAMP -->
+              <p class="post-preview-timestamp">{{ pub }}</p>
+              <!-- /POST PREVIEW TIMESTAMP -->
+        
+              <!-- POST PREVIEW TITLE -->
+              <p class="post-preview-title">{{ news }}</p>
+              <!-- /POST PREVIEW TITLE -->
+            </div>
+            <!-- /POST PREVIEW INFO TOP -->
+      
+            <!-- POST PREVIEW INFO BOTTOM -->
+            <div class="post-preview-info-bottom">
+              <!-- POST PREVIEW TEXT -->
+              <p class="post-preview-text">{{ desc }}</p>
+              <!-- /POST PREVIEW TEXT -->
+
+              <!-- POST PREVIEW LINK -->
+              <a class="post-preview-link" href="{{ fulldetail }}" target="_blank" rel="noopener noreferrer">Click to read full article..</a>
+              <!-- /POST PREVIEW LINK -->
+            </div>
+            <!-- /POST PREVIEW INFO BOTTOM -->
+          </div>
+          <!-- /POST PREVIEW INFO -->
+        </div>
+        <!-- /POST PREVIEW -->
+          {% endfor %}
+
+      </div>
+      <!-- /GRID -->
+    </section>
+    <!-- /SECTION -->
+
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- GRID -->
+    <div class="grid grid-9-3">
+        <!-- MARKETPLACE CONTENT -->
+        <div class="marketplace-content grid-column">
+            <!-- SLIDER PANEL -->
+            <div class="slider-panel">
+                <!-- SLIDER PANEL SLIDES -->
+                <div id="product-box-slider-items" class="slider-panel-slides">
+                    <!-- SLIDER PANEL SLIDE -->
+                    <div class="slider-panel-slide">
+                        <!-- SLIDER PANEL SLIDE IMAGE -->
+                        <figure class="slider-panel-slide-image liquid">
+                            <img src="{{url}}" alt="item-10">
+                        </figure>
+                        <!-- /SLIDER PANEL SLIDE IMAGE -->
+                    </div>
+                    <!-- /SLIDER PANEL SLIDE -->
+
+                
+                </div>
+                <!-- /SLIDER PANEL SLIDES -->
+            </div>
+            <!-- /SLIDER PANEL -->
+        </div>
+        <!-- /MARKETPLACE CONTENT -->
+
+        <!-- MARKETPLACE SIDEBAR -->
+        <div class="marketplace-sidebar">
+            <!-- SIDEBAR BOX -->
+            <div class="sidebar-box">
+                <!-- SIDEBAR BOX ITEMS -->
+                <div class="sidebar-box-items">
+                    <!-- PRICE TITLE -->
+                    <p class="price-title big"><span class="currency">Predicted Output:  </span> {{predict}}</p>
+                    <!-- /PRICE TITLE -->
+
+                
+                </div>
+                <!-- /SIDEBAR BOX ITEMS -->
+            </div>
+            <!-- /SIDEBAR BOX -->
+        </div>
+        <!-- /MARKETPLACE SIDEBAR -->
+    </div>
+    <!-- /GRID -->
+
+{% endblock %}
+
+
+    

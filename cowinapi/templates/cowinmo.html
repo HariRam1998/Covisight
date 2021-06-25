@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+
+table {
+  background: #012B39;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  {#margin: 1em;#}
+  {#  margin-left:150px;#}
+  {#  margin-right: auto;#}
+    overflow-x:auto;
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  font-size: 0.92em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+td {
+  color: #fff;
+    font-size: 0.80em;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+.disabled td {
+  color: #4F5F64;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: #014055;
+}
+</style>
+
+    <!-- WIDGET BOX -->
+          <div class="widget-box">
+            <!-- WIDGET BOX TITLE -->
+            <p class="widget-box-title" style="font-size: 40px;">Vaccination Centers in India</p>
+            <!-- /WIDGET BOX TITLE -->
+
+            <!-- WIDGET BOX CONTENT -->
+            <div class="widget-box-content">
+              <!-- FORM -->
+              <form class="form" method="post">
+                <!-- FORM ROW -->
+              {% csrf_token %}
+                <div class="form-item split medium">
+                  <!-- FORM ITEM -->
+                  <div class="form-item centered">
+                    <label class="form-title" for="profile-privacy-visibility" style="font-size: 18px">First Select The District And CLick Enter!!!..</label>
+                  </div>
+                  <!-- /FORM ITEM -->
+
+                  <!-- FORM ITEM -->
+
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                      <select id = "mySelect" name="mySelect">
+                            <option value="">Select District</option>
+                            {% for s in select_districts %}
+                                <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                            {% endfor %}
+                      </select>
+                      <!-- FORM SELECT ICON -->
+                      <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                      </svg>
+                      <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                  <!-- /FORM ITEM -->
+
+                    <button class="button secondary" style="width: 315px;" onclick="loading()">Enter</button>
+
+                </div>
+                <!-- /FORM ROW -->
+              </form>
+              <!-- /FORM -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+          </div>
+          <!-- /WIDGET BOX -->
+
+
+<!-- SECTION FILTERS BAR -->
+    <div class="section-filters-bar v2">
+
+      <!-- FORM -->
+      <form class="form" method = "POST" id="cowin-form">
+        <!-- FORM ITEM -->
+          {% csrf_token %}
+        <div class="form-item split medium">
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="pincode">Pincode</label>
+            <select id = "pincode" name="pincode" onchange="myFunction1()">
+              <option value="empty">Select Pincode</option>
+                     {% for s in pincode %}
+                        <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+					<option value="Show All">Show All</option>
+				</select>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="minage">Minimum Age</label>
+            <select name="minage" id = "minage" onchange="myFunction1()">
+              <option value="empty">Select Minimum Age </option>
+                    {% for s in min_age_limit %}
+                        <option value='{{ s }}' data-rc="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+					<option value="Show All">Show All</option>
+				</select>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+
+          <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="available">Availability</label>
+            <select name="available" id="available" onchange="myFunction1()">
+              <option value="empty">Select Availability</option>
+                     {% for s in valid_capacity %}
+                        <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+					<option value="Show All">Show All</option>
+				</select>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+
+            <!-- FORM SELECT -->
+          <div class="form-select">
+            <label for="pay">Pay</label>
+            <select name="pay" id="pay" onchange="myFunction1()">
+              <option value="empty">Select Pay</option>
+                     {% for s in pay %}
+                        <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+					<option value="Show All">Show All</option>
+				</select>
+            <!-- FORM SELECT ICON -->
+            <svg class="form-select-icon icon-small-arrow">
+              <use xlink:href="#svg-small-arrow"></use>
+            </svg>
+            <!-- /FORM SELECT ICON -->
+          </div>
+          <!-- /FORM SELECT -->
+        </div>
+        <!-- /FORM ITEM -->
+      </form>
+      <!-- /FORM -->
+    </div>
+    <!-- /SECTION FILTERS BAR -->
+
+    <div class="widget-box">
+				<div class="table-responsive" id="showAllrooms">
+					<p class="text-center align-self-center lead">When You Click Any Filter Table Will Be Loaded...</p>
+				</div>
+</div>
+
+
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>#}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>#}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+        <script>
+        function loading(){
+
+
+      let timerInterval
+Swal.fire({
+  title: 'Loading!!',
+  html: 'Time Remaining <b></b> milliseconds.',
+  timer: 10000,
+    position: 'center',
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getHtmlContainer()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+
+    }
+
+        </script>
+<script>
+function myFunction1() {
+  $.ajax({
+                type:'POST',
+                url:"{% url 'cowintable' %}",
+                data:{
+                    pincode:$('#pincode').val(),
+                    minage:$('#minage').val(),
+                    pay: $('#pay').val(),
+                    available: $('#available').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'post'
+                },
+                success:function(response){
+                    $("#showAllrooms").html(response.table1);
+
+                }
+            });
+}
+</script>
+
+{#<script>#}
+{##}
+{##}
+{#$(document).on('submit', '#cowin-form',function(e){#}
+{#            e.preventDefault();#}
+{#            $.ajax({#}
+{#                type:'POST',#}
+{#                url:"{% url 'cowintable' %}",#}
+{#                data:{#}
+{#                    pincode:$('#pincode').val(),#}
+{#                    minage:$('#minage').val(),#}
+{#                    pay: $('#pay').val(),#}
+{#                    available: $('#available').val(),#}
+{#                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),#}
+{#                    action: 'post'#}
+{#                },#}
+{#                success:function(response){#}
+{#                    $("#showAllrooms").html(response.table1);#}
+{##}
+{##}
+{##}
+{#                }#}
+{#            });#}
+{#        });#}
+{##}
+{#</script>#}
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
