@@ -62,7 +62,6 @@ python-dateutil==2.8.1
 python-dotenv==0.18.0
 python-jwt==2.0.1
 pytz==2021.1
-pywin32==301
 pyzmq==22.1.0
 requests==2.25.1
 requests-toolbelt==0.9.1
