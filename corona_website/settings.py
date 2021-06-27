@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '*', 'localhost', 'covisight.herokuapp.com']
 
@@ -140,15 +140,16 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "files/static"),
+    os.path.join(BASE_DIR, "static"),
 ]
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # HTTPS SETTINGS
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 
 # Media Files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
