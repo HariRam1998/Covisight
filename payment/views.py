@@ -84,7 +84,7 @@ def _extracted_from_initiate_payment_41(request, response):
         # ('EMAIL', request.user.email),
         # ('MOBILE_N0', '9911223388'),
         ('INDUSTRY_TYPE_ID', settings.PAYTM_INDUSTRY_TYPE_ID),
-        ('CALLBACK_URL', 'http://127.0.0.1:8000/callback/'),
+        ('CALLBACK_URL', 'https://covisight.herokuapp.com/callback/'),
         # ('PAYMENT_MODE_ONLY', 'NO'),
     )
 

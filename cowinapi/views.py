@@ -129,7 +129,8 @@ def cowintable(request):
 
 
 def _extracted_from_cowintable_16(rename_mapping, request):
-    ok = val()
+    ok1 = val()
+    ok = ok1.copy(deep=True)
     ok.rename(columns=rename_mapping, inplace=True)
     abc = 0
     pincode = request.POST.get('pincode')

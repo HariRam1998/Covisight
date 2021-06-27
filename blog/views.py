@@ -167,18 +167,18 @@ def likepost(request):
 
 
 def _extracted_from_likepost_10(post, request):
-    abd = Like.objects.filter(post=post, user=request.user)
     a = None
-    if abd:
+    if Like.objects.filter(post=post, user=request.user, like=1):
         Like.objects.filter(post=post, user=request.user).delete()
         a = "False"
-    else:
-        Like(post=post, user=request.user, like=1).save()
-        a = "True"
+        return a
+    elif Like.objects.filter(post=post, user=request.user, dislike=1):
+        Like.objects.filter(post=post, user=request.user).delete()
+    Like(post=post, user=request.user, like=1).save()
+    a = "True"
     message = 'liked your post'
     Notification(post=post, sender=request.user,
                  receiver=post.author.username, message=message).save()
-
     return a
 
 
@@ -194,20 +194,19 @@ def dislikepost(request):
 
 
 def _extracted_from_dislikepost_10(post, request):
-    abd = Like.objects.filter(post=post, user=request.user)
     a = None
-    if abd:
+    if Like.objects.filter(post=post, user=request.user, dislike=1):
         Like.objects.filter(post=post, user=request.user).delete()
         a = "False"
-    else:
-        Like(post=post, user=request.user, dislike=1).save()
-        a = "True"
-    message = 'Disliked your post'
+        return a
+    elif Like.objects.filter(post=post, user=request.user, like=1):
+        Like.objects.filter(post=post, user=request.user).delete()
+    Like(post=post, user=request.user, dislike=1).save()
+    a = "True"
+    message = 'disliked your post'
     Notification(post=post, sender=request.user,
                  receiver=post.author.username, message=message).save()
-
     return a
-
 
 def checklike(request):
     try:
@@ -215,7 +214,6 @@ def checklike(request):
         is_liked = "False"
         ok = valp()
         id1 = ok
-        print(id1)
         post = Post.objects.get(pk=id1)
         if Like.objects.filter(post=post, user=request.user, dislike=1).exists():
             is_disliked = "True"
@@ -264,12 +262,15 @@ def editpost(request, id, slug):  # sourcery no-metrics
                 pd = post_description
                 if pt and pd:
                     if repeat == 0:
-                        Post.objects.filter(pk=id, slug=slug, author=request.user).update(title=post_title,
-                                                                                          body_text=post_description,
-                                                                                          photo=url)
+                        Post.objects.filter(
+                            pk=id, slug=slug, author=request.user
+                        ).update(title=pt, body_text=pd, photo=url)
+
                     else:
-                        Post.objects.filter(pk=id, slug=slug, author=request.user).update(
-                            title=post_title, body_text=post_description)
+                        Post.objects.filter(
+                            pk=id, slug=slug, author=request.user
+                        ).update(title=pt, body_text=pd)
+
                     post = Post.objects.get(pk=id)
 
                     message = 'Post Has Been Updated'

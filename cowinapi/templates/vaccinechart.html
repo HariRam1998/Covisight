@@ -28,7 +28,34 @@
 }
 
   /* Style the tab content (and add height:100% for full page content) */
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 132%;
+}
 
+.videoWrapper1 {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+
+.videoWrapper1 iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 118%;
+}
 
 </style>
     <link rel="stylesheet" href="{% static 'loadbar/dist/loading-bar.css' %}">
@@ -38,18 +65,25 @@
 <button class="tablink" onclick="openPage('About', this, 'orange')">Vaccination Chart</button>
 
 <div id="Home" class="tabcontent">
-          <iframe width="1200" height="950"
-            src="https://datastudio.google.com/embed/reporting/157332ab-6977-4894-a0b1-b7c25a874098/page/BU8NC" frameborder="0" style="border:0" allowfullscreen>
-          </iframe>
+  <div class="videoWrapper">
+    <iframe src="https://datastudio.google.com/embed/reporting/157332ab-6977-4894-a0b1-b7c25a874098/page/BU8NC"
+      allowfullscreen></iframe>
+  </div>     
 </div>
 
 <div id="News" class="tabcontent">
-  <iframe width="1200" height="950" src="https://datastudio.google.com/embed/reporting/a391f36b-7b70-41e7-a0c4-086c8c05c1e8/page/b5eQC" frameborder="0"
-    style="border:0" allowfullscreen></iframe>
 
-<iframe width="1200" height="950"
-  src="https://datastudio.google.com/embed/reporting/2359a45e-a357-45c6-95e7-b6000ecbe41b/page/b5eQC" frameborder="0"
-  style="border:0" allowfullscreen></iframe>
+  <div class="videoWrapper1">
+    <iframe src="https://datastudio.google.com/embed/reporting/a391f36b-7b70-41e7-a0c4-086c8c05c1e8/page/b5eQC" allowfullscreen></iframe>
+  </div>
+
+  <br><br><br><br>
+
+  <div class="videoWrapper1">
+    <iframe src="https://datastudio.google.com/embed/reporting/2359a45e-a357-45c6-95e7-b6000ecbe41b/page/b5eQC"
+      allowfullscreen></iframe>
+  </div>
+
 </div>
 <div id="About" class="tabcontent">
   <div class="grid-column">
