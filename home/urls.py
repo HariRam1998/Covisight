@@ -9,8 +9,8 @@ urlpatterns = [
     path('faq/',views.faq, name='home_faq'),
     path('covidlung/', views.covidlung, name='covidlung'),
     path('contactus/',views.contact, name='home_contact'),
-    path('contactform',views.contactform, name='contactform'),
-    path('search', views.search, name='search'),
-    path('aboutus', views.aboutus, name='aboutus'),
+    path('contactform/',views.contactform, name='contactform'),
+    path('search/', views.search, name='search'),
+    path('aboutus/', views.aboutus, name='aboutus'),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
