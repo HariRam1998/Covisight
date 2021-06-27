@@ -36,20 +36,8 @@ class Notification(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
     receiver = models.TextField()
     message = models.TextField()
-    photo = models.TextField()
     timeStamp = models.DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ['-pk']
 
-
-class Notification1(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    sender = models.ForeignKey(User, on_delete=models.CASCADE)
-    receiver = models.TextField()
-    message = models.TextField()
-    photo = models.TextField()
-    timeStamp = models.DateTimeField(default=timezone.now)
-
-    class Meta:
-        ordering = ['-pk']

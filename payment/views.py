@@ -1,5 +1,5 @@
 from users.models import profiledetails
-from home.models import Notification1
+from home.models import Notification
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
@@ -15,11 +15,8 @@ def initiate_payment(request):
     Transaction.objects.filter(success=0).delete()
     abc = Transaction.objects.values('donation_id').order_by('donation_id').annotate(amount=Sum('amount'))
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
 
     ja, jb, jc, jd = 0, 0, 0, 0
     a, b, c, d = 0, 0, 0, 0
@@ -47,8 +44,9 @@ def initiate_payment(request):
         'rc': (c / 100000) * 100,
         'd': d,
         'rd': (d / 100000) * 100,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
         'proimage': url12,
+        'pagetitle': 'Donation',
     }
     if request.method == "POST":
         return _extracted_from_initiate_payment_41(request, response)

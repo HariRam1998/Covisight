@@ -16,6 +16,7 @@
     padding: 14px 16px;
     font-size: 17px;
     width: 33.33%;
+      border-radius: 0px;
   }
 
   .tablink:hover {
@@ -27,7 +28,7 @@
 }
 
   /* Style the tab content (and add height:100% for full page content) */
- 
+
 
 </style>
     <link rel="stylesheet" href="{% static 'loadbar/dist/loading-bar.css' %}">
@@ -41,7 +42,7 @@
             src="https://datastudio.google.com/embed/reporting/157332ab-6977-4894-a0b1-b7c25a874098/page/BU8NC" frameborder="0" style="border:0" allowfullscreen>
           </iframe>
 </div>
-  
+
 <div id="News" class="tabcontent">
   <iframe width="1200" height="950" src="https://datastudio.google.com/embed/reporting/a391f36b-7b70-41e7-a0c4-086c8c05c1e8/page/b5eQC" frameborder="0"
     style="border:0" allowfullscreen></iframe>
@@ -65,7 +66,7 @@
         <!-- /WIDGET BOX ACTION -->
       </div>
       <!-- /WIDGET BOX ACTIONS -->
-  
+
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
         <!-- FULL WIDTH IMAGE -->
@@ -77,14 +78,14 @@
     <!-- /WIDGET BOX -->
   </div>
   <!-- /GRID COLUMN -->
-  
+
   <div class="grid grid-8-4">
-  
-  
+
+
     <!-- GRID COLUMN -->
     <div class="grid-column">
-  
-  
+
+
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
         <!-- FULL WIDTH IMAGE -->
@@ -92,17 +93,17 @@
         <!-- /FULL WIDTH IMAGE -->
       </div>
       <!-- WIDGET BOX CONTENT -->
-  
-  
+
+
       <!-- /LOADER BARS -->
     </div>
     <!-- /GRID COLUMN -->
-  
+
     <!-- GRID COLUMN -->
     <div class="grid-column">
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
-  
+
         <!-- FULL WIDTH IMAGE -->
         {{ m3|safe }}
         <!-- /FULL WIDTH IMAGE -->
@@ -112,32 +113,32 @@
     <!-- /GRID COLUMN -->
   </div>
   <!-- /GRID -->
-  
+
   <div class="grid grid-3-9 stretched">
-  
-  
-  
+
+
+
     <div class="grid-column">
       <!-- WIDGET BOX -->
       <div class="widget-box">
-  
+
         <!-- PROGRESS ARC SUMMARY -->
         <div class="progress-arc-summary">
-  
+
           <div data-preset="fan" class="ldBar label-center" data-value="{{ per }}"
             style="width: 100%;height: 100%;font-size: 2.5em;font-weight: 500;stroke-width: 10"></div>
-  
+
           <!-- PROGRESS ARC SUMMARY INFO -->
           <div class="progress-arc-summary-info">
             <!-- PROGRESS ARC SUMMARY TITLE -->
             <p class="progress-arc-summary-title">First Doses Adminstered</p>
             <!-- /PROGRESS ARC SUMMARY TITLE -->
-  
+
           </div>
           <!-- /PROGRESS ARC SUMMARY INFO -->
         </div>
         <!-- /PROGRESS ARC SUMMARY -->
-  
+
         <!-- ACHIEVEMENT STATUS LIST -->
         <div class="achievement-status-list">
           <!-- ACHIEVEMENT STATUS -->
@@ -145,49 +146,49 @@
             <!-- ACHIEVEMENT STATUS PROGRESS -->
             <p class="achievement-status-progress">{{ first }}%</p>
             <!-- /ACHIEVEMENT STATUS PROGRESS -->
-  
+
             <!-- ACHIEVEMENT STATUS INFO -->
             <div class="achievement-status-info">
               <!-- ACHIEVEMENT STATUS TITLE -->
               <p class="achievement-status-title">First Dose</p>
               <!-- /ACHIEVEMENT STATUS TITLE -->
-  
+
               <!-- ACHIEVEMENT STATUS TEXT -->
               <p class="achievement-status-text">Adminstered</p>
               <!-- /ACHIEVEMENT STATUS TEXT -->
             </div>
             <!-- /ACHIEVEMENT STATUS INFO -->
-  
+
             <!-- ACHIEVEMENT STATUS IMAGE -->
             <div data-preset="fan" class="ldBar label-center" data-value="{{ per }}"
               style="width: 100%;height: 100%;font-weight: 500;stroke-width: 10"></div>
-  
+
             <!-- /ACHIEVEMENT STATUS IMAGE -->
           </div>
           <!-- /ACHIEVEMENT STATUS -->
-  
+
           <!-- ACHIEVEMENT STATUS -->
           <div class="achievement-status">
             <!-- ACHIEVEMENT STATUS PROGRESS -->
             <p class="achievement-status-progress">{{ second }}%</p>
             <!-- /ACHIEVEMENT STATUS PROGRESS -->
-  
+
             <!-- ACHIEVEMENT STATUS INFO -->
             <div class="achievement-status-info">
               <!-- ACHIEVEMENT STATUS TITLE -->
               <p class="achievement-status-title">Second Dose</p>
               <!-- /ACHIEVEMENT STATUS TITLE -->
-  
+
               <!-- ACHIEVEMENT STATUS TEXT -->
               <p class="achievement-status-text">Adminstered</p>
               <!-- /ACHIEVEMENT STATUS TEXT -->
             </div>
             <!-- /ACHIEVEMENT STATUS INFO -->
-  
+
             <!-- ACHIEVEMENT STATUS IMAGE -->
             <div data-preset="fan" class="ldBar label-center" data-value="{{ second }}" style="width: 100%;height: 100%;font-weight: 500;stroke: red
   ;stroke-width: 10"></div>
-  
+
             <!-- /ACHIEVEMENT STATUS IMAGE -->
           </div>
           <!-- /ACHIEVEMENT STATUS -->
@@ -196,12 +197,12 @@
       </div>
       <!-- /WIDGET BOX -->
     </div>
-  
+
     <!-- GRID COLUMN -->
     <div class="grid-column">
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
-  
+
         <!-- FULL WIDTH IMAGE -->
         {{ m4|safe }}
         <!-- /FULL WIDTH IMAGE -->
@@ -210,9 +211,9 @@
     </div>
     <!-- /GRID COLUMN -->
   </div>
-  
+
   <br>
-  
+
   <div class="grid-column">
     <!-- WIDGET BOX -->
     <div class="widget-box">
@@ -227,7 +228,7 @@
         <!-- /WIDGET BOX ACTION -->
       </div>
       <!-- /WIDGET BOX ACTIONS -->
-  
+
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
         <!-- FULL WIDTH IMAGE -->
@@ -238,12 +239,12 @@
     </div>
     <!-- /WIDGET BOX -->
   </div>
-  
-  
+
+
   <!-- GRID -->
   <div class="grid grid-8-4 stretched">
-  
-  
+
+
     <!-- GRID COLUMN -->
     <div class="grid-column">
       <!-- WIDGET BOX -->
@@ -257,9 +258,9 @@
             <!-- /WIDGET BOX TITLE -->
           </div>
           <!-- /WIDGET BOX ACTION -->
-  
-  
-  
+
+
+
           <!-- WIDGET BOX ACTION -->
           <div class="widget-box-action">
             <!-- FORM SELECT -->
@@ -273,7 +274,7 @@
                   <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
                   {% endfor %}
                 </select>
-  
+
                 <!-- FORM SELECT ICON -->
                 <svg class="form-select-icon icon-small-arrow">
                   <use xlink:href="#svg-small-arrow"></use>
@@ -283,17 +284,17 @@
               <!-- /FORM SELECT -->
             </form>
           </div>
-  
+
           <!-- /WIDGET BOX ACTION -->
         </div>
         <!-- /WIDGET BOX ACTIONS -->
-  
+
         <!-- WIDGET BOX CONTENT -->
         <div class="widget-box-content">
           <!-- FULL WIDTH IMAGE -->
           <div id="refresh" class="x">
           </div>
-  
+
           <!-- /FULL WIDTH IMAGE -->
         </div>
         <!-- WIDGET BOX CONTENT -->
@@ -301,29 +302,29 @@
       <!-- /WIDGET BOX -->
     </div>
     <!-- /GRID COLUMN -->
-  
+
     <!-- GRID COLUMN -->
     <div class="grid-column">
       <div class="widget-box">
         <!-- PROGRESS ARC SUMMARY -->
         <div class="progress-arc-summary">
-  
+
           <div style="text-align: center;font-size: 150%;font-weight: 900;">
             <p class="progress-arc-title" id="disfirst">{{ disfirst }}%</p>
           </div>
-  
-  
+
+
           <!-- PROGRESS ARC SUMMARY INFO -->
           <div class="progress-arc-summary-info">
             <!-- PROGRESS ARC SUMMARY TITLE -->
             <p class="progress-arc-summary-title">First Doses Adminstered</p>
             <!-- /PROGRESS ARC SUMMARY TITLE -->
-  
+
           </div>
           <!-- /PROGRESS ARC SUMMARY INFO -->
         </div>
         <!-- /PROGRESS ARC SUMMARY -->
-  
+
         <!-- ACHIEVEMENT STATUS LIST -->
         <div class="achievement-status-list">
           <!-- ACHIEVEMENT STATUS -->
@@ -331,74 +332,74 @@
             <!-- ACHIEVEMENT STATUS PROGRESS -->
             <p class="achievement-status-progress" id="disfirst1">{{ disfirst }}%</p>
             <!-- /ACHIEVEMENT STATUS PROGRESS -->
-  
+
             <!-- ACHIEVEMENT STATUS INFO -->
             <div class="achievement-status-info">
               <!-- ACHIEVEMENT STATUS TITLE -->
               <p class="achievement-status-title">First Dose</p>
               <!-- /ACHIEVEMENT STATUS TITLE -->
-  
+
               <!-- ACHIEVEMENT STATUS TEXT -->
               <p class="achievement-status-text">Adminstered</p>
               <!-- /ACHIEVEMENT STATUS TEXT -->
             </div>
             <!-- /ACHIEVEMENT STATUS INFO -->
-  
-  
+
+
           </div>
           <!-- /ACHIEVEMENT STATUS -->
-  
+
           <!-- ACHIEVEMENT STATUS -->
           <div class="achievement-status">
             <!-- ACHIEVEMENT STATUS PROGRESS -->
             <p class="achievement-status-progress" id="dissecond">{{ dissecond }}%</p>
             <!-- /ACHIEVEMENT STATUS PROGRESS -->
-  
+
             <!-- ACHIEVEMENT STATUS INFO -->
             <div class="achievement-status-info">
               <!-- ACHIEVEMENT STATUS TITLE -->
               <p class="achievement-status-title">Second Dose</p>
               <!-- /ACHIEVEMENT STATUS TITLE -->
-  
+
               <!-- ACHIEVEMENT STATUS TEXT -->
               <p class="achievement-status-text">Adminstered</p>
               <!-- /ACHIEVEMENT STATUS TEXT -->
             </div>
             <!-- /ACHIEVEMENT STATUS INFO -->
-  
+
             <!-- ACHIEVEMENT STATUS IMAGE -->
-  
-  
+
+
             <!-- /ACHIEVEMENT STATUS IMAGE -->
           </div>
           <!-- /ACHIEVEMENT STATUS -->
-  
-  
+
+
         </div>
         <!-- /ACHIEVEMENT STATUS LIST -->
-  
+
       </div>
       <!-- WIDGET BOX -->
       <div class="widget-box-content">
-  
+
         <div id="refresh1" class="x">
         </div>
-  
+
       </div>
       <!-- /WIDGET BOX -->
     </div>
     <!-- /GRID COLUMN -->
-  
+
   </div>
   <!-- /GRID -->
-  
+
   <br>
-  
+
   <div class="grid-column">
     <!-- WIDGET BOX -->
     <div class="widget-box">
-  
-  
+
+
       <!-- WIDGET BOX CONTENT -->
       <div class="widget-box-content">
         <div id="refresh2" class="x">

@@ -8,7 +8,7 @@ from django.shortcuts import render
 from newsapi import NewsApiClient
 from django.contrib import messages
 from users.models import profiledetails
-from .models import Notification1, User, Contact
+from .models import Notification, User, Contact
 from django.conf import settings
 from django.core.mail import send_mail
 import pyrebase
@@ -16,42 +16,29 @@ import cloudinary.uploader
 import cloudinary
 import datetime
 
-config = {
-    "apiKey": "AIzaSyAMWjY5lH-ZpxTW9TXAw22eKFPsiuKHHrQ",
-    "authDomain": "diary-2e61a.firebaseapp.com",
-    "databaseURL": "https://diary-2e61a-default-rtdb.firebaseio.com",
-    "projectId": "diary-2e61a",
-    "storageBucket": "diary-2e61a.appspot.com",
-    "messagingSenderId": "863445861576",
-    "appId": "1:863445861576:web:557866a3d6e6f1b4bf11fd",
-    "measurementId": "G-Q97XVVVFR2"
-}
-firebase = pyrebase.initialize_app(config)
-storage = firebase.storage()
 
 cloudinary.config(cloud_name='df4siptjs', api_key='727231952262334',
                   api_secret='f8WYhe1BrWJNwbE4lCq9pP0hpJM')
+
 
 def home(request):
     if not request.user.is_authenticated:
         return render(request, 'covidhome.html', {})
 
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     japan = {
         'proimage': url12,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Home',
     }
     return render(request, 'covidhome.html', japan)
 
 
 def news(request):
     newsapi = NewsApiClient(api_key='ffc32cc1b8e848ccbb0a24415c767eb3')
-    top = newsapi.get_top_headlines(q='covid',language='en')
+    top = newsapi.get_top_headlines(q='covid', language='en')
     l = top['articles']
     desc = []
     news = []
@@ -69,49 +56,43 @@ def news(request):
         pub.append(f["publishedAt"])
         fulldetail.append(f['url'])
         cont.append(f["content"])
-    
-    url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
 
-    mylist = zip(news, desc, img,pub,fulldetail,cont)
+    url12 = None
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
+
+    mylist = zip(news, desc, img, pub, fulldetail, cont)
     context = {
         "mylist": mylist,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
         'proimage': url12,
-        }
-    return render(request,'news.html', context)
+        'pagetitle': 'News',
+    }
+    return render(request, 'news.html', context)
 
 
 def faq(request):
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     context = {
         'proimage': url12,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'FAQ',
     }
-    return render(request,'faq.html',context)
+    return render(request, 'faq.html', context)
 
 
 def contact(request):
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     context = {
         'proimage': url12,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Contact',
     }
-    return render(request,'contact.html',context)
+    return render(request, 'contact.html', context)
 
 
 def contactform(request):
@@ -143,19 +124,18 @@ def contactform(request):
 
 def covidlung(request):
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
 
     if request.POST:
         return _extracted_from_covidlung_10(request, url12)
     context = {
         'proimage': url12,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Covid lung',
     }
-    return render(request, 'covidlung.html',context)
+    return render(request, 'covidlung.html', context)
+
 
 def _extracted_from_covidlung_10(request, url12):
     file = request.FILES['files']
@@ -169,34 +149,19 @@ def _extracted_from_covidlung_10(request, url12):
         'proimage': url12,
         'predict': data["predict"],
         'url': url,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Covid Analysis',
     }
-    return render(request, 'prediction.html',context)
+    return render(request, 'prediction.html', context)
 
 
-def prediction(request):
-    context = {
-        'notification': Notification1.objects.filter(receiver=request.user.username),
-    }
-    return render(request, 'prediction.html',context)
 
 def search(request):
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     week_ago = datetime.date.today() - datetime.timedelta(days=7)
     trends = Post.objects.filter(time_upload__gte=week_ago).order_by('-read')
-    if request.method != "POST":
-        params = {
-            'proimage': url12,
-            'trends': trends[:5],
-            'pop_post': Post.objects.order_by('-read')[:5],
-            'notification': Notification1.objects.filter(receiver=request.user.username),
-        }
-        return render(request, 'bloghome.html', params)
     query = request.POST.get('search_main')
     if len(query) > 78:
         all_posts = Post.objects.none()
@@ -207,19 +172,22 @@ def search(request):
         'posts': all_posts,
         'trends': trends[:5],
         'pop_post': Post.objects.order_by('-read')[:5],
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Search',
     }
     return render(request, 'bloghome.html', params)
-    
+
 
 def aboutus(request):
     url12 = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url12 = p.proimage
-    except:
-        print('Not Logged in')
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     params = {
         'proimage': url12,
+        'pagetitle': 'About us',
     }
-    return render(request, 'aboutus.html',params)
+    return render(request, 'aboutus.html', params)
+
+
+def error_404_view(request, exception):
+    return render(request, '404.html')

@@ -236,6 +236,13 @@ function myFunction1() {
                 },
                 success:function(response){
                     $("#showAllrooms").html(response.table1);
+                    if(response.a === 'True'){
+                        Swal.fire({
+                          icon: 'error',
+                          title: 'Oops...',
+                          text: 'Something went wrong while fetching from api!',
+                        })
+                    }
 
                 }
             });

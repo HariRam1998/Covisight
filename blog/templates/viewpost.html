@@ -176,7 +176,7 @@ ____________________________________*/
                 <br>
         
                 <h3><a class="post-preview-title" href="{% url 'fullviewpost' post.id post.slug %}">{{ post.title }}</a></h3>
-                <img src="{{ post.uprofile }}" class="float-left rounded-circle" style="width: 40px; height: 40px;">
+                <img src="{{ post.author.first_name }}" class="float-left rounded-circle" style="width: 40px; height: 40px;">
                 <h6 class="text-muted p-2" style="height: 40px;">{{post.author.username}}</h6>
                 <p class="post-preview-timestamp">{{ post.time_upload|timesince }} ago - {{ post.read }} reads ⭐</p>
                 <!-- <h7>by - {{ post.author.username }}</h7> -->
@@ -199,6 +199,46 @@ ____________________________________*/
             </div>
           </div>
         </div>
+             {% empty %}
+             <!-- WIDGET BOX -->
+              <div class="widget-box">
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Post</p>
+                <!-- /WIDGET BOX TITLE -->
+
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                  <!-- STATUS INFO -->
+                  <div class="status-info success">
+                    <!-- STATUS ICON WRAP -->
+                    <div class="status-icon-wrap">
+                      <!-- STATUS ICON -->
+                        <!-- ICON CROSS -->
+                        <svg class="status-icon icon-cross">
+                          <use xlink:href="#svg-cross"></use>
+                        </svg>
+                        <!-- /ICON CROSS -->
+                      <!-- /STATUS ICON -->
+                    </div>
+                    <!-- /STATUS ICON WRAP -->
+
+                    <!-- STATUS TITLE -->
+                    <p class="status-title">{{ request.user.email }}</p>
+                    <!-- /STATUS TITLE -->
+
+                    <!-- STATUS TEXT -->
+                    <p class="status-text">{{ request.user.username }}</p>
+                    <!-- /STATUS TEXT -->
+
+                    <!-- STATUS DESCRIPTION -->
+                    <h1 class="status-description" style="font-size: 30px;">Your have not created any post</h1>
+                    <!-- /STATUS DESCRIPTION -->
+                  </div>
+                  <!-- /STATUS INFO -->
+                </div>
+                <!-- WIDGET BOX CONTENT -->
+              </div>
+              <!-- /WIDGET BOX -->
           {% endfor %}
       <!-- /POST PREVIEW -->
       </div>

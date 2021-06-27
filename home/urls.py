@@ -8,7 +8,6 @@ urlpatterns = [
     path('news/',views.news, name='user_news'),
     path('faq/',views.faq, name='home_faq'),
     path('covidlung/', views.covidlung, name='covidlung'),
-    path('prediction/', views.prediction, name='predicion'),
     path('contactus/',views.contact, name='home_contact'),
     path('contactform',views.contactform, name='contactform'),
     path('search', views.search, name='search'),

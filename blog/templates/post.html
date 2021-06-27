@@ -71,7 +71,7 @@ ____________________________________*/
         <br>
         
         <h3><a class="post-preview-title" href="{% url 'fullviewpost' post.id post.slug %}">{{ post.title }}</a></h3>
-        <img src="{{ post.uprofile }}" class="float-left rounded-circle" style="width: 40px; height: 40px;">
+        <img src="{{ post.author.first_name }}" class="float-left rounded-circle" style="width: 40px; height: 40px;">
         <h6 class="text-muted p-2" style="height: 40px;">{{post.author.username}}</h6>
         <p class="post-preview-timestamp">{{ post.time_upload|timesince }} ago - {{ post.read }} reads ⭐</p>
         <!-- <h7>by - {{ post.author.username }}</h7> -->

@@ -188,7 +188,7 @@
                     <!-- USER AVATAR CONTENT -->
                     <div class="user-avatar-content">
                       <!-- HEXAGON -->
-                      <div class="hexagon-image-68-74" data-src="{{ proimage }}"></div>
+                      <div class="hexagon-image-68-74" data-src="{{ user.first_name }}"></div>
                       <!-- /HEXAGON -->
                     </div>
                     <!-- /USER AVATAR CONTENT -->
@@ -292,9 +292,9 @@
                     <!-- /FORM INPUT -->
 
                     <!-- FORM INPUT -->
-                    <div class="form-input small">
+                    <div class="form-input small active">
                       <label for="profile-public-website">Phone Number</label>
-                      <input type="text" id="profile-public-website" name="profile_public_website" value="{{ phoneno }}">
+                      <input type="text" id="profile-public-website" name="profile_public_website" value="{{ phoneno }}" readonly>
                     </div>
                     <!-- /FORM INPUT -->
                   </div>
@@ -373,13 +373,34 @@
                   </div>
                   <!-- /FORM ITEM -->
                 </div>
+
+                  <style>
+                  #imagePreview {
+                    width: 180px;
+                    height: 180px;
+                    background-position: center center;
+                    background-size: cover;
+                    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+                    display: inline-block;
+                    background-image: url({{ user.first_name }});
+                }
+
+                #uploadFile{
+                  display: none
+                }
+                </style>
                 <!-- /FORM ROW -->
                   <div class="form-row split">
                   <!-- FORM ITEM -->
                   <div class="form-item">
                        <!-- FORM INPUT -->
-                      <input type="file" name="files[]" id="files" hidden>
-                      <label for="files" style="display: inline-block;background-color: indigo;color: white;padding: 0.5rem;font-family: sans-serif;border-radius: 0.3rem;cursor: pointer;margin-top: 1rem;">Choose file</label>
+
+                      <!-- <input type="file" name="files[]" id="files" hidden>
+                      <label for="files" style="display: inline-block;background-color: indigo;color: white;padding: 0.5rem;font-family: sans-serif;border-radius: 0.3rem;cursor: pointer;margin-top: 1rem;">Choose image for the post </label> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br><h7>Click on the image to edit or the default photo will set</h7><br><br>
+<div id="imagePreview" src="{{ user.first_name }}" alt="placeholder image goes here"></div>
+<input id="uploadFile" type="file" name="image" class="img" />
 
 
 
@@ -390,15 +411,15 @@
                   <div class="form-item">
                        <!-- FORM INPUT -->
 
-                      <button type="button" onclick="uploadimage()">Upload</button>
-                </div><input type="hidden" id="custId" name="custId" value="failure">
+                </div>
+
                   </div>
 
                   <div class="form-row">
             <!-- FORM ITEM -->
             <div class="form-item">
               <!-- BUTTON -->
-              <button class="button medium secondary">Click to Submit</button>
+              <button class="button medium secondary" style="width: 315px;">Click to Submit</button>
 
               <!-- /BUTTON -->
             </div>
@@ -419,92 +440,31 @@
     <!-- /GRID -->
 
 
-{% endblock content %}
 
-{% block scripts %}
+
+
     <script src="{% static 'js/countryregion/crs.min.js' %}"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-<script>
-    var config = {
-        apiKey: "AIzaSyAMWjY5lH-ZpxTW9TXAw22eKFPsiuKHHrQ",
-    authDomain: "diary-2e61a.firebaseapp.com",
-    databaseURL: "https://diary-2e61a-default-rtdb.firebaseio.com",
-    projectId: "diary-2e61a",
-    storageBucket: "diary-2e61a.appspot.com",
-    messagingSenderId: "863445861576",
-    appId: "1:863445861576:web:557866a3d6e6f1b4bf11fd",
-    measurementId: "G-Q97XVVVFR2"
-  };
-  firebase.initializeApp(config);
+   <script>
+ $(function () {
+    $("#uploadFile").on("change", function () {
+      var files = !!this.files ? this.files : [];
+      if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-  // Get a reference to the storage service, which is used to create references in your storage bucket
+      if (/^image/.test(files[0].type)) { // only image file
+        var reader = new FileReader(); // instance of the FileReader
+        reader.readAsDataURL(files[0]); // read the local file
 
-  function uploadimage(){
-
-
-      let timerInterval
-Swal.fire({
-  title: 'File Uploading!!',
-  html: 'Time Remaining <b></b> milliseconds.',
-  timer: 2500,
-    position: 'center',
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    timerInterval = setInterval(() => {
-      const content = Swal.getHtmlContainer()
-      if (content) {
-        const b = content.querySelector('b')
-        if (b) {
-          b.textContent = Swal.getTimerLeft()
+        reader.onloadend = function () { // set image data as background of div
+          $("#imagePreview").css("background-image", "url(" + this.result + ")");
         }
       }
-    }, 100)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-  }
-})
+    });
+  });
 
-
-
-  var storage = firebase.storage();
-
-  var file = document.getElementById("files").files[0];
-
-  var storageRef = storage.ref("users");
-
-  var name = document.getElementById("profile-name").value;
-
-  var thisref = storageRef.child(name).put(file);
-
-  thisref.on('state_changed',function(snapshot){
-
-  console.log("file uplaoded succesfully");
-  document.getElementById("custId").value = "succeess";
-
-  },
-  function(error) {
-
-  },
-
-  function() {
-  // Upload completed successfully, now we can get the download URL
-  {#var downloadURL = thisref.snapshot.downloadURL;#}
-  {#console.log("got url");#}
-  {#document.getElementById("url").value = downloadURL;#}
-   swal("Here's a message!");
-});
-
-    }
-
-
+  $('#imagePreview').click(function () {
+    $('#uploadFile').click();
+  });
 </script>
-{% endblock scripts %}
+{% endblock content %}
+
 

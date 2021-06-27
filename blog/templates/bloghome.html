@@ -24,16 +24,52 @@
 
       <!-- GRID COLUMN -->
       <div class="grid-column">
+{#      {% if posts is not None %}#}
+{#    {% for post in posts %}#}
+{#        {% include 'post.html' %}#}
+{#          {% endfor %}#}
+{#            {% endif %}#}
 
         <div class="grid grid-9 centered">
-        <!-- POST PREVIEW -->
-         {% for post in posts %}
+    {% for post in posts %}
         {% include 'post.html' %}
-          {% endfor %}
-      <!-- /POST PREVIEW -->
+        {% empty %}
+        <!-- WIDGET BOX -->
+              <div class="widget-box">
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Post</p>
+                <!-- /WIDGET BOX TITLE -->
 
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                  <!-- STATUS INFO -->
+                  <div class="status-info success">
+                    <!-- STATUS ICON WRAP -->
+                    <div class="status-icon-wrap">
+                      <!-- STATUS ICON -->
+                        <!-- ICON CROSS -->
+                        <svg class="status-icon icon-cross">
+                          <use xlink:href="#svg-cross"></use>
+                        </svg>
+                        <!-- /ICON CROSS -->
+                      <!-- /STATUS ICON -->
+                    </div>
+                    <!-- /STATUS ICON WRAP -->
 
-        
+                    <!-- STATUS TITLE -->
+                    <p class="status-title">Covibot</p>
+                    <!-- /STATUS TITLE -->
+
+                    <!-- STATUS DESCRIPTION -->
+                    <h1 class="status-description" style="font-size: 30px;">Sorry there is no post available!!</h1>
+                    <!-- /STATUS DESCRIPTION -->
+                  </div>
+                  <!-- /STATUS INFO -->
+                </div>
+                <!-- WIDGET BOX CONTENT -->
+              </div>
+              <!-- /WIDGET BOX -->
+        {% endfor %}
 
       </div>
 
@@ -70,7 +106,7 @@
                     <!-- USER AVATAR CONTENT -->
                     <div class="user-avatar-content">
                       <!-- HEXAGON -->
-                      <div class="hexagon-image-30-32" data-src="{{trend.uprofile}}"></div>
+                      <div class="hexagon-image-30-32" data-src="{{ trend.author.first_name }}"></div>
                       <!-- /HEXAGON -->
                     </div>
                     <!-- /USER AVATAR CONTENT -->
@@ -159,7 +195,7 @@
                     <!-- USER AVATAR CONTENT -->
                     <div class="user-avatar-content">
                       <!-- HEXAGON -->
-                      <div class="hexagon-image-30-32" data-src="{{post.uprofile}}"></div>
+                      <div class="hexagon-image-30-32" data-src="{{post.author.first_name }}"></div>
                       <!-- /HEXAGON -->
                     </div>
                     <!-- /USER AVATAR CONTENT -->

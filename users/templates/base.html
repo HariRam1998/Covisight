@@ -14,7 +14,11 @@
   <!-- favicon -->
   <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
-  <title>Covisight | Account Hub</title>
+    {% if pagetitle %}
+        <title>Covisight | {{ pagetitle }}</title>
+    {% else %}
+        <title>Covisight</title>
+    {% endif %}
 </head>
 <body>
 
@@ -63,7 +67,7 @@
       <!-- USER AVATAR CONTENT -->
       <div class="user-avatar-content">
         <!-- HEXAGON -->
-        <div class="hexagon-image-30-32" data-src="{{ proimage }}"></div>
+        <div class="hexagon-image-30-32" data-src="{{ user.first_name }}"></div>
         <!-- /HEXAGON -->
       </div>
       <!-- /USER AVATAR CONTENT -->
@@ -412,7 +416,7 @@
         <!-- USER AVATAR CONTENT -->
         <div class="user-avatar-content">
           <!-- HEXAGON -->
-          <div class="hexagon-image-82-90" data-src="{{ proimage }}"></div>
+          <div class="hexagon-image-82-90" data-src="{{ user.first_name }}"></div>
           <!-- /HEXAGON -->
         </div>
         <!-- /USER AVATAR CONTENT -->
@@ -812,7 +816,7 @@
           <!-- USER AVATAR CONTENT -->
           <div class="user-avatar-content">
             <!-- HEXAGON -->
-            <div class="hexagon-image-30-32" data-src="{{ proimage }}"></div>
+            <div class="hexagon-image-30-32" data-src="{{ user.first_name }}"></div>
             <!-- /HEXAGON -->
           </div>
           <!-- /USER AVATAR CONTENT -->
@@ -1403,7 +1407,7 @@
                       <!-- USER AVATAR CONTENT -->
                       <div class="user-avatar-content">
                         <!-- HEXAGON -->
-                        <div class="hexagon-image-30-32" data-src="{{notify.photo}}"></div>
+                        <div class="hexagon-image-30-32" data-src="{{notify.sender.first_name}}"></div>
                         <!-- /HEXAGON -->
                       </div>
                       <!-- /USER AVATAR CONTENT -->
@@ -1502,7 +1506,7 @@
                   <!-- USER AVATAR CONTENT -->
                   <div class="user-avatar-content">
                     <!-- HEXAGON -->
-                    <div class="hexagon-image-30-32" data-src="{{ proimage }}"></div>
+                    <div class="hexagon-image-30-32" data-src="{{ user.first_name }}"></div>
                     <!-- /HEXAGON -->
                   </div>
                   <!-- /USER AVATAR CONTENT -->

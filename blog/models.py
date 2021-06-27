@@ -14,9 +14,8 @@ class Post(models.Model):
     slug = models.SlugField(null=True, blank=True)
     body_text = models.TextField()
     time_upload = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     photo = models.TextField()
-    uprofile = models.TextField()
     publish = models.IntegerField(default=1)
     read = models.IntegerField(default=0)
 
@@ -34,7 +33,6 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cimage = models.TextField()
     time = models.DateTimeField(default=timezone.now)
     comm = models.TextField()
 
@@ -43,7 +41,6 @@ class SubComment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField(default=timezone.now)
-    scimage = models.TextField()
     comm = models.TextField()
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
 

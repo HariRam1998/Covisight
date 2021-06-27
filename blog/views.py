@@ -1,6 +1,5 @@
 import os
-
-from home.models import Notification, Notification1
+from home.models import Notification
 import json
 from django.http.response import HttpResponse
 import requests
@@ -21,83 +20,52 @@ from .models import Like, Post, SubComment, Comment
 
 cloudinary.config(cloud_name='df4siptjs', api_key='727231952262334',
                   api_secret='f8WYhe1BrWJNwbE4lCq9pP0hpJM')
-config = {
-    "apiKey": "AIzaSyAMWjY5lH-ZpxTW9TXAw22eKFPsiuKHHrQ",
-    "authDomain": "diary-2e61a.firebaseapp.com",
-    "databaseURL": "https://diary-2e61a-default-rtdb.firebaseio.com",
-    "projectId": "diary-2e61a",
-    "storageBucket": "diary-2e61a.appspot.com",
-    "messagingSenderId": "863445861576",
-    "appId": "1:863445861576:web:557866a3d6e6f1b4bf11fd",
-    "measurementId": "G-Q97XVVVFR2"
-}
-firebase = pyrebase.initialize_app(config)
-storage = firebase.storage()
 
 valp = None
 
 
 @login_required
 def createpost(request):
-    p = profiledetails.objects.filter(usermail=request.user.email).first()
-    url12 = p.proimage
-    if profiledetails.objects.filter(usermail__iexact=request.user.email).exists():
-        if request.method == 'POST':
-            url = None
-            try:
-                file = request.FILES['image']
-                upload_result = cloudinary.uploader.upload(file)
-                url = upload_result['url']
-            except:
-                auth = firebase.auth()
-                email = str(os.getenv('EMAIL_HOST_USER'))
-                password = str(os.getenv('EMAIL_HOST_PASSWORD'))
-                user = auth.sign_in_with_email_and_password(email, password)
-                url = storage.child(
-                    "files/" + "safety-suit.png").get_url(user['idToken'])
-                print(url)
+    if request.method == 'POST':
+        url = None
+        try:
+            file = request.FILES['image']
+            upload_result = cloudinary.uploader.upload(file)
+            url = upload_result['url']
+        except:
+            url = 'https://res.cloudinary.com/df4siptjs/image/upload/v1624263393/jm0iqbnbijwdhqoxzoz2.png'
 
-            post_title = request.POST.get('post_title')
-            post_description = request.POST.get('post_description')
-            photoornot = request.POST.get('custId')
-            pt = post_title
-            pd = post_description
-            if pt and pd:
-                userg = request.user
-                pro = profiledetails.objects.get(usermail=request.user.email)
-                pro = pro.proimage
-                Post(title=post_title, body_text=post_description, uprofile=pro, photo=url, author=userg).save()
-                post = Post.objects.get(
-                    title=post_title, body_text=post_description, uprofile=pro, photo=url, author=userg)
-                message = "created a post"
-                Notification1(post=post, sender=request.user, receiver=request.user.username, message=message,
-                              photo=pro).save()
-                return redirect('view_post')
-            else:
-                messages.warning(request, "Please Enter Title and Description!!")
-        response = {
-            'proimage': url12,
-            "data": True,
-            'notification': Notification1.objects.filter(receiver=request.user.username),
-        }
-        return render(request, "post-create.html", response)
+        post_title = request.POST.get('post_title')
+        post_description = request.POST.get('post_description')
+        pt = post_title
+        pd = post_description
+        if pt and pd:
+            userg = request.user
+            Post(title=post_title, body_text=post_description, photo=url, author=userg).save()
+            post = Post.objects.get(
+                title=post_title, body_text=post_description, photo=url, author=userg)
+            message = "created a post"
+            Notification(post=post, sender=request.user, receiver=request.user.username, message=message).save()
+            return redirect('view_post')
+        else:
+            messages.warning(request, "Please Enter Title and Description!!")
     response = {
-        'proimage': url12,
-        "data": False,
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'proimage': request.user.first_name,
+        "data": True,
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'pagetitle': 'Create post',
+
     }
     return render(request, "post-create.html", response)
 
 
 @login_required
 def viewpost(request):
-    user = request.user
-    p = profiledetails.objects.filter(usermail=request.user.email).first()
-    url = p.proimage
     response = {
-        'posts': Post.objects.filter(author=user).order_by('time_upload'),
-        'notification': Notification1.objects.filter(receiver=request.user.username),
-        'proimage': url,
+        'posts': Post.objects.filter(author=request.user).order_by('time_upload'),
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'proimage': request.user.first_name,
+        'pagetitle': 'View post',
     }
     return render(request, 'viewpost.html', response)
 
@@ -108,46 +76,45 @@ def fullviewpost(request, id, slug):
     def valp():
         return id
 
-    post = Post.objects.get(pk=id, slug=slug)
-    post.read += 1
-    post.save()
-    url = None
     try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url = p.proimage
+        post = Post.objects.get(pk=id, slug=slug)
+        post.read += 1
+        post.save()
     except:
-        url = None
+        return render(request, '404.html')
 
     if request.method == 'POST':
         comm = request.POST.get('comm')
         comm_id = request.POST.get('comm_id')  # None
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url = p.proimage
         a = post.author.username
 
         if comm_id:
             SubComment(post=post,
                        user=request.user,
                        comm=comm,
-                       scimage=url,
                        comment=Comment.objects.get(id=int(comm_id))
                        ).save()
         elif comm:
-            Comment(post=post, user=request.user, comm=comm, cimage=url).save()
+            Comment(post=post, user=request.user, comm=comm).save()
             message = 'posted a comment on your'
-            Notification1(post=post, sender=request.user,
-                          receiver=a, message=message, photo=url).save()
+            Notification(post=post, sender=request.user,
+                         receiver=a, message=message).save()
 
     comments = []
     for c in Comment.objects.filter(post=post):
         comments.append([c, SubComment.objects.filter(comment=c)])
 
+    url12 = None
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
+
     parms = {
-        'notification': Notification1.objects.filter(receiver=request.user.username),
+        'notification': Notification.objects.filter(receiver=request.user.username),
         # Post.objects.filter(author=user).order_by('time_upload')
         'comments': comments,
         'post': post,
-        'proimage': url,
+        'proimage': url12,
+        'pagetitle': 'Full post view',
     }
 
     if request.is_ajax():
@@ -162,15 +129,12 @@ def fullviewpost(request, id, slug):
 
 
 def bloghome(request):
-    url = None
-    try:
-        p = profiledetails.objects.filter(usermail=request.user.email).first()
-        url = p.proimage
-    except:
-        url = None
+    url12 = None
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
     week_ago = datetime.date.today() - datetime.timedelta(days=7)
     trends = Post.objects.filter(time_upload__gte=week_ago).order_by('-read')
-    all_post = Paginator(Post.objects.filter(publish=True), 5)
+    all_post = Paginator(Post.objects.filter(publish=1), 5)
     page = request.GET.get('page')
     try:
         posts = all_post.page(page)
@@ -183,8 +147,9 @@ def bloghome(request):
         'posts': posts,
         'trends': trends[:5],
         'pop_post': Post.objects.order_by('-read')[:5],
-        'notification': Notification1.objects.filter(receiver=request.user.username),
-        'proimage': url,
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'proimage': url12,
+        'pagetitle': 'Blog home',
     }
     return render(request, 'bloghome.html', parms)
 
@@ -210,12 +175,9 @@ def _extracted_from_likepost_10(post, request):
     else:
         Like(post=post, user=request.user, like=1).save()
         a = "True"
-    p = profiledetails.objects.filter(
-        usermail=request.user.email).first()
-    url = p.proimage
     message = 'liked your post'
-    Notification1(post=post, sender=request.user,
-                  receiver=post.author.username, message=message, photo=url).save()
+    Notification(post=post, sender=request.user,
+                 receiver=post.author.username, message=message).save()
 
     return a
 
@@ -240,12 +202,9 @@ def _extracted_from_dislikepost_10(post, request):
     else:
         Like(post=post, user=request.user, dislike=1).save()
         a = "True"
-    p = profiledetails.objects.filter(
-        usermail=request.user.email).first()
-    url = p.proimage
     message = 'Disliked your post'
-    Notification1(post=post, sender=request.user,
-                  receiver=post.author.username, message=message, photo=url).save()
+    Notification(post=post, sender=request.user,
+                 receiver=post.author.username, message=message).save()
 
     return a
 
@@ -285,10 +244,9 @@ def deletepost(request):
 
 @login_required
 def editpost(request, id, slug):  # sourcery no-metrics
-    p = profiledetails.objects.filter(usermail=request.user.email).first()
-    url12 = p.proimage
+    url12 = request.user.first_name
     try:
-        if (profiledetails.objects.filter(usermail__iexact=request.user.email).exists() == True and Post.objects.filter(
+        if (profiledetails.objects.filter(user=request.user).exists() == True and Post.objects.filter(
                 pk=id, slug=slug, author=request.user).exists()):
             if request.method == 'POST':
                 url = None
@@ -305,20 +263,18 @@ def editpost(request, id, slug):  # sourcery no-metrics
                 pt = post_title
                 pd = post_description
                 if pt and pd:
-                    pro = profiledetails.objects.get(usermail=request.user.email)
-                    pro = pro.proimage
                     if repeat == 0:
                         Post.objects.filter(pk=id, slug=slug, author=request.user).update(title=post_title,
                                                                                           body_text=post_description,
-                                                                                          uprofile=pro, photo=url)
+                                                                                          photo=url)
                     else:
                         Post.objects.filter(pk=id, slug=slug, author=request.user).update(
-                            title=post_title, body_text=post_description, uprofile=pro)
+                            title=post_title, body_text=post_description)
                     post = Post.objects.get(pk=id)
 
                     message = 'Post Has Been Updated'
-                    Notification1(post=post, sender=request.user,
-                                  receiver=request.user.username, message=message, photo=pro).save()
+                    Notification(post=post, sender=request.user,
+                                 receiver=request.user.username, message=message).save()
                     # Post(title=post_title, body_text=post_description,
                     #      uprofile=pro, photo=url, author=userg).save()
                     return redirect('view_post')
@@ -329,7 +285,8 @@ def editpost(request, id, slug):  # sourcery no-metrics
                 'proimage': url12,
                 "postt": Post.objects.get(pk=id, slug=slug),
                 "data": True,
-                'notification': Notification1.objects.filter(receiver=request.user.username),
+                'notification': Notification.objects.filter(receiver=request.user.username),
+                'pagetitle': 'Edit post',
             }
             return render(request, "edit.html", response)
 
@@ -337,13 +294,9 @@ def editpost(request, id, slug):  # sourcery no-metrics
             response = {
                 'proimage': url12,
                 "data": False,
-                'notification': Notification1.objects.filter(receiver=request.user.username),
+                'notification': Notification.objects.filter(receiver=request.user.username),
+                'pagetitle': 'Edit post',
             }
         return render(request, "edit.html", response)
     except:
-        response = {
-            'proimage': url12,
-            "data": True,
-            'notification': Notification1.objects.filter(receiver=request.user.username),
-        }
-        return render(request, "edit.html", response)
+        return redirect('view_post')
