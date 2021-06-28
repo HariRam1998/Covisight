@@ -145,6 +145,25 @@
 
     <!-- MENU -->
     <ul class="menu small">
+
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link text-tooltip-tfr" href="{% url 'user-home' %}" data-title="Home">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON PUBLIC -->
+          <svg class="menu-item-link-icon icon-public">
+            <use xlink:href="#svg-public"></use>
+          </svg>
+          <!-- /ICON PUBLIC -->
+          <!-- /MENU ITEM LINK ICON -->
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
+
+
       <!-- MENU ITEM -->
       <li class="menu-item">
         <!-- MENU ITEM LINK -->
@@ -388,6 +407,25 @@
         <!-- /MENU ITEM LINK -->
       </li>
       <!-- /MENU ITEM -->
+
+
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link text-tooltip-tfr" href="{% url 'home_contact' %}" data-title="Contact Us">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON SEND MESSAGE -->
+          <svg class="menu-item-link-icon icon-send-message">
+            <use xlink:href="#svg-send-message"></use>
+          </svg>
+          <!-- /ICON SEND MESSAGE -->
+          <!-- /MENU ITEM LINK ICON -->
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
+
     </ul>
     <!-- /MENU -->
   </nav>
@@ -531,6 +569,25 @@
 
     <!-- MENU -->
     <ul class="menu">
+
+
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link" href="{% url 'user-home' %}">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON PUBLIC -->
+          <svg class="menu-item-link-icon icon-public">
+            <use xlink:href="#svg-public"></use>
+          </svg>
+          <!-- /ICON PUBLIC -->
+          <!-- /MENU ITEM LINK ICON -->
+          Home
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
       <!-- MENU ITEM -->
       <li class="menu-item">
         <!-- MENU ITEM LINK -->
@@ -789,6 +846,24 @@
         <!-- /MENU ITEM LINK -->
       </li>
       <!-- /MENU ITEM -->
+
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link" href="{% url 'home_contact' %}">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON SEND MESSAGE -->
+          <svg class="menu-item-link-icon icon-send-message">
+            <use xlink:href="#svg-send-message"></use>
+          </svg>
+          <!-- /ICON SEND MESSAGE -->
+          <!-- /MENU ITEM LINK ICON -->
+          Contact Us
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
     </ul>
     <!-- /MENU -->
   </nav>
@@ -949,6 +1024,24 @@
 
     <!-- MENU -->
     <ul class="menu">
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link" href="{% url 'user-home' %}">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON PUBLIC -->
+          <svg class="menu-item-link-icon icon-public">
+            <use xlink:href="#svg-public"></use>
+          </svg>
+          <!-- /ICON PUBLIC -->
+          <!-- /MENU ITEM LINK ICON -->
+          Home
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
+
       <!-- MENU ITEM -->
       <li class="menu-item">
         <!-- MENU ITEM LINK -->
@@ -1209,6 +1302,24 @@
         <!-- /MENU ITEM LINK -->
       </li>
       <!-- /MENU ITEM -->
+
+      <!-- MENU ITEM -->
+      <li class="menu-item">
+        <!-- MENU ITEM LINK -->
+        <a class="menu-item-link" href="{% url 'home_contact' %}">
+          <!-- MENU ITEM LINK ICON -->
+          <!-- ICON SEND MESSAGE -->
+          <svg class="menu-item-link-icon icon-send-message">
+            <use xlink:href="#svg-send-message"></use>
+          </svg>
+          <!-- /ICON SEND MESSAGE -->
+          <!-- /MENU ITEM LINK ICON -->
+          Contact Us
+        </a>
+        <!-- /MENU ITEM LINK -->
+      </li>
+      <!-- /MENU ITEM -->
+
     </ul>
     <!-- /MENU -->
 
@@ -1631,11 +1742,11 @@
 <!-- SVG icons -->
 <script src="{% static 'js/utils/svg-loader.js' %}"></script>
 <!-- global.popups -->
-<script src="{% static 'js/global/global.popups.js' %}"></script>
+<!-- <script src="{% static 'js/global/global.popups.js' %}"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-  <script src="{% static 'js/pswmeter.min.js' %}"></script>
+  <!-- <script src="{% static 'js/pswmeter.min.js' %}"></script> -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
   <div style="position:fixed;top:calc(50% - 250px);right:0;transition:width 300ms ease-out;width:0;" data-qa="side_panel">

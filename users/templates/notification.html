@@ -231,6 +231,46 @@
                         <!-- /USER STATUS -->
 
                     </div>
+                    {% empty %}
+                    <!-- WIDGET BOX -->
+                    <div class="widget-box">
+                        <!-- WIDGET BOX TITLE -->
+                        <p class="widget-box-title">Notification</p>
+                        <!-- /WIDGET BOX TITLE -->
+                    
+                        <!-- WIDGET BOX CONTENT -->
+                        <div class="widget-box-content">
+                            <!-- STATUS INFO -->
+                            <div class="status-info success">
+                                <!-- STATUS ICON WRAP -->
+                                <div class="status-icon-wrap">
+                                    <!-- STATUS ICON -->
+                                    <!-- ICON CROSS -->
+                                    <svg class="status-icon icon-cross">
+                                        <use xlink:href="#svg-cross"></use>
+                                    </svg>
+                                    <!-- /ICON CROSS -->
+                                    <!-- /STATUS ICON -->
+                                </div>
+                                <!-- /STATUS ICON WRAP -->
+                    
+                                <!-- STATUS TITLE -->
+                                <p class="status-title">{{ request.user.email }}</p>
+                                <!-- /STATUS TITLE -->
+                    
+                                <!-- STATUS TEXT -->
+                                <p class="status-text">{{ request.user.username }}</p>
+                                <!-- /STATUS TEXT -->
+                    
+                                <!-- STATUS DESCRIPTION -->
+                                <h1 class="status-description" style="font-size: 30px;">There are no Notifications</h1>
+                                <!-- /STATUS DESCRIPTION -->
+                            </div>
+                            <!-- /STATUS INFO -->
+                        </div>
+                        <!-- WIDGET BOX CONTENT -->
+                    </div>
+                    <!-- /WIDGET BOX -->
                     {% endfor %}
                     <!-- /NOTIFICATION BOX -->
                 </div>
