@@ -1,0 +1,168 @@
+<!-- GRID -->
+<div class="grid grid-8-4 stretched">
+
+
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+        <!-- WIDGET BOX -->
+        <div class="widget-box">
+            <!-- WIDGET BOX ACTIONS -->
+            <div class="widget-box-actions">
+                <!-- WIDGET BOX ACTION -->
+                <div class="widget-box-action">
+                    <!-- WIDGET BOX TITLE -->
+                    <p class="widget-box-title">State Map</p>
+                    <!-- /WIDGET BOX TITLE -->
+                </div>
+                <!-- /WIDGET BOX ACTION -->
+
+
+
+                <!-- WIDGET BOX ACTION -->
+                <div class="widget-box-action">
+                    <!-- FORM SELECT -->
+                    <form class="form" method="post">
+                        <!-- FORM ROW -->
+                        {% csrf_token %}
+                        <div class="form-select v2">
+                            <select id="mySelect" name="mySelect" onchange="myFunction1()">
+                                <option value="">Select State</option>
+                                {% for s in select_state %}
+                                <option value="{{ s }}" data-rc="{{ s }}">{{ s }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <!-- FORM SELECT ICON -->
+                            <svg class="form-select-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /FORM SELECT ICON -->
+                        </div>
+                        <!-- /FORM SELECT -->
+                    </form>
+                </div>
+
+                <!-- /WIDGET BOX ACTION -->
+            </div>
+            <!-- /WIDGET BOX ACTIONS -->
+
+            <!-- WIDGET BOX CONTENT -->
+            <div class="widget-box-content">
+                <!-- FULL WIDTH IMAGE -->
+                <div id="refresh" class="x">
+                </div>
+
+                <!-- /FULL WIDTH IMAGE -->
+            </div>
+            <!-- WIDGET BOX CONTENT -->
+        </div>
+        <!-- /WIDGET BOX -->
+    </div>
+    <!-- /GRID COLUMN -->
+
+    <!-- GRID COLUMN -->
+    <div class="grid-column">
+        <div class="widget-box">
+            <!-- PROGRESS ARC SUMMARY -->
+            <div class="progress-arc-summary">
+
+                <div style="text-align: center;font-size: 150%;font-weight: 900;">
+                    <p class="progress-arc-title" id="disfirst">{{ disfirst }}%</p>
+                </div>
+
+
+                <!-- PROGRESS ARC SUMMARY INFO -->
+                <div class="progress-arc-summary-info">
+                    <!-- PROGRESS ARC SUMMARY TITLE -->
+                    <p class="progress-arc-summary-title">First Doses Adminstered</p>
+                    <!-- /PROGRESS ARC SUMMARY TITLE -->
+
+                </div>
+                <!-- /PROGRESS ARC SUMMARY INFO -->
+            </div>
+            <!-- /PROGRESS ARC SUMMARY -->
+
+            <!-- ACHIEVEMENT STATUS LIST -->
+            <div class="achievement-status-list">
+                <!-- ACHIEVEMENT STATUS -->
+                <div class="achievement-status">
+                    <!-- ACHIEVEMENT STATUS PROGRESS -->
+                    <p class="achievement-status-progress" id="disfirst1">{{ disfirst }}%</p>
+                    <!-- /ACHIEVEMENT STATUS PROGRESS -->
+
+                    <!-- ACHIEVEMENT STATUS INFO -->
+                    <div class="achievement-status-info">
+                        <!-- ACHIEVEMENT STATUS TITLE -->
+                        <p class="achievement-status-title">First Dose</p>
+                        <!-- /ACHIEVEMENT STATUS TITLE -->
+
+                        <!-- ACHIEVEMENT STATUS TEXT -->
+                        <p class="achievement-status-text">Adminstered</p>
+                        <!-- /ACHIEVEMENT STATUS TEXT -->
+                    </div>
+                    <!-- /ACHIEVEMENT STATUS INFO -->
+
+
+                </div>
+                <!-- /ACHIEVEMENT STATUS -->
+
+                <!-- ACHIEVEMENT STATUS -->
+                <div class="achievement-status">
+                    <!-- ACHIEVEMENT STATUS PROGRESS -->
+                    <p class="achievement-status-progress" id="dissecond">{{ dissecond }}%</p>
+                    <!-- /ACHIEVEMENT STATUS PROGRESS -->
+
+                    <!-- ACHIEVEMENT STATUS INFO -->
+                    <div class="achievement-status-info">
+                        <!-- ACHIEVEMENT STATUS TITLE -->
+                        <p class="achievement-status-title">Second Dose</p>
+                        <!-- /ACHIEVEMENT STATUS TITLE -->
+
+                        <!-- ACHIEVEMENT STATUS TEXT -->
+                        <p class="achievement-status-text">Adminstered</p>
+                        <!-- /ACHIEVEMENT STATUS TEXT -->
+                    </div>
+                    <!-- /ACHIEVEMENT STATUS INFO -->
+
+                    <!-- ACHIEVEMENT STATUS IMAGE -->
+
+
+                    <!-- /ACHIEVEMENT STATUS IMAGE -->
+                </div>
+                <!-- /ACHIEVEMENT STATUS -->
+
+
+            </div>
+            <!-- /ACHIEVEMENT STATUS LIST -->
+
+        </div>
+        <!-- WIDGET BOX -->
+        <div class="widget-box-content">
+
+            <div id="refresh1" class="x">
+            </div>
+
+        </div>
+        <!-- /WIDGET BOX -->
+    </div>
+    <!-- /GRID COLUMN -->
+
+</div>
+<!-- /GRID -->
+
+<br>
+
+<div class="grid-column">
+    <!-- WIDGET BOX -->
+    <div class="widget-box">
+
+
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content">
+            <div id="refresh2" class="x">
+            </div>
+        </div>
+        <!-- WIDGET BOX CONTENT -->
+    </div>
+    <!-- /WIDGET BOX -->
+</div>

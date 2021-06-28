@@ -232,7 +232,7 @@ def vaccinechart(request):
     covid.dropna(subset=["Longitude"], inplace=True)
     covid.dropna(subset=["Latitude"], inplace=True)
     # zoom_control = False,scrollWheelZoom = False,dragging = False
-    m1 = folium.Map(location=[22.5937, 78.9629], zoom_start=5, width='100', height='100', scrollWheelZoom=True)
+    m1 = folium.Map(location=[22.5937, 78.9629], zoom_start=5, width='100', height='100', scrollWheelZoom=False)
     state = list(covid['State'])
     latitude = list(covid['Latitude'])
     longitude = list(covid['Longitude'])
@@ -433,7 +433,9 @@ def mapupdate(request):
         #     csv_file.write(url_content)
         #     csv_file.close()
         # df = pd.read_csv('http://api.covid19india.org/csv/latest/cowin_vaccine_data_districtwise.csv', sep=',', error_bad_lines=False, index_col=False, dtype='unicode')
-        df = val2()
+        pk3 = val2()
+        df = pk3.copy(deep=True)
+        
 
         today = date.today()
         today1 = today
@@ -480,7 +482,7 @@ def mapupdate(request):
         population = districtloc['Population']
         # c = a + b
         f = folium.Figure(width=730, height=600)
-        m1 = folium.Map(location=[a, b], zoom_start=6.2, scrollWheelZoom=True).add_to(f)
+        m1 = folium.Map(location=[a, b], zoom_start=6.2, width='100', height='100', scrollWheelZoom=True)
         for s, lat, long, t in zip(District, latitude, longitude, total):
             folium.Circle(
                 location=[lat, long],
@@ -532,7 +534,7 @@ def mapupdate(request):
         State = District
         First = firstdose
         Second = seconddose
-        for i in range(0, len(First)):
+        for i in range(len(First)):
             First[i] = int(First[i])
             Second[i] = int(Second[i])
 
@@ -547,8 +549,6 @@ def mapupdate(request):
             title_text="Vaccination Chart of District"
         )
         m5 = fig2.to_html(full_html=False)
-
-        
 
         context = {
             'h1': m1,
