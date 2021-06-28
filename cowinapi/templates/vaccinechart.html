@@ -273,7 +273,7 @@
     </div>
     <!-- /WIDGET BOX -->
   </div>
-  
+
 {% include 'districtrender.html' %}
 
 </div>
@@ -296,9 +296,16 @@
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 <script>
 function myFunction1() {
+  Swal.fire(
+    'Covibot',
+    'May take some time to load',
+    'info'
+  )
   $.ajax({
+    
                 type:'POST',
                 url:"{% url 'mapupdate' %}",
                 data:{
@@ -307,7 +314,7 @@ function myFunction1() {
                     action: 'post'
                 },
                 success:function(res){
-                  alert('hello')
+                  
                   var a = res.disfirst + '%';
                   var b = res.dissecond + '%';
                     $("#refresh").html(res.h1);
