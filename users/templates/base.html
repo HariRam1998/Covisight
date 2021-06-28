@@ -1479,7 +1479,9 @@
         </div>
       </form>
       <!-- /INTERACTIVE INPUT -->
-      <!-- ACTION LIST -->
+      
+{% if user.is_authenticated %}
+            <!-- ACTION LIST -->
       <div class="action-list dark">
 
         <!-- ACTION LIST ITEM WRAP -->
@@ -1493,7 +1495,6 @@
             <!-- /ACTION LIST ITEM ICON -->
           </div>
           <!-- /ACTION LIST ITEM -->
-{% if user.is_authenticated %}
           <!-- DROPDOWN BOX -->
           <div class="dropdown-box header-dropdown">
             <!-- DROPDOWN BOX HEADER -->
@@ -1584,26 +1585,32 @@
             <!-- /DROPDOWN BOX LIST -->
           </div>
           <!-- /DROPDOWN BOX -->
+          </div>
+          <!-- /ACTION LIST ITEM WRAP -->
+          </div>
+          <!-- /ACTION LIST -->
+          {% else %}
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
           {% endif %}
-        </div>
-        <!-- /ACTION LIST ITEM WRAP -->
-      </div>
-      <!-- /ACTION LIST -->
+          
+        
 
-      <!-- ACTION ITEM WRAP -->
-      <div class="action-item-wrap">
-        <!-- ACTION ITEM -->
-        <div class="action-item dark header-settings-dropdown-trigger">
-          <!-- ACTION ITEM ICON -->
-          <svg class="action-item-icon icon-settings">
-            <use xlink:href="#svg-settings"></use>
-          </svg>
-          <!-- /ACTION ITEM ICON -->
-        </div>
-        <!-- /ACTION ITEM -->
+     
 
         <!-- DROPDOWN NAVIGATION -->
            {% if user.is_authenticated %}
+
+            <!-- ACTION ITEM WRAP -->
+            <div class="action-item-wrap">
+              <!-- ACTION ITEM -->
+              <div class="action-item dark header-settings-dropdown-trigger">
+                <!-- ACTION ITEM ICON -->
+                <svg class="action-item-icon icon-settings">
+                  <use xlink:href="#svg-settings"></use>
+                </svg>
+                <!-- /ACTION ITEM ICON -->
+              </div>
+              <!-- /ACTION ITEM -->
 
         <div class="dropdown-navigation header-settings-dropdown">
           <!-- DROPDOWN NAVIGATION HEADER -->
@@ -1672,8 +1679,27 @@
           <a class="dropdown-navigation-button button small secondary" href="{% url 'user_logout' %}">Logout</a>
           <!-- /DROPDOWN NAVIGATION BUTTON -->
         </div>
-
+<!-- /DROPDOWN NAVIGATION -->
+</div>
+<!-- /ACTION ITEM WRAP -->
           {% else %}
+          <!-- ACTION ITEM WRAP -->
+          <div class="action-item-wrap">
+            <!-- ACTION ITEM -->
+            <div class="action-item dark header-settings-dropdown-trigger">
+              <!-- BUTTON -->
+              <button class="button primary with-only-icon">
+                <!-- ICON LOGIN -->
+                <svg class="icon-login">
+                  <use xlink:href="#svg-login"></use>
+                </svg>
+                <!-- /ICON LOGIN -->
+                <p>&nbsp;Login&nbsp;</p>
+              </button>
+              <!-- /BUTTON -->
+              <p>&nbsp;&nbsp;</p>
+            </div>
+            <!-- /ACTION ITEM -->
 
                <div class="dropdown-navigation header-settings-dropdown">
           <!-- DROPDOWN NAVIGATION HEADER -->
@@ -1696,11 +1722,11 @@
           <a class="dropdown-navigation-button button small secondary" href="{% url 'user_login' %}">Login</a>
           <!-- /DROPDOWN NAVIGATION BUTTON -->
         </div>
-
+<!-- /DROPDOWN NAVIGATION -->
+</div>
+<!-- /ACTION ITEM WRAP -->
           {% endif %}
-        <!-- /DROPDOWN NAVIGATION -->
-      </div>
-      <!-- /ACTION ITEM WRAP -->
+        
     </div>
     <!-- /HEADER ACTIONS -->
   </header>

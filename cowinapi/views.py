@@ -174,255 +174,256 @@ def covidanalysis(request):
 
 
 def vaccinechart(request):
-    # url12 = None
-    # if request.user.is_authenticated:
-    #     url12 = request.user.first_name
-    #
-    # districtwisereading = pd.read_csv('http://api.covid19india.org/csv/latest/cowin_vaccine_data_districtwise.csv', sep=',',
-    #                  error_bad_lines=False, index_col=False, dtype='unicode')
-    #
-    # global val2
-    # def val2():
-    #     return districtwisereading
-    #
+    url12 = None
+    if request.user.is_authenticated:
+        url12 = request.user.first_name
+    
+    districtwisereading = pd.read_csv('http://api.covid19india.org/csv/latest/cowin_vaccine_data_districtwise.csv', sep=',',
+                     error_bad_lines=False, index_col=False, dtype='unicode')
+    
+    global val2
+    def val2():
+        return districtwisereading
+    print('working or not')
+    
+    today = date.today()
+    # a = today.strftime("%d_%m_%Y") + '.csv'
+    # b = os.path.exists('media/' + a)
+    # if not b:
+    #     req = requests.get('http://api.covid19india.org/csv/latest/cowin_vaccine_data_statewise.csv')
+    #     url_content = req.content
+    #     csv_file = open('media/' + a, 'wb')
+    #     csv_file.write(url_content)
+    #     csv_file.close()
+    # vaccinestate = pd.read_csv('media/' + a)
+    vaccinestate = pd.read_csv('http://api.covid19india.org/csv/latest/cowin_vaccine_data_statewise.csv')
+    vaccinestate.columns = [col.replace("Updated On", "Date") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Total Doses Administered", "Doses") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("First Dose Administered", "fDoses") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Second Dose Administered", "sDoses") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Total Covaxin Administered", "Covaxin") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Total CoviShield Administered", "CoviShield") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Total Sputnik V Administered", "Sputnik") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Male(Individuals Vaccinated)", "Male") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Female(Individuals Vaccinated)", "Female") for col in vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Transgender(Individuals Vaccinated)", "Transgender") for col in
+                            vaccinestate.columns]
+    vaccinestate.columns = [col.replace("Total Individuals Vaccinated", "Totalindiviual") for col in
+                            vaccinestate.columns]
+    vaccinestate.dropna(subset=["Doses"], inplace=True)
+    vaccinestate.dropna(subset=["fDoses"], inplace=True)
+    vaccinestate.dropna(subset=["sDoses"], inplace=True)
+    vaccinestate.dropna(subset=["Covaxin"], inplace=True)
+    vaccinestate.dropna(subset=["CoviShield"], inplace=True)
+    
+    df = vaccinestate.copy()
+    df1 = vaccinestate.copy()
+    df2 = vaccinestate.copy()
+    df3 = vaccinestate.copy()
+    coordinates = pd.read_csv("media/state.csv")
+    
     # today = date.today()
-    # # a = today.strftime("%d_%m_%Y") + '.csv'
-    # # b = os.path.exists('media/' + a)
-    # # if not b:
-    # #     req = requests.get('http://api.covid19india.org/csv/latest/cowin_vaccine_data_statewise.csv')
-    # #     url_content = req.content
-    # #     csv_file = open('media/' + a, 'wb')
-    # #     csv_file.write(url_content)
-    # #     csv_file.close()
-    # # vaccinestate = pd.read_csv('media/' + a)
-    # vaccinestate = pd.read_csv('http://api.covid19india.org/csv/latest/cowin_vaccine_data_statewise.csv')
-    # vaccinestate.columns = [col.replace("Updated On", "Date") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Total Doses Administered", "Doses") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("First Dose Administered", "fDoses") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Second Dose Administered", "sDoses") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Total Covaxin Administered", "Covaxin") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Total CoviShield Administered", "CoviShield") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Total Sputnik V Administered", "Sputnik") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Male(Individuals Vaccinated)", "Male") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Female(Individuals Vaccinated)", "Female") for col in vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Transgender(Individuals Vaccinated)", "Transgender") for col in
-    #                         vaccinestate.columns]
-    # vaccinestate.columns = [col.replace("Total Individuals Vaccinated", "Totalindiviual") for col in
-    #                         vaccinestate.columns]
-    # vaccinestate.dropna(subset=["Doses"], inplace=True)
-    # vaccinestate.dropna(subset=["fDoses"], inplace=True)
-    # vaccinestate.dropna(subset=["sDoses"], inplace=True)
-    # vaccinestate.dropna(subset=["Covaxin"], inplace=True)
-    # vaccinestate.dropna(subset=["CoviShield"], inplace=True)
-    #
-    # df = vaccinestate.copy()
-    # df1 = vaccinestate.copy()
-    # df2 = vaccinestate.copy()
-    # df3 = vaccinestate.copy()
-    # coordinates = pd.read_csv("media/state.csv")
-    #
-    # # today = date.today()
-    # # yesterday = today - timedelta(days=2)
-    # # a = yesterday.strftime("%d/%m/%Y")
-    # last_element = vaccinestate.iloc[-1]
-    # abc = vaccinestate.loc[vaccinestate['Date'] == last_element.Date]
-    # # abc = vaccinestate.loc[vaccinestate["Date"] == a]
-    # covid = abc.join(coordinates.set_index('State'), on='State')
-    # covid.dropna(subset=["Longitude"], inplace=True)
-    # covid.dropna(subset=["Latitude"], inplace=True)
-    # # zoom_control = False,scrollWheelZoom = False,dragging = False
-    # m1 = folium.Map(location=[22.5937, 78.9629], zoom_start=5, width='100', height='100', scrollWheelZoom=False)
-    # state = list(covid['State'])
-    # latitude = list(covid['Latitude'])
-    # longitude = list(covid['Longitude'])
-    # total = list(covid['Totalindiviual'])
-    #
-    # for s, lat, long, t in zip(state, latitude, longitude, total):
-    #     folium.Circle(
-    #         location=[lat, long],
-    #         radius=float(t * .01),
-    #         tooltip='State  : ' + s + ' \n\n Total Vaccination : ' + str(t) + '',
-    #         color='green',
-    #         fill=True,
-    #         fill_color='green'
-    #     ).add_to(m1)
-    # folium.raster_layers.TileLayer('Open Street Map').add_to(m1)
-    # folium.raster_layers.TileLayer('Stamen Terrain').add_to(m1)
-    # folium.raster_layers.TileLayer('Stamen Toner').add_to(m1)
-    # folium.raster_layers.TileLayer('Stamen Watercolor').add_to(m1)
-    # folium.raster_layers.TileLayer('CartoDB Positron').add_to(m1)
-    # folium.raster_layers.TileLayer('CartoDB Dark_Matter').add_to(m1)
-    # folium.LayerControl().add_to(m1)
-    # m1 = m1._repr_html_()
-    #
-    # df = df.loc[df['State'] == 'India']
-    # df['Date'] = pd.to_datetime(df["Date"], format='%d/%m/%Y')
-    # df.dropna(subset=["Doses"], inplace=True)
-    # # df.head()
-    # fig = go.Figure()
-    # fig.add_trace(
-    #     go.Scatter(x=list(df.Date), y=list(df.Doses), name='Total Doses'))
-    # fig.add_trace(
-    #     go.Scatter(x=list(df.Date), y=list(df.fDoses), name='First Doses'))
-    # fig.add_trace(
-    #     go.Scatter(x=list(df.Date), y=list(df.sDoses), name='Second Doses'))
-    # # Set title
-    # fig.update_layout(
-    #     title_text="Vaccination Time series"
-    # )
-    #
-    # # Add range slider
-    # fig.update_layout(
-    #     xaxis=dict(
-    #         rangeselector=dict(
-    #             buttons=list([
-    #                 dict(count=1,
-    #                      label="1m",
-    #                      step="month",
-    #                      stepmode="backward"),
-    #                 dict(count=6,
-    #                      label="6m",
-    #                      step="month",
-    #                      stepmode="backward"),
-    #                 dict(count=1,
-    #                      label="YTD",
-    #                      step="year",
-    #                      stepmode="todate"),
-    #                 dict(step="all")
-    #             ])
-    #         ),
-    #         rangeslider=dict(
-    #             visible=True
-    #         ),
-    #         type="date"
-    #     )
-    # )
-    # m2 = fig.to_html(full_html=False)
-    #
-    # """ vaccine administered comparison """
-    # df1 = df1.loc[df1['State'] == 'India']
-    # last_element = df1.iloc[-1]
-    #
-    # df1 = df1.loc[df1['Date'] == last_element.Date]
-    # z = [list(df1.fDoses), list(df1.sDoses)]
-    # z = z[0] + z[1]
-    #
-    # y = [list(df1.Covaxin), list(df1.CoviShield), list(df1.Sputnik)]
-    # a = y[0] + y[1] + y[2]
-    #
-    #
-    # labels = ['Covaxin', 'CoviShield', 'Sputnik']
-    # values = a
-    # fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-    # fig.update_layout(
-    #     title_text="Vaccination Time series")
-    # m3 = fig.to_html(full_html=False)
-    #
-    # """ vaccination male-female """
-    # df2 = df2.loc[df2['State'] == 'India']
-    # df2['Date'] = pd.to_datetime(df2["Date"], format='%d/%m/%Y')
-    # fig1 = go.Figure()
-    # fig1.add_trace(
-    #     go.Scatter(x=list(df2.Date), y=list(df2.Male), name='Male'))
-    # fig1.add_trace(
-    #     go.Scatter(x=list(df2.Date), y=list(df2.Female), name='Female'))
-    # fig1.add_trace(
-    #     go.Scatter(x=list(df2.Date), y=list(df2.Transgender), name='Transgender'))
-    # # Set title
-    # fig1.update_layout(
-    #     title_text="Vaccination Time series"
-    # )
-    #
-    # # Add range slider
-    # fig1.update_layout(
-    #     xaxis=dict(
-    #         rangeselector=dict(
-    #             buttons=list([
-    #                 dict(count=1,
-    #                      label="1m",
-    #                      step="month",
-    #                      stepmode="backward"),
-    #                 dict(count=6,
-    #                      label="6m",
-    #                      step="month",
-    #                      stepmode="backward"),
-    #                 dict(count=1,
-    #                      label="YTD",
-    #                      step="year",
-    #                      stepmode="todate"),
-    #                 dict(step="all")
-    #             ])
-    #         ),
-    #         rangeslider=dict(
-    #             visible=True
-    #         ),
-    #         type="date"
-    #     )
-    # )
-    # m4 = fig1.to_html(full_html=False)
-    #
-    # """vaccination top 20 state"""
-    # df3 = df3.loc[df3['State'] != 'India']
-    # last_element = df3.iloc[-1]
-    # df3 = df3.loc[df3['Date'] == last_element.Date]
-    # global val1
-    #
-    # def val1():
-    #     return df3.copy()
-    #
-    # Top5 = df3.nlargest(20, 'Doses').reset_index(drop=True)
-    # State = list(Top5["State"])
-    #
-    # First = list(Top5["fDoses"])
-    #
-    # Second = list(Top5["sDoses"])
-    # fig2 = go.Figure(data=[
-    #
-    #     go.Bar(name='First Dose', x=State, y=First),
-    #     go.Bar(name='Both Doses', x=State, y=Second)
-    # ])
-    # # Change the bar mode
-    # fig2.update_layout(barmode='group')
-    # fig2.update_layout(
-    #     title_text="Vaccination Chart of 20 States"
-    # )
-    # m5 = fig2.to_html(full_html=False)
-    #
-    # """ Total Vaccinated  """
-    # z1 = int(z[0])
-    # z2 = int(z[1])
-    # pop = 1392790451
-    # first = (z1 / pop) * 100
-    # second = (z2 / pop) * 100
-    # first = round(first, 2)
-    # per = first
-    # second = round(second, 2)
-    #
-    # unique_state = pd.read_csv("media/state.csv")
-    # unique_state = list(unique_state["State"].unique())
-    # unique_state.sort()
-    #
-    # context = {
-    #     'm1': m1,
-    #     'm2': m2,
-    #     'm3': m3,
-    #     'm4': m4,
-    #     'm5': m5,
-    #     'per': per,
-    #     'first': first,
-    #     'second': second,
-    #     'select_state': unique_state,
-    #     'notification': Notification.objects.filter(receiver=request.user.username),
-    #     'proimage': url12,
-    #     'pagetitle': 'Vaccine chart',
-    # }
-    return render(request, 'vaccinechart.html')
+    # yesterday = today - timedelta(days=2)
+    # a = yesterday.strftime("%d/%m/%Y")
+    last_element = vaccinestate.iloc[-1]
+    abc = vaccinestate.loc[vaccinestate['Date'] == last_element.Date]
+    # abc = vaccinestate.loc[vaccinestate["Date"] == a]
+    covid = abc.join(coordinates.set_index('State'), on='State')
+    covid.dropna(subset=["Longitude"], inplace=True)
+    covid.dropna(subset=["Latitude"], inplace=True)
+    # zoom_control = False,scrollWheelZoom = False,dragging = False
+    m1 = folium.Map(location=[22.5937, 78.9629], zoom_start=5, width='100', height='100', scrollWheelZoom=True)
+    state = list(covid['State'])
+    latitude = list(covid['Latitude'])
+    longitude = list(covid['Longitude'])
+    total = list(covid['Totalindiviual'])
+    
+    for s, lat, long, t in zip(state, latitude, longitude, total):
+        folium.Circle(
+            location=[lat, long],
+            radius=float(t * .01),
+            tooltip='State  : ' + s + ' \n\n Total Vaccination : ' + str(t) + '',
+            color='green',
+            fill=True,
+            fill_color='green'
+        ).add_to(m1)
+    folium.raster_layers.TileLayer('Open Street Map').add_to(m1)
+    folium.raster_layers.TileLayer('Stamen Terrain').add_to(m1)
+    folium.raster_layers.TileLayer('Stamen Toner').add_to(m1)
+    folium.raster_layers.TileLayer('Stamen Watercolor').add_to(m1)
+    folium.raster_layers.TileLayer('CartoDB Positron').add_to(m1)
+    folium.raster_layers.TileLayer('CartoDB Dark_Matter').add_to(m1)
+    folium.LayerControl().add_to(m1)
+    m1 = m1._repr_html_()
+    
+    df = df.loc[df['State'] == 'India']
+    df['Date'] = pd.to_datetime(df["Date"], format='%d/%m/%Y')
+    df.dropna(subset=["Doses"], inplace=True)
+    # df.head()
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatter(x=list(df.Date), y=list(df.Doses), name='Total Doses'))
+    fig.add_trace(
+        go.Scatter(x=list(df.Date), y=list(df.fDoses), name='First Doses'))
+    fig.add_trace(
+        go.Scatter(x=list(df.Date), y=list(df.sDoses), name='Second Doses'))
+    # Set title
+    fig.update_layout(
+        title_text="Vaccination Time series"
+    )
+    
+    # Add range slider
+    fig.update_layout(
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=1,
+                         label="1m",
+                         step="month",
+                         stepmode="backward"),
+                    dict(count=6,
+                         label="6m",
+                         step="month",
+                         stepmode="backward"),
+                    dict(count=1,
+                         label="YTD",
+                         step="year",
+                         stepmode="todate"),
+                    dict(step="all")
+                ])
+            ),
+            rangeslider=dict(
+                visible=True
+            ),
+            type="date"
+        )
+    )
+    m2 = fig.to_html(full_html=False)
+    
+    """ vaccine administered comparison """
+    df1 = df1.loc[df1['State'] == 'India']
+    last_element = df1.iloc[-1]
+    
+    df1 = df1.loc[df1['Date'] == last_element.Date]
+    z = [list(df1.fDoses), list(df1.sDoses)]
+    z = z[0] + z[1]
+    
+    y = [list(df1.Covaxin), list(df1.CoviShield), list(df1.Sputnik)]
+    a = y[0] + y[1] + y[2]
+    
+    
+    labels = ['Covaxin', 'CoviShield', 'Sputnik']
+    values = a
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    fig.update_layout(
+        title_text="Vaccination Time series")
+    m3 = fig.to_html(full_html=False)
+    
+    """ vaccination male-female """
+    df2 = df2.loc[df2['State'] == 'India']
+    df2['Date'] = pd.to_datetime(df2["Date"], format='%d/%m/%Y')
+    fig1 = go.Figure()
+    fig1.add_trace(
+        go.Scatter(x=list(df2.Date), y=list(df2.Male), name='Male'))
+    fig1.add_trace(
+        go.Scatter(x=list(df2.Date), y=list(df2.Female), name='Female'))
+    fig1.add_trace(
+        go.Scatter(x=list(df2.Date), y=list(df2.Transgender), name='Transgender'))
+    # Set title
+    fig1.update_layout(
+        title_text="Vaccination Time series"
+    )
+    
+    # Add range slider
+    fig1.update_layout(
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=1,
+                         label="1m",
+                         step="month",
+                         stepmode="backward"),
+                    dict(count=6,
+                         label="6m",
+                         step="month",
+                         stepmode="backward"),
+                    dict(count=1,
+                         label="YTD",
+                         step="year",
+                         stepmode="todate"),
+                    dict(step="all")
+                ])
+            ),
+            rangeslider=dict(
+                visible=True
+            ),
+            type="date"
+        )
+    )
+    m4 = fig1.to_html(full_html=False)
+    
+    """vaccination top 20 state"""
+    df3 = df3.loc[df3['State'] != 'India']
+    last_element = df3.iloc[-1]
+    df3 = df3.loc[df3['Date'] == last_element.Date]
+    global val1
+    
+    def val1():
+        return df3.copy()
+    
+    Top5 = df3.nlargest(20, 'Doses').reset_index(drop=True)
+    State = list(Top5["State"])
+    
+    First = list(Top5["fDoses"])
+    
+    Second = list(Top5["sDoses"])
+    fig2 = go.Figure(data=[
+    
+        go.Bar(name='First Dose', x=State, y=First),
+        go.Bar(name='Both Doses', x=State, y=Second)
+    ])
+    # Change the bar mode
+    fig2.update_layout(barmode='group')
+    fig2.update_layout(
+        title_text="Vaccination Chart of 20 States"
+    )
+    m5 = fig2.to_html(full_html=False)
+    
+    """ Total Vaccinated  """
+    z1 = int(z[0])
+    z2 = int(z[1])
+    pop = 1392790451
+    first = (z1 / pop) * 100
+    second = (z2 / pop) * 100
+    first = round(first, 2)
+    per = first
+    second = round(second, 2)
+    
+    unique_state = pd.read_csv("media/state.csv")
+    unique_state = list(unique_state["State"].unique())
+    unique_state.sort()
+    
+    context = {
+        'm1': m1,
+        'm2': m2,
+        'm3': m3,
+        'm4': m4,
+        'm5': m5,
+        'per': per,
+        'first': first,
+        'second': second,
+        'select_state': unique_state,
+        'notification': Notification.objects.filter(receiver=request.user.username),
+        'proimage': url12,
+        'pagetitle': 'Vaccine chart',
+    }
+    return render(request, 'vaccinechart.html',context)
 
 
 def mapupdate(request):
     if request.POST.get('action') == 'post':
         dist_inp = request.POST.get('mySelect')
-        today = date.today()
+        # today = date.today()
         # a = today.strftime("%d_%m_%Y") + 'district.csv'
         # b = os.path.exists('media/' + a)
         # if not b:
@@ -479,7 +480,7 @@ def mapupdate(request):
         population = districtloc['Population']
         # c = a + b
         f = folium.Figure(width=730, height=600)
-        m1 = folium.Map(location=[a, b], zoom_start=6.2, scrollWheelZoom=False).add_to(f)
+        m1 = folium.Map(location=[a, b], zoom_start=6.2, scrollWheelZoom=True).add_to(f)
         for s, lat, long, t in zip(District, latitude, longitude, total):
             folium.Circle(
                 location=[lat, long],
