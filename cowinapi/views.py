@@ -436,8 +436,7 @@ def mapupdate(request):
         pk3 = val2()
         df = pk3.copy(deep=True)
         
-
-        today = date.today()
+        today = date.today() - timedelta(days=2)
         today1 = today
         a = today1.strftime("%d/%m/%Y")
         i = 0
