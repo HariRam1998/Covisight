@@ -31,6 +31,16 @@ class Contact(models.Model):
         return "Message from " + self.name + ' - ' + self.email
 
 
+class Publiccontact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=100)
+    content = models.TextField()
+    timeStamp = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return "Message from " + self.name + ' - ' + self.email
+
+
 class Notification(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     sender = models.ForeignKey(User, on_delete=models.CASCADE)

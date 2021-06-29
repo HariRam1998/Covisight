@@ -8,7 +8,7 @@ from django.shortcuts import render
 from newsapi import NewsApiClient
 from django.contrib import messages
 from users.models import profiledetails
-from .models import Notification, User, Contact
+from .models import Notification, Publiccontact, User, Contact
 from django.conf import settings
 from django.core.mail import send_mail
 import pyrebase
@@ -187,6 +187,33 @@ def aboutus(request):
         'pagetitle': 'About us',
     }
     return render(request, 'aboutus.html', params)
+
+
+def publiccontactform(request):
+    if request.POST.get('action') == 'post':
+        namep = request.POST.get('name1')
+        emailp = request.POST.get('email1')
+        messagep = request.POST.get('message1')
+        try:
+            contact = Publiccontact(name=namep, email=emailp, content=messagep)
+            contact.save()
+            # subject = 'We have received your Contact Us request'
+            # message = f'We will come in contact with you as soon as possible'
+            # email_from = settings.EMAIL_HOST_USER
+            # recipient_list = [emailp, ]
+            # send_mail(subject, message, email_from, recipient_list)
+            response = {
+                'a': True
+            }
+            return JsonResponse(response)
+        except:
+            # messages.warning(request, "Please Login to use the contact us module!!!")
+            response = {
+                'b': 1
+            }
+            return JsonResponse(response)
+
+
 
 
 def error_404_view(request, exception):

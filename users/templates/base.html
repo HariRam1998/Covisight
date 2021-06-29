@@ -309,19 +309,7 @@
       </li>
       <!-- /MENU ITEM -->
 
-      <!-- MENU ITEM --> {% if user.is_authenticated %}
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link text-tooltip-tfr" href="{% url 'user_account' %}" data-title="Account">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-members">
-            <use xlink:href="#svg-members"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>{% endif %}
-      <!-- /MENU ITEM -->
+    
 
       <!-- MENU ITEM -->
 {#      <li class="menu-item">#}
@@ -739,83 +727,6 @@
         <!-- /MENU ITEM LINK -->
       </li>
       <!-- /MENU ITEM -->
-
-         {% if user.is_authenticated %}
-
-      <!-- MENU ITEM -->
-      <li class="menu-item">
-        <!-- MENU ITEM LINK -->
-        <a class="menu-item-link" href="{% url 'user_account' %}">
-          <!-- MENU ITEM LINK ICON -->
-          <svg class="menu-item-link-icon icon-members">
-            <use xlink:href="#svg-members"></use>
-          </svg>
-          <!-- /MENU ITEM LINK ICON -->
-          Account
-        </a>
-        <!-- /MENU ITEM LINK -->
-      </li>{% endif %}
-      <!-- /MENU ITEM -->
-
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="badges.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-badges">#}
-{#            <use xlink:href="#svg-badges"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Badges#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="quests.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-quests">#}
-{#            <use xlink:href="#svg-quests"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Quests#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="streams.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-streams">#}
-{#            <use xlink:href="#svg-streams"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Streams#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="events.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-events">#}
-{#            <use xlink:href="#svg-events"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Events#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
 {% if user.is_authenticated %}
       <!-- MENU ITEM -->
       <li class="menu-item">
@@ -1212,66 +1123,6 @@
       </li>
       <!-- /MENU ITEM -->
         {% endif %}
-
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="badges.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-badges">#}
-{#            <use xlink:href="#svg-badges"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Badges#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="quests.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-quests">#}
-{#            <use xlink:href="#svg-quests"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Quests#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="streams.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-streams">#}
-{#            <use xlink:href="#svg-streams"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Streams#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
-{##}
-{#      <!-- MENU ITEM -->#}
-{#      <li class="menu-item">#}
-{#        <!-- MENU ITEM LINK -->#}
-{#        <a class="menu-item-link" href="events.html">#}
-{#          <!-- MENU ITEM LINK ICON -->#}
-{#          <svg class="menu-item-link-icon icon-events">#}
-{#            <use xlink:href="#svg-events"></use>#}
-{#          </svg>#}
-{#          <!-- /MENU ITEM LINK ICON -->#}
-{#          Events#}
-{#        </a>#}
-{#        <!-- /MENU ITEM LINK -->#}
-{#      </li>#}
-{#      <!-- /MENU ITEM -->#}
 {% if user.is_authenticated %}
       <!-- MENU ITEM -->
       <li class="menu-item">
@@ -1673,6 +1524,18 @@
             <!-- /USER STATUS -->
           </div>
           <!-- /DROPDOWN NAVIGATION HEADER -->
+
+          
+
+          <!-- DROPDOWN NAVIGATION CATEGORY -->
+          <p class="dropdown-navigation-category">My Profile</p>
+          <!-- /DROPDOWN NAVIGATION CATEGORY -->
+          
+          <!-- DROPDOWN NAVIGATION LINK -->
+          <a class="dropdown-navigation-link" href="{% url 'user_account' %}"><svg class="menu-item-link-icon icon-members">
+            <use xlink:href="#svg-members"></use>
+          </svg>&nbsp;&nbsp;&nbsp;Profile Info</a>
+          <!-- /DROPDOWN NAVIGATION LINK -->
 
 
           <!-- DROPDOWN NAVIGATION BUTTON -->

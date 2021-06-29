@@ -48,3 +48,4 @@ class BroadCast_Email_Admin(admin.ModelAdmin):
 admin.site.register(models.BroadCast_Email, BroadCast_Email_Admin)
 admin.site.register(models.Contact)
 admin.site.register(models.Notification)
+admin.site.register(models.Publiccontact)
